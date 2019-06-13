@@ -1,0 +1,69 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <node name="tutorial_next" title="Tutorial next">
+        <condition>#COMMON_CONTROL_NEXT or #TUTORIAL_NEXT</condition>
+        <context>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example></example>
+            <paraphrase>I am trying to explain how the description of your travelling behavior will work.</paraphrase>
+            <tutorialIterator>&lt;? $tutorialIterator = T(java.lang.Math).min($tutorialIterator + 1, $tutorial.steps.size()-1) ?&gt;</tutorialIterator>
+        </context>
+        <goto>
+            <target>tutorial_step_output</target>
+            <selector>body</selector>
+        </goto>
+    </node>
+
+    <node name="tutorial_repeat" title="Tutorial repeat">
+        <condition>#TUTORIAL_REPEAT or #COMMON_REPEAT</condition>
+        <context>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example></example>
+            <paraphrase>I just repeated the current tutorial step.</paraphrase>
+        </context>
+        <goto>
+            <target>tutorial_step_output</target>
+            <selector>body</selector>
+        </goto>
+    </node>
+
+    <node name="cooking_previous" title="Tutorial previous">
+        <condition>#COMMON_CONTROL_PREVIOUS</condition>
+        <context>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example></example>
+            <paraphrase>I just told you the previous step.</paraphrase>
+            <tutorialIterator>&lt;? $tutorialIterator = T(java.lang.Math).max($tutorialIterator - 1, 0) ?&gt;</tutorialIterator>
+        </context>
+        <goto>
+            <target>tutorial_step_output</target>
+            <selector>body</selector>
+        </goto>
+    </node>
+
+    <node name="tutorial_step_output" title="tutorial step output">
+        <condition>false</condition>
+        <context>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</example>
+        </context>
+        <output>            
+            <text>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</text>
+        </output>
+    </node>
+
+    <node name="tutorial_finish" title="Finished tutorial node">
+        <condition>#TUTORIAL_ALREADY_FINISHED</condition>
+        <context>
+            <tutorialFinished>true</tutorialFinished>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example></example>
+            <paraphrase>I just told you the last step.</paraphrase>
+            <tutorialIterator>&lt;? $tutorialIterator = $tutorial.steps.size()-1 ?&gt;</tutorialIterator>
+        </context>
+         <output>            
+            <text>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</text>
+        </output>
+    </node>
+
+</nodes>

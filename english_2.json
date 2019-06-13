@@ -1,0 +1,3485 @@
+{
+   "name":"woz_habits_en",
+   "intents":[
+      {
+         "intent":"does_not_make_sense",
+         "examples":[
+            {
+               "text":"it cannot be done in different way"
+            },
+            {
+               "text":"no values"
+            },
+            {
+               "text":"no more parts"
+            },
+            {
+               "text":"how this can have any value?"
+            },
+            {
+               "text":"that is nonsense"
+            },
+            {
+               "text":"there a no other parts"
+            },
+            {
+               "text":"there are no other ways of doing it"
+            },
+            {
+               "text":"that's it"
+            },
+            {
+               "text":"it has no more parts"
+            },
+            {
+               "text":"it makes no sense any more"
+            },
+            {
+               "text":"there is no other way how to do it"
+            },
+            {
+               "text":"no other"
+            },
+            {
+               "text":"none"
+            },
+            {
+               "text":"it does not exist"
+            }
+         ],
+         "description":"intent to stop branching the tree - branchCompleted for parof and concret and noValues for values"
+      },
+      {
+         "intent":"experiment_description",
+         "examples":[
+            {
+               "text":"experiment"
+            },
+            {
+               "text":"what is the experiment about?"
+            },
+            {
+               "text":"what will we do today?"
+            },
+            {
+               "text":"what is the course of the experiment?"
+            }
+         ],
+         "description":"agent provides information about the experiment"
+      },
+      {
+         "intent":"does_not_know",
+         "examples":[
+            {
+               "text":"I don't know, what should I do?"
+            },
+            {
+               "text":"I don't understand"
+            },
+			{
+               "text":"I do not understand"
+            },
+            {
+               "text":"how many should it be?"
+            },
+            {
+               "text":"how should I do that?"
+            },
+            {
+               "text":"I don't understand that at all"
+            },
+            {
+               "text":"what does that mean?"
+            },
+            {
+               "text":"how should I talk to you?"
+            },
+            {
+               "text":"help me, I don't know what to do?"
+            },
+            {
+               "text":"I do not know what to do"
+            },
+            {
+               "text":"what?"
+            }
+         ],
+         "description":"intent for explanation, when the user don't understand"
+      },
+      {
+         "intent":"agent_description",
+         "examples":[
+            {
+               "text":"where do you live?"
+            },
+            {
+               "text":"do you have children?"
+            },
+            {
+               "text":"how many friends do you have"
+            },
+            {
+               "text":"how old are you?"
+            },
+            {
+               "text":"where are you from?"
+            },
+            {
+               "text":"intro"
+            },
+            {
+               "text":"introduction"
+            },
+            {
+               "text":"hello"
+            },
+            {
+               "text":"who are you?"
+            },
+            {
+               "text":"what's your name?"
+            },
+            {
+               "text":"when were you born?"
+            }
+         ],
+         "description":"provides infomation about the agent"
+      },
+      {
+         "intent":"user_describes_activities",
+         "examples":[
+            {
+               "text":"go to work, go shopping, go to gym"
+            },
+            {
+               "text":"go by bus, go by tram, go by taxi, walk"
+            },
+            {
+               "text":"activity4"
+            },
+            {
+               "text":"go out, get on tram on my station, get from tram at park, walking a dog, go back"
+            },
+            {
+               "text":"sit on the chair, keep sitting, get up from the chair, go out"
+            },
+            {
+               "text":"go out, go to park"
+            },
+            {
+               "text":"go by bike, go by public transport"
+            },
+            {
+               "text":"go outside, dress up, go to tram"
+            },
+            {
+               "text":"punctuality, consistency, infallibility"
+            },
+            {
+               "text":"go outside, dress up, go shopping"
+            },
+            {
+               "text":"open fridge, take out stuff, put it into pan, take it out of pan, eat, clean dishes, rest"
+            },
+            {
+               "text":"alone, with friends"
+            },
+            {
+               "text":"love"
+            },
+            {
+               "text":"money"
+            },
+            {
+               "text":"79 times a year"
+            },
+            {
+               "text":"with friend, alone, with dog, with foreign people, slowly, fast, in the rain, in nice weather"
+            },
+            {
+               "text":"patience, productivity, money"
+            },
+            {
+               "text":"go home, go to school"
+            },
+            {
+               "text":"go to work, go to school"
+            },
+            {
+               "text":"go to school, go shopping"
+            }
+         ],
+         "description":"examples of what the user can say when describing the activities (this is important as counterexample for not understanding)"
+      }
+   ],
+   "entities":[
+      {
+         "entity":"silence",
+         "values":[
+            {
+               "type":"synonyms",
+               "value":"silence",
+               "metadata":null,
+               "synonyms":[
+                  "um",
+                  "hmm",
+                  "silence",
+                  "hm",
+                  "..."
+               ]
+            }
+         ],
+         "metadata":null,
+         "description":null
+      },
+      {
+         "entity":"yes_no",
+         "values":[
+            {
+               "type":"synonyms",
+               "value":"yes",
+               "metadata":null,
+               "synonyms":[
+                  "yes",
+                  "yep",
+                  "sure",
+                  "right",
+                  "ok",
+                  "clear",
+                  "fine",
+                  "okay",
+                  "great"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"no",
+               "metadata":null,
+               "synonyms":[
+                  "no",
+                  "nope",
+                  "not at all",
+                  "noo",
+                  "no way",
+                  "wrong"
+               ]
+            }
+         ],
+         "metadata":null,
+         "description":null
+      },
+      {
+         "entity":"positive-negative",
+         "values":[
+            {
+               "type":"synonyms",
+               "value":"negative",
+               "metadata":null,
+               "synonyms":[
+                  "negatively",
+                  "negative"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"positive",
+               "metadata":null,
+               "synonyms":[
+                  "positively",
+                  "positive"
+               ]
+            }
+         ],
+         "metadata":null,
+         "description":null
+      },
+      {
+         "entity":"relative_freq",
+         "values":[
+            {
+               "type":"synonyms",
+               "value":"not_so_often",
+               "metadata":null,
+               "synonyms":[
+                  "not so often",
+                  "not very often",
+                  "not often",
+                  "sometimes",
+                  "occasionally"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"never",
+               "metadata":null,
+               "synonyms":[
+                  "never"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"often",
+               "metadata":null,
+               "synonyms":[
+                  "often"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"always",
+               "metadata":null,
+               "synonyms":[
+                  "always",
+                  "all the time"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"very_often",
+               "metadata":null,
+               "synonyms":[
+                  "very often",
+                  "usually"
+               ]
+            }
+         ],
+         "metadata":null,
+         "description":null,
+         "fuzzy_match":false
+      },
+      {
+         "entity":"freq_start_timeframes",
+         "values":[
+            {
+               "type":"synonyms",
+               "value":"month",
+               "metadata":null,
+               "synonyms":[
+                  "monthly",
+                  "month"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"day",
+               "metadata":null,
+               "synonyms":[
+                  "daily",
+                  "day"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"week",
+               "metadata":null,
+               "synonyms":[
+                  "weekly",
+                  "week"
+               ]
+            },
+            {
+               "type":"synonyms",
+               "value":"year",
+               "metadata":null,
+               "synonyms":[
+                  "yearly",
+                  "year"
+               ]
+            }
+         ],
+         "metadata":null,
+         "description":null,
+         "fuzzy_match":true
+      },
+      {
+         "entity":"sys-number",
+         "values":[
+
+         ],
+         "metadata":null,
+         "description":null
+      }
+   ],
+   "language":"en",
+   "metadata":{
+      "api_version":{
+         "major_version":"v1",
+         "minor_version":"2017-05-26"
+      }
+   },
+   "description":"",
+   "dialog_nodes":[
+      {
+         "type":"standard",
+         "title":"recap",
+         "output":{
+
+         },
+         "parent":"node_6_1525936575585",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_17_1525936951358",
+         "digress_out":"allow_all",
+         "previous_sibling":"node_11_1525936948389"
+      },
+      {
+         "type":"standard",
+         "title":"question for level",
+         "output":{
+            "text":{
+               "values":[
+                  "How stressful do you find doing the activity <? $selected_array.get($iterator) ?> on a scale from one to five?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_6_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$iterator < $selected_array.size()",
+         "description":null,
+         "dialog_node":"node_11_1525936948389",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1517661427575",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_5_1517567521051"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_7_1517661514557",
+         "previous_sibling":"node_6_1517661494760"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Do you do the activity <?$freq?> with frequency <?$freq_value?> as a <?$relation_read?> of doing the activity <?$parent?>?"
+               ]
+            }
+         },
+         "parent":"node_5_1517661427575",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_format == \"fraction\" OR $freq_format == \"enumeration\"",
+         "description":null,
+         "dialog_node":"node_8_1518713382431",
+         "previous_sibling":"node_7_1517661514557"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Do you do the activity <?$freq?> with frequency <?$freq_for_repeat?> as a <?$relation_read?> of doing the activity <?$parent?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1517661427575",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_format == \"relative\"",
+         "description":null,
+         "dialog_node":"node_7_1518713378446",
+         "previous_sibling":"node_8_1518713382431"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1517661427575",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_6_1517661494760",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_14_1517871553249",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_16_1517871660790"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_22_1517873161520",
+         "previous_sibling":"node_20_1517873067065"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "You entered <?$input.text?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_14_1517871553249",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":null,
+         "description":null,
+         "dialog_node":"node_19_1517872090731",
+         "previous_sibling":"node_22_1517873161520"
+      },
+      {
+         "type":"standard",
+         "title":"correct increase iterator",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_14_1517871553249",
+         "context":{
+            "iterator":"<?$iterator + 1?>",
+            "polarities_array":"<? $polarities_array.append($response) ?>",
+            "polarities_array_literals":"<? $polarities_array_literals.append($response_literal) ?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"condition",
+            "dialog_node":"node_16_1517871660790"
+         },
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_20_1517873067065",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "I need you to say a number from one to five. Let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_11_1525936948389",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_11_1525936948389"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_16_1525936948389",
+         "previous_sibling":"node_12_1525936948389"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is your stress when doing the activity <? $selected_array.get($iterator) ?> on level <?@sys-number?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_11_1525936948389",
+         "context":{
+            "response":"@sys-number"
+         },
+         "metadata":{
+            "_customization":{
+               "mcr":false
+            }
+         },
+         "next_step":null,
+         "conditions":"@sys-number && @sys-number > 0 && @sys-number < 6",
+         "description":null,
+         "dialog_node":"node_12_1525936948389",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"regex fail",
+         "output":{
+            "text":{
+               "values":[
+                  "Some of the activities you mentioned do not exist. Let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1525936575534"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_10_1525936575585",
+         "previous_sibling":"node_4_1525936575585"
+      },
+      {
+         "type":"standard",
+         "title":"check regex",
+         "output":{
+
+         },
+         "parent":"node_3_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"$selected_array.join(', ').matches($regex)",
+         "description":null,
+         "dialog_node":"node_4_1525936575585",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store [] values",
+         "output":{
+
+         },
+         "parent":"node_6_1517567526355",
+         "context":{
+            "values_array":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_6_1517870327423",
+         "previous_sibling":"node_1_1518098783467"
+      },
+      {
+         "type":"standard",
+         "title":"does not make sence (noValues)",
+         "output":{
+            "text":{
+               "values":[
+                  "Should I continue with different activity?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_6_1517567526355",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#does_not_make_sense",
+         "description":null,
+         "dialog_node":"node_1_1518098783467",
+         "previous_sibling":"node_5_1517870109477"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Which values does the activity <?$value?> promote or demote? I will ask later if they are negative or positive. First you can just mention the values."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_6_1517567526355",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":null,
+         "description":null,
+         "dialog_node":"node_4_1517870016310",
+         "previous_sibling":"node_6_1517870327423"
+      },
+      {
+         "type":"slot",
+         "title":null,
+         "output":null,
+         "parent":"node_6_1517567526355",
+         "context":null,
+         "metadata":null,
+         "next_step":null,
+         "conditions":null,
+         "description":null,
+         "dialog_node":"slot_1_1517870015967",
+         "previous_sibling":"node_4_1517870016310"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Which values are influenced both positively and negatively by doing this activity? So what ideals, such as health or independence, is this activity good or bad for? "
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_6_1517567526355",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_6_1517567526355"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_5_1517870109477",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "I need you to say positively or negatively. Let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_16_1517871660790",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_16_1517871660790"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_23_1517873252778",
+         "previous_sibling":"node_14_1517871553249"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is the value <?$values_array.get($iterator)?> influenced <?$response_literal?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_16_1517871660790",
+         "context":{
+            "response":"@positive-negative",
+            "response_literal":"@positive-negative.literal"
+         },
+         "metadata":{
+            "_customization":{
+               "mcr":false
+            }
+         },
+         "next_step":null,
+         "conditions":"@positive-negative",
+         "description":null,
+         "dialog_node":"node_14_1517871553249",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1518098783467",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_6_1517567526355"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_3_1518098783471",
+         "previous_sibling":"node_2_1518098783471"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "OK."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1518098783467",
+         "context":{
+            "correct":"noValues"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_2_1518098783471",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"printout",
+         "output":{
+            "text":{
+               "values":[
+                  "The value <?$values_array.get($iterator)?> is influenced <?$polarities_array_literals.get($iterator)?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1517924014882",
+         "context":{
+            "iterator":"<?$iterator + 1?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"condition",
+            "dialog_node":"node_1_1517924014882"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_6_1517924844593",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_12_1525936948389",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_11_1525936948389"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_14_1525936948389",
+         "previous_sibling":"node_13_1525936948389"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "You entered <?$input.text?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_12_1525936948389",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":null,
+         "description":null,
+         "dialog_node":"node_15_1525936948389",
+         "previous_sibling":"node_14_1525936948389"
+      },
+      {
+         "type":"standard",
+         "title":"correct increase iterator",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_12_1525936948389",
+         "context":{
+            "iterator":"<?$iterator + 1?>",
+            "selected_values":"<? $selected_values.append($response) ?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"condition",
+            "dialog_node":"node_11_1525936948389"
+         },
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_13_1525936948389",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"regex fail",
+         "output":{
+            "text":{
+               "values":[
+                  "Some of the activities you mentioned do not exist. Let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_10_1517575058856",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_2_1517567400624"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_12_1517577379309",
+         "previous_sibling":"node_13_1517585762364"
+      },
+      {
+         "type":"standard",
+         "title":"check regex",
+         "output":{
+
+         },
+         "parent":"node_10_1517575058856",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"$selected_array.join(', ').matches($regex)",
+         "description":null,
+         "dialog_node":"node_13_1517585762364",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_4_1525936575585",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_5_1525936575585",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_31_1517647185747",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_32_1517647185751",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"event_handler",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"slot_1_1517870015967",
+         "context":null,
+         "metadata":null,
+         "next_step":null,
+         "conditions":null,
+         "event_name":"focus",
+         "description":null,
+         "dialog_node":"handler_3_1517870015967",
+         "previous_sibling":"handler_2_1517870015967"
+      },
+      {
+         "type":"event_handler",
+         "title":null,
+         "output":null,
+         "parent":"slot_1_1517870015967",
+         "context":null,
+         "metadata":null,
+         "next_step":null,
+         "conditions":null,
+         "event_name":"input",
+         "description":null,
+         "dialog_node":"handler_2_1517870015967",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store selected []",
+         "output":{
+
+         },
+         "parent":"Vítejte",
+         "context":{
+            "startquest":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_1_1515519377532",
+         "previous_sibling":"node_2_1516647967663"
+      },
+      {
+         "type":"standard",
+         "title":"explain-activities",
+         "output":{
+            "text":{
+               "values":[
+                  "I'll try to explain. Daily activities are, for instance, doing groceries, travelling to work, or walking the dog. Name several such activities which sometimes cause you stress."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"Vítejte",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"Vítejte"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_2_1516647967663",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"node_4_1519657178144",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":null,
+         "description":null,
+         "dialog_node":"node_17_1519658371670",
+         "previous_sibling":"node_5_1519657178144"
+      },
+      {
+         "type":"standard",
+         "title":"repeat value",
+         "output":{
+            "text":{
+               "values":[
+                  "Do you do the activity <?$freq_start?> with frequency <?$freq_start_value?> times a <?$freq_start_timeframes_literal?>?"
+               ]
+            }
+         },
+         "parent":"node_4_1519657178144",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":false
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_5_1519657178144",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1519657178144",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1519657178128"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_7_1519657178144",
+         "previous_sibling":"node_6_1519657178144"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Do you do the activity <?$freq?> with frequency <?$freq_value?>?"
+               ]
+            }
+         },
+         "parent":"node_5_1519657178144",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_format == \"fraction\" OR $freq_format == \"enumeration\"",
+         "description":null,
+         "dialog_node":"node_8_1519657178144",
+         "previous_sibling":"node_7_1519657178144"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Do you do the activity <?$freq?> with frequency <?$freq_for_repeat?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1519657178144",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_format == \"relative\"",
+         "description":null,
+         "dialog_node":"node_9_1519657178144",
+         "previous_sibling":"node_8_1519657178144"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1519657178144",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_6_1519657178144",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_27_1517646643598",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_28_1517646643610",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"regex fail",
+         "output":{
+            "text":{
+               "values":[
+                  "You either told me an activity I did not offer or you mentioned more than one activity. Please select only one, from the list I mentioned. Let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_15_1517588318477",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1517567384295"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_19_1517588318487",
+         "previous_sibling":"node_16_1517588318487"
+      },
+      {
+         "type":"standard",
+         "title":"check regex",
+         "output":{
+
+         },
+         "parent":"node_15_1517588318477",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"$selected.matches($regex)",
+         "description":null,
+         "dialog_node":"node_16_1517588318487",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"printout",
+         "output":{
+            "text":{
+               "values":[
+                  "Your stress when doing the activity <? $selected_array.get($iterator) ?> is on level <?$selected_values.get($iterator)?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_18_1525936951360",
+         "context":{
+            "iterator":"<?$iterator + 1?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"condition",
+            "dialog_node":"node_18_1525936951360"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_19_1525936951360",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_17_1517588318487",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1517567384295"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_23_1517589849462",
+         "previous_sibling":"node_18_1517588318487"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"random"
+            }
+         },
+         "parent":"node_17_1517588318487",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_18_1517588318487",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"regex fail",
+         "output":{
+            "text":{
+               "values":[
+                  "I don't know this activity, please tell me how often you do this with the number per day, week, month or a year. You can do the activity <?$freq_start?> once a week, three times a year and so on."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1519657178144",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1519657178128"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_13_1519657178145",
+         "previous_sibling":"node_4_1519657178144"
+      },
+      {
+         "type":"standard",
+         "title":"regex check",
+         "output":{
+
+         },
+         "parent":"node_3_1519657178144",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"@sys-number && @freq_start_timeframes",
+         "description":null,
+         "dialog_node":"node_4_1519657178144",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"does not make sence (branchCompleted)",
+         "output":{
+            "text":{
+               "values":[
+                  "Should I continue with different activity?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1517567495401",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#does_not_make_sense",
+         "description":null,
+         "dialog_node":"node_7_1517567820102",
+         "previous_sibling":"node_25_1517646294975"
+      },
+      {
+         "type":"standard",
+         "title":"store selected []",
+         "output":{
+
+         },
+         "parent":"node_3_1517567495401",
+         "context":{
+            "concret_array":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_27_1517646643598",
+         "previous_sibling":"node_7_1517567820102"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are there more concrete ways of doing the activity <?$concret?>? So more specific ways? For example: A more concrete way of doing activity going to work are: going by bus, or going by bike."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1517567495401",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_3_1517567495401"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_25_1517646294975",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_20_1525936951360",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1525936575534"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_22_1525936951360",
+         "previous_sibling":"node_21_1525936951360"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_20_1525936951360",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no:yes",
+         "description":null,
+         "dialog_node":"node_21_1525936951360",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"does not make sence (branchCompleted)",
+         "output":{
+            "text":{
+               "values":[
+                  "Should I continue with different activity?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_4_1517567510446",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#does_not_make_sense",
+         "description":null,
+         "dialog_node":"node_8_1517567836371",
+         "previous_sibling":"node_26_1517646540645"
+      },
+      {
+         "type":"standard",
+         "title":"store selected []",
+         "output":{
+
+         },
+         "parent":"node_4_1517567510446",
+         "context":{
+            "parto_array":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_31_1517647185747",
+         "previous_sibling":"node_8_1517567836371"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "What are the parts of doing activity <?$parto?>? So from which sequences of smaller activities is doing of the activity <?$parto?> composed? For example: a parts of doing the activity go by bus are buy a ticket, get on the bus, find a place, sit down."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_4_1517567510446",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_4_1517567510446"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_26_1517646540645",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_6_1517870327423",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_7_1517870989448",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store 1 selected",
+         "output":{
+
+         },
+         "parent":"node_1_1517567384295",
+         "context":{
+            "selected":"<?input.text?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input",
+            "dialog_node":"node_17_1517588318487"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_15_1517588318477",
+         "previous_sibling":"node_21_1517589502598"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "You have more than 1 activity rated the same. We want to continue with the activity which causes you the most stress. If they are the same, you can just choose one of the two. Which activity shall we continue with?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1517567384295",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1517567384295"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_21_1517589502598",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"recap",
+         "output":{
+            "text":{
+               "values":[
+                  "To be sure, I'll repeat the values influenced by doing the activity <?$value?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_8_1517871048967",
+         "context":{
+            "iterator":-1
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_2_1517874664622",
+         "previous_sibling":"node_16_1517871660790"
+      },
+      {
+         "type":"standard",
+         "title":"question",
+         "output":{
+            "text":{
+               "values":[
+                  "Does doing the activity <?$value?> influence the value <?$values_array.get($iterator)?> positively or negatively?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_8_1517871048967",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$iterator < $values_array.size()",
+         "description":null,
+         "dialog_node":"node_16_1517871660790",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store value",
+         "output":{
+
+         },
+         "parent":"node_1_1519657178128",
+         "context":{
+            "input_text":"<?input.text?>",
+            "freq_start_value":"@sys-number",
+            "freq_start_timeframes":"@freq_start_timeframes",
+            "freq_start_timeframes_literal":"@freq_start_timeframes.literal"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_3_1519657178144",
+         "previous_sibling":"node_2_1519657178144"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "How often do you do the activity <?$freq?>?"
+               ]
+            }
+         },
+         "parent":"node_1_1519657178128",
+         "context":null,
+         "disabled":true,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$parent == \"topnode\"",
+         "description":null,
+         "dialog_node":"node_14_1519657178145",
+         "previous_sibling":"node_3_1519657178144"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "For example, if you go to work twice a week. And you either go by bus or by car. This question wants to know how often you go by bus, when you are going to work. So you need to give a relative answer."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1519657178128",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1519657178128"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_2_1519657178144",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1515520996393",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"Vítejte"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_3_1515520082456",
+         "previous_sibling":"node_2_1515520041621"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is it the activity <?$startquest.join(', ')?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1515520996393",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$startquest.size() == 1",
+         "description":null,
+         "dialog_node":"node_7_1518168498728",
+         "previous_sibling":"node_3_1515520082456"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are they the activities <?$startquest.join(', ')?>?"
+               ]
+            }
+         },
+         "parent":"node_5_1515520996393",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$startquest.size() > 1",
+         "description":null,
+         "dialog_node":"node_8_1518168511558",
+         "previous_sibling":"node_7_1518168498728"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"random"
+            }
+         },
+         "parent":"node_5_1515520996393",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_2_1515520041621",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1517924244867",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_6_1517567526355"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_5_1517924309487",
+         "previous_sibling":"node_4_1517924255578"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_3_1517924244867",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no:yes",
+         "description":null,
+         "dialog_node":"node_4_1517924255578",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is it the activity <?$selected_array.join(', ')?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_11_1517576728929",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_1_1518167940840",
+         "previous_sibling":"node_24_1517589907359"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are the activities <?$selected_array.join(', ')?>?"
+               ]
+            }
+         },
+         "parent":"node_11_1517576728929",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_2_1518167974973",
+         "previous_sibling":"node_1_1518167940840"
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_11_1517576728929",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_2_1517567400624"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_24_1517589907359",
+         "previous_sibling":"node_14_1517586088192"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_11_1517576728929",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_14_1517586088192",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_8_1517567836371",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_4_1517567510446"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_36_1517652728791",
+         "previous_sibling":"node_35_1517652659203"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "OK."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_8_1517567836371",
+         "context":{
+            "correct":"branchCompleted"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_35_1517652659203",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1525936575534"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_7_1525936575585",
+         "previous_sibling":"node_6_1525936575585"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is it the activity <?$selected_array.join(', ')?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_8_1525936575585",
+         "previous_sibling":"node_7_1525936575585"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are the activities <?$selected_array.join(', ')?>?"
+               ]
+            }
+         },
+         "parent":"node_5_1525936575585",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_9_1525936575585",
+         "previous_sibling":"node_8_1525936575585"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1525936575585",
+         "context":{
+            "iterator":0,
+            "selected_values":"<? new JsonArray() ?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_6_1525936575585",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+
+               ]
+            }
+         },
+         "parent":"node_3_1517661274774",
+         "context":{
+            "freq_value":"<?@relative_freq?>",
+            "freq_format":"relative",
+            "freq_for_repeat":"<?@relative_freq.literal?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@relative_freq",
+         "description":null,
+         "dialog_node":"node_4_1518712954437",
+         "previous_sibling":"node_5_1517661427575"
+      },
+      {
+         "type":"standard",
+         "title":"repeat value",
+         "output":{
+
+         },
+         "parent":"node_3_1517661274774",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_5_1517661427575",
+         "digress_out":"allow_all",
+         "previous_sibling":"node_6_1518712972674"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"node_3_1517661274774",
+         "context":{
+            "freq_format":"enumeration"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_value.matches('^\\d*\\s\\w+\\s\\d*$')",
+         "description":null,
+         "dialog_node":"node_6_1518712972674",
+         "previous_sibling":"node_5_1518712967904"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"node_3_1517661274774",
+         "context":{
+            "freq_format":"fraction"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$freq_value.matches('^(\\d\\/\\d)$')",
+         "description":null,
+         "dialog_node":"node_5_1518712967904",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"check summary",
+         "output":{
+            "text":{
+               "values":[
+                  "Is that right?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_2_1517874664622",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_3_1517924244867",
+         "previous_sibling":"node_1_1517924014882"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"node_2_1517874664622",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"$iterator < $values_array.size() - 1",
+         "description":null,
+         "dialog_node":"node_1_1517924014882",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"regex fail",
+         "output":{
+            "text":{
+               "values":[
+                  "I don't know this frequency, you can do the activity <?$freq?> always, very often, often, not so often, never. You can also say a fraction like one half or as an occurrence like two of ten."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_2_1517661225887",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_5_1517567521051"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_4_1517661412072",
+         "previous_sibling":"node_3_1517661274774"
+      },
+      {
+         "type":"standard",
+         "title":"regex check",
+         "output":{
+
+         },
+         "parent":"node_2_1517661225887",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"@relative_freq || $freq_value.matches('^(\\d\\/\\d)$') || $freq_value.matches('^\\d*\\s\\w+\\s\\d*$')",
+         "description":null,
+         "dialog_node":"node_3_1517661274774",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store selected []",
+         "output":{
+
+         },
+         "parent":"node_1_1525936575534",
+         "context":{
+            "selected_array":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input",
+            "dialog_node":"node_5_1525936575585"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_3_1525936575585",
+         "previous_sibling":"node_2_1525936575585"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Name several activities which sometimes cause you stress. Are the activities <? $options_array.join(', ') ?> those which you find stressful?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_1_1525936575534",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_1_1525936575534"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_2_1525936575585",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_1_1515519377532",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_5_1515520996393",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are the activities <?$parto_array.join(', ')?> parts of doing the activity <?$parto?>?"
+               ]
+            }
+         },
+         "parent":"node_32_1517647185751",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$parto_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_12_1518168849608",
+         "previous_sibling":"node_11_1518168847834"
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_32_1517647185751",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_4_1517567510446"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_34_1517647185751",
+         "previous_sibling":"node_33_1517647185751"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_32_1517647185751",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_33_1517647185751",
+         "previous_sibling":"node_12_1518168849608"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is the activity <?$parto_array.join(', ')?> part of doing the activity <?$parto?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_32_1517647185751",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$parto_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_11_1518168847834",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_28_1517646643610",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_3_1517567495401"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_30_1517646643610",
+         "previous_sibling":"node_29_1517646643610"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is the activity <?$concret_array.join(', ')?> more concrete ways of doing the activity <?$concret?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_28_1517646643610",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$concret_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_9_1518168622952",
+         "previous_sibling":"node_30_1517646643610"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are the activities <?$concret_array.join(', ')?> more concrete ways of doing the activity <?$concret?>?"
+               ]
+            }
+         },
+         "parent":"node_28_1517646643610",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$concret_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_10_1518168643438",
+         "previous_sibling":"node_9_1518168622952"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great.",
+                  "Perfect.",
+                  "Thanks."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_28_1517646643610",
+         "context":{
+            "correct":"true"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no:yes",
+         "description":null,
+         "dialog_node":"node_29_1517646643610",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+
+         },
+         "parent":"node_13_1517585762364",
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_11_1517576728929",
+         "digress_out":"allow_all",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store value",
+         "output":{
+
+         },
+         "parent":"node_5_1517567521051",
+         "context":{
+            "freq_value":"<?input.text?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_2_1517661225887",
+         "previous_sibling":"node_8_1517662268923"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "How often do you do the activity <?$freq?> as a way of doing the activity <?$parent?>?"
+               ]
+            }
+         },
+         "parent":"node_5_1517567521051",
+         "context":{
+            "relation_read":"way"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$relation == \"concret\"",
+         "description":null,
+         "dialog_node":"node_3_1518712633346",
+         "previous_sibling":"node_2_1518712588469"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "How often do you do the activity <?$freq?> as a part of of doing the activity <?$parent?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1517567521051",
+         "context":{
+            "relation_read":"part"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$relation == \"partof\"",
+         "description":null,
+         "dialog_node":"node_2_1518712588469",
+         "previous_sibling":"node_2_1517661225887"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "For example: how often do you go to work by bus, by walking or by tram?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_5_1517567521051",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_5_1517567521051"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_8_1517662268923",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Are the values <?$values_array.join(', ')?> influenced by doing the activity <?$value?>?"
+               ]
+            }
+         },
+         "parent":"node_7_1517870989448",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$values_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_14_1518169501351",
+         "previous_sibling":"node_13_1518169490135"
+      },
+      {
+         "type":"standard",
+         "title":"correct",
+         "output":{
+            "text":{
+               "values":[
+                  "Great. Now I will ask for each value, if it is positively or negatively influenced by doing of the activity <?$value?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_7_1517870989448",
+         "context":{
+            "iterator":0,
+            "polarities_array":"<? new JsonArray() ?>",
+            "polarities_array_literals":"<? new JsonArray() ?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_8_1517871048967",
+         "previous_sibling":"node_14_1518169501351"
+      },
+      {
+         "type":"standard",
+         "title":"incorrect",
+         "output":{
+            "text":{
+               "values":[
+                  "Sorry, let's try it again.",
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_7_1517870989448",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_6_1517567526355"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_9_1517871083458",
+         "previous_sibling":"node_8_1517871048967"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Is the value <?$values_array.join(', ')?> influenced by doing the activity <?$value?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_7_1517870989448",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$values_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_13_1518169490135",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"repeat selected []",
+         "output":{
+            "text":{
+               "values":[
+                  "Is it the activity <?$selected?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_16_1517588318487",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_17_1517588318487",
+         "previous_sibling":null
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "To check the responses I will repeat how much stress you indicated you feel when doing the activities <?$selected_array.join(', ')?>."
+               ]
+            }
+         },
+         "parent":"node_17_1525936951358",
+         "context":{
+            "iterator":-1
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() > 1",
+         "description":null,
+         "dialog_node":"node_24_1525937442950",
+         "previous_sibling":"node_23_1525937436043"
+      },
+      {
+         "type":"standard",
+         "title":"check summary",
+         "output":{
+            "text":{
+               "values":[
+                  "Is that right?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_17_1525936951358",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_20_1525936951360",
+         "previous_sibling":"node_18_1525936951360"
+      },
+      {
+         "type":"response_condition",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "To check the responses I will repeat how much stress you said you feel when doing the activity <?$selected_array.join(', ')?>."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_17_1525936951358",
+         "context":{
+            "iterator":-1
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$selected_array.size() == 1",
+         "description":null,
+         "dialog_node":"node_23_1525937436043",
+         "previous_sibling":"node_20_1525936951360"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+
+         },
+         "parent":"node_17_1525936951358",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input"
+         },
+         "conditions":"$iterator < $selected_values.size() - 1",
+         "description":null,
+         "dialog_node":"node_18_1525936951360",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "No worries, let's try it again."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_7_1517567820102",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_3_1517567495401"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_38_1517652761245",
+         "previous_sibling":"node_37_1517652758093"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "OK."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_7_1517567820102",
+         "context":{
+            "correct":"branchCompleted"
+         },
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"@yes_no == 'yes'",
+         "description":null,
+         "dialog_node":"node_37_1517652758093",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"store selected []",
+         "output":{
+
+         },
+         "parent":"node_2_1517567400624",
+         "context":{
+            "selected_array":"<?input.text.split(', ')?>"
+         },
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"skip_user_input",
+            "dialog_node":"node_11_1517576728929"
+         },
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"node_10_1517575058856",
+         "previous_sibling":"node_22_1517589747827"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "Name several activities which you sometimes find stressful. Do you sometimes experience stress when doing the activities <? $options_array.join(', ') ?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":"node_2_1517567400624",
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":{
+            "behavior":"jump_to",
+            "selector":"body",
+            "dialog_node":"node_2_1517567400624"
+         },
+         "conditions":"#does_not_know || @silence",
+         "description":null,
+         "dialog_node":"node_22_1517589747827",
+         "previous_sibling":null
+      },
+      {
+         "type":"standard",
+         "title":"all done",
+         "output":{
+            "text":{
+               "values":[
+                  "That's it. Now the experiment leader will continue with the rest. Thank you very much for participating."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"done\"",
+         "description":null,
+         "dialog_node":"node_1_1518710380713",
+         "previous_sibling":"node_6_1517567526355"
+      },
+      {
+         "type":"standard",
+         "title":"critical",
+         "output":{
+            "text":{
+               "values":[
+                  "We will start with the most stressful activity. You indicated that the activities <? $options_array.join(', ') ?> - are equally stressful. Which activity shall we start with?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"whichCAssist\"",
+         "description":null,
+         "dialog_node":"node_1_1517567384295",
+         "previous_sibling":"Vítejte"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "The aim of the experiment is to test my first version, where I learn the habits and preferences of my users. To day we will focus on the structured dialogue about daily/weekly activities which are sometimes stressful, which will help me to learn more about you. When you came across something odd in my reactions please remember it for later when the experiment leader will ask you for all your experiences."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#experiment_description",
+         "description":null,
+         "dialog_node":"node_1_1517655208009",
+         "previous_sibling":"node_39_1517653572235"
+      },
+      {
+         "type":"standard",
+         "title":"parto",
+         "output":{
+            "text":{
+               "values":[
+                  "Which activities do you do as parts of doing the activity <?$parto?>?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"parto\"",
+         "description":null,
+         "dialog_node":"node_4_1517567510446",
+         "previous_sibling":"node_3_1517567495401"
+      },
+      {
+         "type":"standard",
+         "title":"get freq",
+         "output":{
+
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":true
+            }
+         },
+         "next_step":null,
+         "conditions":"$command == \"freq\"",
+         "digress_in":"does_not_return",
+         "description":null,
+         "dialog_node":"node_5_1517567521051",
+         "digress_out":"allow_all",
+         "previous_sibling":"node_4_1517567510446"
+      },
+      {
+         "type":"standard",
+         "title":"V ostatních případech",
+         "output":{
+            "text":{
+               "values":[
+                  "I don't understand, try to reformulate your question.",
+                  "Can you ask once again a little different? I did not understand.",
+                  "I did not understand what did you ask."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"anything_else",
+         "description":null,
+         "dialog_node":"V ostatních případech",
+         "previous_sibling":"node_1_1517655208009"
+      },
+      {
+         "type":"standard",
+         "title":"assist",
+         "output":{
+            "text":{
+               "values":[
+                  "We will now add information on how stressful these activities are for you. Which of the activities <? $options_array.join(', ') ?> - are in some way stressful for you?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"whichAssist\"",
+         "description":null,
+         "dialog_node":"node_2_1517567400624",
+         "previous_sibling":"node_1_1517567384295"
+      },
+      {
+         "type":"standard",
+         "title":"get values",
+         "output":{
+            "text":{
+               "values":[
+                  "Which values does the activity  <?$value?>?. promote or demote? I will ask later if they are negative or positive. First you can just mention the values."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+            "fallback":"leave",
+            "_customization":{
+               "mcr":false
+            }
+         },
+         "next_step":null,
+         "conditions":"$command == \"value\"",
+         "digress_in":"does_not_return",
+         "description":null,
+         "dialog_node":"node_6_1517567526355",
+         "digress_out":"allow_all",
+         "previous_sibling":"node_1_1519657178128"
+      },
+      {
+         "type":"standard",
+         "title":"concret",
+         "output":{
+            "text":{
+               "values":[
+                  "In which ways you can do the activity <?$concret?> more concretely?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"concret\"",
+         "description":null,
+         "dialog_node":"node_3_1517567495401",
+         "previous_sibling":"node_1_1525936575534"
+      },
+      {
+         "type":"standard",
+         "title":null,
+         "output":{
+            "text":{
+               "values":[
+                  "I am HabInt, I'm conversational user interface - a agent which based on structure interview creates the knowledge about your activities in order to promote positive and denote negative ones. Part of me was created in Prague and part in Delft."
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"#agent_description",
+         "description":null,
+         "dialog_node":"node_39_1517653572235",
+         "previous_sibling":"node_1_1518710380713"
+      },
+      {
+         "type":"standard",
+         "title":"start",
+         "output":{
+            "text":{
+               "values":[
+                  "Could you please name several daily life activities which you find stressful?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"startquest\"",
+         "description":null,
+         "dialog_node":"Vítejte",
+         "previous_sibling":"node_9_1517569800899"
+      },
+      {
+         "type":"standard",
+         "title":"get freq_start",
+         "output":{
+            "text":{
+               "values":[
+                  "How many times a day, week, month or year do you do the activity <?$freq_start?>?"
+               ]
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+            "_customization":{
+               "mcr":false
+            }
+         },
+         "next_step":null,
+         "conditions":"$command == \"freq_start\"",
+         "digress_in":"does_not_return",
+         "description":null,
+         "dialog_node":"node_1_1519657178128",
+         "digress_out":"allow_all",
+         "previous_sibling":"node_5_1517567521051"
+      },
+      {
+         "type":"standard",
+         "title":"assist_value",
+         "output":{
+            "text":{
+               "values":[
+                  "We will now add information on how stressful these activities are for you. Which of the activities <? $options_array.join(', ') ?> - are in some way stressful for you?"
+               ],
+               "selection_policy":"sequential"
+            }
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command == \"assist_value\"",
+         "description":null,
+         "dialog_node":"node_1_1525936575534",
+         "previous_sibling":"node_2_1517567400624"
+      },
+      {
+         "type":"standard",
+         "title":"dialog init from the UI",
+         "output":{
+
+         },
+         "parent":null,
+         "context":null,
+         "metadata":{
+
+         },
+         "next_step":null,
+         "conditions":"$command  == \"init\"",
+         "description":null,
+         "dialog_node":"node_9_1517569800899",
+         "previous_sibling":null
+      }
+   ],
+   "workspace_id":"6fce5b27-90b5-4753-8e9d-d518baff5508",
+   "counterexamples":[
+
+   ],
+   "learning_opt_out":false
+}

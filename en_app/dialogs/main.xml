@@ -1,0 +1,24 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- nodes for init of dialog -->
+    <import>welcome.xml</import>
+
+    <!-- nodes for tutorial control -->
+    <import>tutorial_control.xml</import>
+
+    <!-- nodes for concretisation (ways of) -->
+    <import>concret.xml</import>
+
+    <!-- nodes for parts of -->
+    <import>parto.xml</import>
+
+    <!-- rest dialog, should be splitted -->
+    <import>dialog.xml</import>
+
+    <!-- nodes to digress to -->
+    <import>digressions.xml</import>
+
+    <!-- fallback -->
+    <import>fallback.xml</import>
+
+</nodes>

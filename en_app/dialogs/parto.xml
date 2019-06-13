@@ -1,0 +1,304 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <node name="parts_of" title="parto">
+    <type>standard</type>
+    <condition>$command == "parto"</condition>
+    <context>
+        <parto_array></parto_array>
+    </context>
+    <digress_in>does_not_return</digress_in>
+    <output>
+      <textValues>
+        <values structure="listItem">Now let’s talk about activities where assistance might be helpful. Please go one by one, what is the first activity you do when you choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+        <values structure="listItem">For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance. What is the first activity you do when choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+        <selection_policy>sequential</selection_policy>
+      </textValues>
+    </output>
+    <nodes>
+      <node name="store_parts_of" title="store parts of">
+        <type>standard</type>
+        <condition>anything_else</condition>
+        <context>
+          <parto_value>&lt;?input.text?&gt;</parto_value>
+        </context>
+        <goto>
+          <behavior>skip_user_input</behavior>
+          <target>first_child</target>
+        </goto>
+        <nodes>
+          <node name="repeat_answer_part_of" title="Repeat answer - part of">
+            <condition>$parto_value</condition>
+            
+            <output>
+              <textValues>
+                <values structure="listItem">Ok, &lt;?$concret_value?&gt;. Is it correct?</values>
+              </textValues>
+            </output>
+            <nodes>
+              <node name="correct_answer_part_of" title="Correct answer - part of">
+                <condition>@yes_no:yes</condition>
+                <context>
+                  <parto_array>&lt;?$parto_array.append($parto_value)?&gt;</parto_array>
+                </context>
+                <output>
+                  <textValues>
+                    <values structure="listItem">Great, what is the next activity you do when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful? Say thats all, when you are done.</values>
+                    <values structure="listItem">Great, what is the next activity? Say thats all, when you are done.</values>
+                    <selection_policy>sequential</selection_policy>
+                  </textValues>
+                </output>
+                <goto>
+                  <behavior>get_user_input</behavior>
+                  <target>store_parts_of</target>
+                </goto>
+              </node>
+              <node name="incorrect_answer_part_of" title="Incorrect answer - part of">
+                  <condition>@yes_no:no</condition>
+                  <output>
+                      <textValues>
+                        <values structure="listItem">Oh sorry, let's try it again. what is the next activity you do when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+                        <values structure="listItem">Sorry, let's try it again. What is the next activity, where assistance could be helpful?</values>
+                        <selection_policy>sequential</selection_policy>
+                      </textValues>
+                  </output>
+                  <goto>
+                      <behavior>get_user_input</behavior>
+                      <target>store_parts_of</target>
+                  </goto>
+              </node>
+            </nodes>
+          </node>
+        </nodes>
+      </node>
+      <node name="that_is_all_parts_of" title="Thats all - parts of">
+          <type>standard</type>
+          <condition>#THATSALL</condition>
+          <output structure="emptyDict"/>
+          <digress_out>allow_all</digress_out>
+          <nodes>
+              <node name="only_one_part_of" title="Only one part of">
+                  <type>response_condition</type>
+                  <condition>$parto_array.size() == 1</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">The activity when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful is: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+              </node>
+              <node name="more_parts_of" title="More parts of">
+                  <type>response_condition</type>
+                  <condition>$parto_array.size() &gt; 1</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Different activities when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful are: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
+                    </textValues>
+                  </output>
+              </node>
+              <node name="correct all parts of" title="correct_all_parts">
+                  <type>standard</type>
+                  <condition>@yes_no:yes</condition>
+                  <context>
+                    <correct>true</correct>
+                  </context>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Great.</values>
+                      <values structure="listItem">Perfect.</values>
+                      <values structure="listItem">Thanks.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                </node>
+                <node name="incorrect all parts of" title="incorrect_all_parts">
+                  <type>standard</type>
+                  <condition>anything_else</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Sorry, let's try it again.</values>
+                      <values structure="listItem">No worries, let's try it again.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                  <goto>
+                    <behavior>jump_to</behavior>
+                    <target>parts_of</target>
+                    <selector>body</selector>
+                  </goto>
+                </node>
+          </nodes>
+      </node>      
+    </nodes>
+  </node>
+  
+</nodes>
+<!--<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <node name="parts_of" title="parto">
+      <type>standard</type>
+      <condition>$command == "parto"</condition>
+      
+      <output>
+        <textValues>
+          <values structure="listItem">Which activities do you do as parts of doing the activity &lt;?$parto?&gt;?</values>
+          <selection_policy>sequential</selection_policy>
+        </textValues>
+      </output>
+
+      <metadata structure="emptyDict"/>
+      <nodes>
+        <node name="does_not_know_parts" title="Does not know">
+          <type>standard</type>
+          <condition>#does_not_know || @silence</condition>
+
+          <output>
+            <textValues>
+              <values structure="listItem">What are the parts of doing activity &lt;?$parto?&gt;? So from which sequences of smaller activities is doing of the activity &lt;?$parto?&gt; composed? For example: a parts of doing the activity go by bus are buy a ticket, get on the bus, find a place, sit down.</values>
+              <selection_policy>sequential</selection_policy>
+            </textValues>
+          </output>
+          <goto>
+            <behavior>jump_to</behavior>
+            <target>parts_of</target>
+            <selector>body</selector>
+          </goto>
+          <metadata structure="emptyDict"/>
+        </node>
+        <node name="no_parts_of" title="There are no parts of (branchCompleted)">
+          <type>standard</type>
+          <condition>#does_not_make_sense</condition>
+
+          <output>
+            <textValues>
+              <values structure="listItem">Should I continue with different route?</values>
+              <selection_policy>sequential</selection_policy>
+            </textValues>
+          </output>
+
+          <metadata structure="emptyDict"/>
+          <nodes>
+            <node name="correct_no_parts_of" title="Correct - no parts">
+              <type>standard</type>
+              <condition>@yes_no == 'yes'</condition>
+              <context>
+                <correct>branchCompleted</correct>
+              </context>
+              <output>
+                <textValues>
+                  <values structure="listItem">OK.</values>
+                  <selection_policy>sequential</selection_policy>
+                </textValues>
+              </output>
+
+              <metadata structure="emptyDict"/>
+            </node>
+            <node name="Incorrect_no_parts_of" title="Incorrect - no parts">
+              <type>standard</type>
+              <condition>anything_else</condition>
+
+              <output>
+                <textValues>
+                  <values structure="listItem">No worries, let's try it again.</values>
+                  <selection_policy>sequential</selection_policy>
+                </textValues>
+              </output>
+              <goto>
+                <behavior>jump_to</behavior>
+                <target>parts_of</target>
+                <selector>body</selector>
+              </goto>
+              <metadata structure="emptyDict"/>
+            </node>
+          </nodes>
+        </node>
+        <node name="store_parts_of" title="store selected []">
+          <type>standard</type>
+          <condition>anything_else</condition>
+          <context>
+            <parto_array>&lt;?input.text.split(', ')?&gt;</parto_array>
+          </context>
+          <output structure="emptyDict"/>
+          <goto>
+            <behavior>skip_user_input</behavior>
+            <target>first_child</target>
+          </goto>
+          <metadata structure="emptyDict"/>
+          <nodes>
+            <node name="repeat_parts_of" title="repeat selected []">
+              <type>standard</type>
+              <condition>anything_else</condition>
+
+              <output structure="emptyDict"/>
+
+              <digress_out>allow_all</digress_out>
+              <metadata>
+                <_customization>
+                  <mcr type="boolean">True</mcr>
+                </_customization>
+              </metadata>
+              <nodes>
+                <node name="only_one_part_of" title="Only one part of">
+                  <type>response_condition</type>
+                  <condition>$parto_array.size() == 1</condition>
+
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Is the activity &lt;?$parto_array.join(', ')?&gt; part of doing the activity &lt;?$parto?&gt;?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+
+                  <metadata structure="emptyDict"/>
+                </node>
+                <node name="more_parts_of" title="More parts of">
+                  <type>response_condition</type>
+                  <condition>$parto_array.size() &gt; 1</condition>
+
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Are the activities &lt;?$parto_array.join(', ')?&gt; parts of doing the activity &lt;?$parto?&gt;?</values>
+                    </textValues>
+                  </output>
+
+                  <metadata structure="emptyDict"/>
+                </node>
+                <node name="correct_parts_of" title="Correct grounding">
+                  <type>standard</type>
+                  <condition>@yes_no == 'yes'</condition>
+                  <context>
+                    <correct>true</correct>
+                  </context>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Great.</values>
+                      <values structure="listItem">Perfect.</values>
+                      <values structure="listItem">Thanks.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+
+                  <metadata structure="emptyDict"/>
+                </node>
+                <node name="incorrect_parts_of" title="Incorrect grounding">
+                  <type>standard</type>
+                  <condition>anything_else</condition>
+
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Sorry, let's try it again.</values>
+                      <values structure="listItem">No worries, let's try it again.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                  <goto>
+                    <behavior>jump_to</behavior>
+                    <target>parts_of</target>
+                    <selector>body</selector>
+                  </goto>
+                  <metadata structure="emptyDict"/>
+                </node>
+              </nodes>
+            </node>
+          </nodes>
+        </node>
+      </nodes>
+    </node>
+  </nodes>-->

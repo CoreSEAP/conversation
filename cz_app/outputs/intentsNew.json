@@ -1,0 +1,221 @@
+[
+    {
+        "intent": "does_not_know",
+        "examples": [
+            {
+                "text": "pomoc mi prosím, nevím co mám dělat?"
+            },
+            {
+                "text": "vůbec nechápu co mám dělat"
+            },
+            {
+                "text": "cože?"
+            },
+            {
+                "text": "kolik jich má být?"
+            },
+            {
+                "text": "jak to mám udělat?"
+            },
+            {
+                "text": "nevím, co mám dělat?"
+            },
+            {
+                "text": "já to vůbec nechápu"
+            },
+            {
+                "text": "co to konkrétně znamená?"
+            },
+            {
+                "text": "jak na tebe mám mluvit?"
+            }
+        ],
+        "description": "intent for explanation, when the user don't understand"
+    },
+    {
+        "intent": "does_not_make_sense",
+        "examples": [
+            {
+                "text": "nema zadne hodnoty"
+            },
+            {
+                "text": "nema zadne casti"
+            },
+            {
+                "text": "to je uplna kravina, jak muze mit tohle nejakou hodnotu"
+            },
+            {
+                "text": "nejde dělat jiným způsobem"
+            },
+            {
+                "text": "ne neexistuje"
+            },
+            {
+                "text": "nepotřebují pomoc s žádnout s aktivit"
+            },
+            {
+                "text": "s žádnou nepotřebuji pomoct"
+            },
+            {
+                "text": "to už nedává smysl"
+            },
+            {
+                "text": "dál už to dělit nejde"
+            },
+            {
+                "text": "tohle je všechno"
+            },
+            {
+                "text": "už nejsou další způsoby"
+            },
+            {
+                "text": "už nejsou žádné části"
+            },
+            {
+                "text": "to je nesmysl"
+            },
+            {
+                "text": "to uz nema dalsi casti"
+            },
+            {
+                "text": "zadnym jinym zpusobem uz to delat nejde"
+            },
+            {
+                "text": "zadnym"
+            },
+            {
+                "text": "neni"
+            }
+        ],
+        "description": "intent to stop branching the tree - branchCompleted for parof and concret and noValues for values"
+    },
+    {
+        "intent": "experiment_description",
+        "examples": [
+            {
+                "text": "o čem je tenhle experiment?"
+            },
+            {
+                "text": "co budeme dneska dělat?"
+            },
+            {
+                "text": "jak bude experiment probíhat?"
+            },
+            {
+                "text": "experiment"
+            }
+        ],
+        "description": "agent provides information about the experiment"
+    },
+    {
+        "intent": "user_describes_activities",
+        "examples": [
+            {
+                "text": "dochvilnost, produktivitu, penize"
+            },
+            {
+                "text": "jdu ven, oblecu se, jedu tramvaji"
+            },
+            {
+                "text": "zeleninova polevka, chodov, kocka"
+            },
+            {
+                "text": "jet na kole, jet hromadnou dopravou"
+            },
+            {
+                "text": "jdu ven, jdu do parku"
+            },
+            {
+                "text": "sednu na zidli, sedim na zadku, vstanu ze zidle, jdu ven"
+            },
+            {
+                "text": "jdu ven, nastoupim u domu na tramvaj, vystoupim z tramvaje u parku, vencim psa, vratim se zpatky"
+            },
+            {
+                "text": "zelenina, mouka, pomerance, kocka je mura"
+            },
+            {
+                "text": "activity4"
+            },
+            {
+                "text": "jet autobusem, jet tramvaji, jet taxikem, jit pesky"
+            },
+            {
+                "text": "jít do práce, jít na nákup, jít do posilovny"
+            },
+            {
+                "text": "jít do školy, jít do obchodu"
+            },
+            {
+                "text": "\bjít do práce, jít do školy"
+            },
+            {
+                "text": "jít domů, jít do práce"
+            },
+            {
+                "text": "jdu ven, obleču se, jedu na naku"
+            },
+            {
+                "text": "s kamaradem, sam, se psem, s cizimi lidmi, pomalu, rychle, v desti, v peknem pocasi"
+            },
+            {
+                "text": "dochvilnost, zasadovost, neomylnost"
+            },
+            {
+                "text": "otevru lednici, vyndam veci, varim, dam to do hrnce, vyndam to z hrnce, jim to, uklidim nadobi, odpocivam"
+            },
+            {
+                "text": "sam, s kamaradem"
+            },
+            {
+                "text": "láska"
+            },
+            {
+                "text": "peníze"
+            },
+            {
+                "text": "798798 krát ročně"
+            }
+        ],
+        "description": "examples of what the user can say when describing the activities (this is important as counterexample for not understanding)"
+    },
+    {
+        "intent": "agent_description",
+        "examples": [
+            {
+                "text": "ahoj"
+            },
+            {
+                "text": "introduction"
+            },
+            {
+                "text": "intro"
+            },
+            {
+                "text": "odkud jsi?"
+            },
+            {
+                "text": "kolik ti je let?"
+            },
+            {
+                "text": "kolik máš kamarádů"
+            },
+            {
+                "text": "máš děti?"
+            },
+            {
+                "text": "kde bydlis?"
+            },
+            {
+                "text": "kdy ses narodil?"
+            },
+            {
+                "text": "jak se jmenujes?"
+            },
+            {
+                "text": "kdo jsi?"
+            }
+        ],
+        "description": "provides infomation about the agent"
+    }
+]

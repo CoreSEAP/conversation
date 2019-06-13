@@ -1,0 +1,185 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <node name="concretisation" title="concret">
+    <type>standard</type>
+    <condition>$command == "concret" and !(#USER_DESCRIBING_WAYS)</condition>
+    <context>
+        <concret_array></concret_array>
+    </context>
+    <digress_in>does_not_return</digress_in>
+    <output>
+      <textValues>
+        <values structure="listItem">Let’s talk about your traveling to &lt;?$concret?&gt; on your own. Pick a destination where you have more than one option of how to get there. Please go one by one, what is the first route you can take to &lt;?$concret?&gt;?</values>
+        <values structure="listItem">Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. What is the first route you can take to &lt;?$concret?&gt;?</values>
+        <selection_policy>sequential</selection_policy>
+      </textValues>
+    </output>
+    <nodes>
+      <!-- <node name="does_not_know_ways" title="If user dont know">
+        <type>standard</type>
+        <condition>#does_not_know || @silence</condition>
+        
+        <goto>
+          <behavior>jump_to</behavior>
+          <target>concretisation</target>
+          <selector>body</selector>
+        </goto>
+      </node>
+      <node name="node_7_1517567820102" title="does not make sense (branchCompleted)">
+        <type>standard</type>
+        <condition>#does_not_make_sense</condition>
+        
+        <output>
+          <textValues>
+            <values structure="listItem">Should I continue with different activity?</values>
+            <selection_policy>sequential</selection_policy>
+          </textValues>
+        </output>
+        
+        <metadata structure="emptyDict"/>
+        <nodes>
+          <node name="node_37_1517652758093" title="None">
+            <type>standard</type>
+            <condition>@yes_no == 'yes'</condition>
+            <context>
+              <correct>branchCompleted</correct>
+            </context>
+            <output>
+              <textValues>
+                <values structure="listItem">OK.</values>
+                <selection_policy>sequential</selection_policy>
+              </textValues>
+            </output>
+            
+            <metadata structure="emptyDict"/>
+          </node>
+          <node name="node_38_1517652761245" title="None">
+            <type>standard</type>
+            <condition>anything_else</condition>
+            
+            <output>
+              <textValues>
+                <values structure="listItem">No worries, let's try it again.</values>
+                <selection_policy>sequential</selection_policy>
+              </textValues>
+            </output>
+            <goto>
+              <behavior>jump_to</behavior>
+              <target>concretisation</target>
+              <selector>body</selector>
+            </goto>
+            <metadata structure="emptyDict"/>
+          </node>
+        </nodes>
+      </node> -->
+      <node name="store_ways_of" title="store ways of">
+        <type>standard</type>
+        <condition>#USER_DESCRIBING_WAYS</condition>
+        <context>
+          <concret_value>&lt;?input.text?&gt;</concret_value>
+        </context>
+        <goto>
+          <behavior>skip_user_input</behavior>
+          <target>first_child</target>
+        </goto>
+        <nodes>
+          <node name="repeat_answer_way_of" title="Repeat answer - way of">
+            <condition>$concret_value</condition>
+            
+            <output>
+              <textValues>
+                <values structure="listItem">You said that route you take to &lt;?$concret?&gt; is: &lt;?$concret_value?&gt;. Is it correct?</values>
+              </textValues>
+            </output>
+            <nodes>
+              <node name="correct_answer_way_of" title="Correct answer - way of">
+                <condition>@yes_no:yes</condition>
+                <context>
+                  <concret_array>&lt;?$concret_array.append($concret_value)?&gt;</concret_array>
+                </context>
+                <output>
+                  <textValues>
+                    <values structure="listItem">Great, what is the next route you can take to &lt;?$concret?&gt;? Say thats all, when you are done.</values>
+                  </textValues>
+                </output>
+                <goto>
+                  <behavior>jump_to</behavior>
+                  <target>store_ways_of</target>
+                </goto>
+              </node>
+              <node name="incorrect_answer_way_of" title="Incorrect answer - way of">
+                  <condition>@yes_no:no</condition>
+                  <output>
+                      <textValues>
+                        <values structure="listItem">Oh sorry, let's try it again. What is the next route you can take to &lt;?$concret?&gt;?</values>
+                      </textValues>
+                  </output>
+                  <goto>
+                      <behavior>jump_to</behavior>
+                      <target>store_ways_of</target>
+                  </goto>
+              </node>
+            </nodes>
+          </node>
+        </nodes>
+      </node>
+      <node name="that_is_all_ways_of" title="Thats all - ways of">
+          <type>standard</type>
+          <condition>#THATSALL</condition>
+          <output structure="emptyDict"/>
+          <nodes>
+              <node name="only_one_way_of" title="Only one way of">
+                  <type>response_condition</type>
+                  <condition>$concret_array.size() == 1</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You said that route you take to &lt;?$concret?&gt; is: &lt;?$concret_array.join(', ')?&gt;. Is that correct?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+              </node>
+              <node name="more_ways_of" title="More ways of">
+                  <type>response_condition</type>
+                  <condition>$concret_array.size() &gt; 1</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You said that different routes you take to &lt;?$concret?&gt; are: &lt;?$concret_array.join(', ')?&gt;. Is that correct?</values>
+                    </textValues>
+                  </output>
+              </node>
+              <node name="correct all ways of" title="correct_all_ways">
+                  <type>standard</type>
+                  <condition>@yes_no:yes</condition>
+                  <context>
+                    <correct>true</correct>
+                  </context>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Great.</values>
+                      <values structure="listItem">Perfect.</values>
+                      <values structure="listItem">Thanks.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                </node>
+                <node name="incorrect all ways of" title="incorrect_all_ways">
+                  <type>standard</type>
+                  <condition>anything_else</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">Sorry, let's try it again.</values>
+                      <values structure="listItem">No worries, let's try it again.</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                  <goto>
+                    <behavior>jump_to</behavior>
+                    <target>concretisation</target>
+                    <selector>body</selector>
+                  </goto>
+                </node>
+          </nodes>
+      </node>      
+    </nodes>
+  </node>
+  
+</nodes>

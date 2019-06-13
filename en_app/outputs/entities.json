@@ -1,0 +1,69 @@
+[
+    {
+        "entity": "positive-negative",
+        "values": [
+            {
+                "value": "negative",
+                "synonyms": [
+                    "negatively"
+                ]
+            },
+            {
+                "value": "positive",
+                "synonyms": [
+                    "positively"
+                ]
+            }
+        ],
+        "fuzzy_match": true
+    },
+    {
+        "entity": "silence",
+        "values": [
+            {
+                "value": "silence",
+                "synonyms": [
+                    "...",
+                    "hm",
+                    "hmm",
+                    "um"
+                ]
+            }
+        ],
+        "fuzzy_match": true
+    },
+    {
+        "entity": "sys-number",
+        "values": [],
+        "fuzzy_match": true
+    },
+    {
+        "entity": "yes_no",
+        "values": [
+            {
+                "value": "yes",
+                "synonyms": [
+                    "clear",
+                    "fine",
+                    "great",
+                    "ok",
+                    "okay",
+                    "right",
+                    "sure",
+                    "yep"
+                ]
+            },
+            {
+                "value": "no",
+                "synonyms": [
+                    "no way",
+                    "noo",
+                    "nope",
+                    "not at all",
+                    "wrong"
+                ]
+            }
+        ],
+        "fuzzy_match": true
+    }
+]

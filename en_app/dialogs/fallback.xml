@@ -1,0 +1,50 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <node name="anything_else" title="Fallback">
+        <condition>anything_else</condition>
+        <context>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <example></example>
+            <paraphrase></paraphrase>
+        </context>
+        <goto>
+            <behavior>skip_user_input</behavior>
+            <target>first_child</target>
+        </goto>
+        <nodes>
+           <!-- <node title="What questions...">
+                <condition>input.text.toLowerCase().startsWith('what') or input.text.toLowerCase().startsWith('how') or input.text.toLowerCase().startsWith('when') or input.text.toLowerCase().startsWith('where') or input.text.toLowerCase().startsWith('which')</condition>
+                <context>
+                    <repeat>&lt;? output.text ?&gt;</repeat>
+                    <example></example>
+                    <paraphrase>I'm just saying, that I do not know the answer to your question.</paraphrase>
+                </context>
+                <output>
+                    <textValues>
+                        <values>Sorry, I don't know.</values>
+                        <values>Sorry, I have no idea.</values>
+                        <values>Sorry, I really don't know.</values>
+                        <selection_policy>random</selection_policy>
+                    </textValues>
+                </output>
+            </node> -->
+            <node title="Anything else">
+                <condition>anything_else</condition>
+                <context>
+                    <repeat>&lt;? output.text ?&gt;</repeat>
+                    <example></example>
+                    <paraphrase>I'm saying that I did not undestand you, try it again.</paraphrase>
+                </context>
+                <output>
+                    <textValues>
+                        <values>What, please?</values>
+                        <values>Say that again, please.</values>
+                        <values>Once more, please.</values>
+                        <selection_policy>random</selection_policy>
+                    </textValues>
+                </output>
+            </node>
+        </nodes>
+    </node>
+
+</nodes>

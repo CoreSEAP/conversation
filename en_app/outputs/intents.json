@@ -1,0 +1,494 @@
+[
+    {
+        "intent": "COMMON_CONTROL_NEXT",
+        "examples": [
+            {
+                "text": "next"
+            },
+            {
+                "text": "what's next"
+            },
+            {
+                "text": "say the next one"
+            },
+            {
+                "text": "let's continue"
+            },
+            {
+                "text": "tell me what is next"
+            },
+            {
+                "text": "what is next one"
+            },
+            {
+                "text": "tell me to next one"
+            },
+            {
+                "text": "continue"
+            },
+            {
+                "text": "let's start"
+            },
+            {
+                "text": "what do i do next?"
+            },
+            {
+                "text": "what is the first step"
+            }
+        ]
+    },
+    {
+        "intent": "COMMON_CONTROL_PREVIOUS",
+        "examples": [
+            {
+                "text": "what was the step before"
+            },
+            {
+                "text": "tell me the previous step"
+            },
+            {
+                "text": "say me the previous step"
+            },
+            {
+                "text": "tell me what was before"
+            },
+            {
+                "text": "say the previous instruction"
+            },
+            {
+                "text": "what was before this one?"
+            },
+            {
+                "text": "what was that before?"
+            },
+            {
+                "text": "tell the previous one"
+            },
+            {
+                "text": "say the one before"
+            }
+        ]
+    },
+    {
+        "intent": "COMMON_EXAMPLE",
+        "examples": [
+            {
+                "text": "give me example"
+            },
+            {
+                "text": "can you give me example"
+            },
+            {
+                "text": "what are the options"
+            },
+            {
+                "text": "what options do i have"
+            },
+            {
+                "text": "for example what?"
+            },
+            {
+                "text": "like what?"
+            },
+            {
+                "text": "for example?"
+            },
+            {
+                "text": "what are the options you have"
+            },
+            {
+                "text": "for example"
+            },
+            {
+                "text": "give examples"
+            }
+        ]
+    },
+    {
+        "intent": "COMMON_PARAPHRASE",
+        "examples": [
+            {
+                "text": "what?"
+            },
+            {
+                "text": "i don't understand"
+            },
+            {
+                "text": "i don't understand what is that"
+            },
+            {
+                "text": "explain that please"
+            },
+            {
+                "text": "what is that please?"
+            },
+            {
+                "text": "how do you mean that?"
+            },
+            {
+                "text": "why?"
+            },
+            {
+                "text": "why do you say that?"
+            },
+            {
+                "text": "what do you mean by that?"
+            },
+            {
+                "text": "tell me more"
+            },
+            {
+                "text": "can you explain that?"
+            },
+            {
+                "text": "what"
+            },
+            {
+                "text": "which?"
+            },
+            {
+                "text": "which are those?"
+            }
+        ]
+    },
+    {
+        "intent": "COMMON_REPEAT",
+        "examples": [
+            {
+                "text": "say again"
+            },
+            {
+                "text": "say that again"
+            },
+            {
+                "text": "repeat that"
+            },
+            {
+                "text": "once more please"
+            },
+            {
+                "text": "once more"
+            },
+            {
+                "text": "please repeat"
+            },
+            {
+                "text": "i did not hear that"
+            },
+            {
+                "text": "i missed that"
+            },
+            {
+                "text": "one more times"
+            },
+            {
+                "text": "repeat"
+            },
+            {
+                "text": "again"
+            },
+            {
+                "text": "say it again"
+            },
+            {
+                "text": "say agai"
+            }
+        ]
+    },
+    {
+        "intent": "READY_FOR_TUTORIAL",
+        "examples": [
+            {
+                "text": "i am ready for tutorial"
+            },
+            {
+                "text": "let's start with tutorial"
+            },
+            {
+                "text": "let's begin with tutorial"
+            },
+            {
+                "text": "i am ready to begin"
+            },
+            {
+                "text": "let's begin"
+            },
+            {
+                "text": "yes i am ready"
+            },
+            {
+                "text": "we can start"
+            },
+            {
+                "text": "i am ready"
+            }
+        ]
+    },
+    {
+        "intent": "REPAIR",
+        "examples": [
+            {
+                "text": "no it is not correct."
+            },
+            {
+                "text": "i did not say that, correct it."
+            },
+            {
+                "text": "i did not say that."
+            },
+            {
+                "text": "that is not correct."
+            }
+        ]
+    },
+    {
+        "intent": "THATSALL",
+        "examples": [
+            {
+                "text": "thats all."
+            },
+            {
+                "text": "none, that is all."
+            },
+            {
+                "text": "that is all."
+            },
+            {
+                "text": "no next activity."
+            },
+            {
+                "text": "there is no next route."
+            },
+            {
+                "text": "there is no next activity."
+            }
+        ]
+    },
+    {
+        "intent": "TUTORIAL_ALREADY_FINISHED",
+        "examples": [
+            {
+                "text": "i already finished the tutorial"
+            },
+            {
+                "text": "already finished"
+            },
+            {
+                "text": "i am after tutorial already"
+            },
+            {
+                "text": "tutorial finished"
+            },
+            {
+                "text": "i have done the tutorial already"
+            },
+            {
+                "text": "skip the tutorial"
+            },
+            {
+                "text": "skip tutorial"
+            }
+        ]
+    },
+    {
+        "intent": "TUTORIAL_NEXT",
+        "examples": [
+            {
+                "text": "you can continue"
+            },
+            {
+                "text": "we can continue"
+            },
+            {
+                "text": "continue with tutorial"
+            },
+            {
+                "text": "next tutorial step"
+            }
+        ]
+    },
+    {
+        "intent": "TUTORIAL_REPEAT",
+        "examples": [
+            {
+                "text": "please repeat tutorial step"
+            },
+            {
+                "text": "repeat last tutorial"
+            },
+            {
+                "text": "repeat tutorial step"
+            },
+            {
+                "text": "say that tutorial again"
+            }
+        ]
+    },
+    {
+        "intent": "USER_DESCRIBING_WAYS",
+        "examples": [
+            {
+                "text": "go by bus, go by tram, go by taxi, go by underground, go by metro, walk"
+            },
+            {
+                "text": "going by bus, going by tram, taking taxi, using underground"
+            },
+            {
+                "text": "by bus, by tram, by taxi, on foot"
+            },
+            {
+                "text": "take a taxi, take a tram, take a bus, take a car"
+            },
+            {
+                "text": "on foot only, walking only, only on foot, walking"
+            },
+            {
+                "text": "by tram and by bus, on foot and by tram, on foot and by bus"
+            }
+        ]
+    },
+    {
+        "intent": "agent_description",
+        "examples": [
+            {
+                "text": "where do you live?"
+            },
+            {
+                "text": "do you have children?"
+            },
+            {
+                "text": "how many friends do you have"
+            },
+            {
+                "text": "how old are you?"
+            },
+            {
+                "text": "where are you from?"
+            },
+            {
+                "text": "intro"
+            },
+            {
+                "text": "introduction"
+            },
+            {
+                "text": "hello"
+            },
+            {
+                "text": "who are you?"
+            },
+            {
+                "text": "what's your name?"
+            },
+            {
+                "text": "when were you born?"
+            }
+        ]
+    },
+    {
+        "intent": "does_not_know",
+        "examples": [
+            {
+                "text": "i don't know, what should i do?"
+            },
+            {
+                "text": "i don't understand"
+            },
+            {
+                "text": "i do not understand"
+            },
+            {
+                "text": "how many should it be?"
+            },
+            {
+                "text": "how should i do that?"
+            },
+            {
+                "text": "i don't understand that at all"
+            },
+            {
+                "text": "what does that mean?"
+            },
+            {
+                "text": "how should i talk to you?"
+            },
+            {
+                "text": "help me, i don't know what to do?"
+            },
+            {
+                "text": "i do not know what to do"
+            },
+            {
+                "text": "what?"
+            }
+        ]
+    },
+    {
+        "intent": "does_not_make_sense",
+        "examples": [
+            {
+                "text": "it cannot be done in different way"
+            },
+            {
+                "text": "no values"
+            },
+            {
+                "text": "no more parts"
+            },
+            {
+                "text": "how this can have any value?"
+            },
+            {
+                "text": "that is nonsense"
+            },
+            {
+                "text": "there a no other parts"
+            },
+            {
+                "text": "there are no other ways of doing it"
+            },
+            {
+                "text": "that's it"
+            },
+            {
+                "text": "it has no more parts"
+            },
+            {
+                "text": "it makes no sense any more"
+            },
+            {
+                "text": "there is no other way how to do it"
+            },
+            {
+                "text": "no other"
+            },
+            {
+                "text": "none"
+            },
+            {
+                "text": "it does not exist"
+            }
+        ]
+    },
+    {
+        "intent": "experiment_description",
+        "examples": [
+            {
+                "text": "experiment"
+            },
+            {
+                "text": "what is the experiment about?"
+            },
+            {
+                "text": "what will we do today?"
+            },
+            {
+                "text": "what is the course of the experiment?"
+            }
+        ]
+    },
+    {
+        "intent": "user_describes_activities",
+        "examples": []
+    }
+]

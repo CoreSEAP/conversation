@@ -1,0 +1,1776 @@
+{
+    "name": "woz_habits_en",
+    "language": "en",
+    "description": "Prototype of travelling assistant",
+    "intents": [
+        {
+            "intent": "COMMON_CONTROL_NEXT",
+            "examples": [
+                {
+                    "text": "next"
+                },
+                {
+                    "text": "what's next"
+                },
+                {
+                    "text": "say the next one"
+                },
+                {
+                    "text": "let's continue"
+                },
+                {
+                    "text": "tell me what is next"
+                },
+                {
+                    "text": "what is next one"
+                },
+                {
+                    "text": "tell me to next one"
+                },
+                {
+                    "text": "continue"
+                },
+                {
+                    "text": "let's start"
+                },
+                {
+                    "text": "what do i do next?"
+                },
+                {
+                    "text": "what is the first step"
+                }
+            ]
+        },
+        {
+            "intent": "COMMON_CONTROL_PREVIOUS",
+            "examples": [
+                {
+                    "text": "what was the step before"
+                },
+                {
+                    "text": "tell me the previous step"
+                },
+                {
+                    "text": "say me the previous step"
+                },
+                {
+                    "text": "tell me what was before"
+                },
+                {
+                    "text": "say the previous instruction"
+                },
+                {
+                    "text": "what was before this one?"
+                },
+                {
+                    "text": "what was that before?"
+                },
+                {
+                    "text": "tell the previous one"
+                },
+                {
+                    "text": "say the one before"
+                }
+            ]
+        },
+        {
+            "intent": "COMMON_EXAMPLE",
+            "examples": [
+                {
+                    "text": "give me example"
+                },
+                {
+                    "text": "can you give me example"
+                },
+                {
+                    "text": "what are the options"
+                },
+                {
+                    "text": "what options do i have"
+                },
+                {
+                    "text": "for example what?"
+                },
+                {
+                    "text": "like what?"
+                },
+                {
+                    "text": "for example?"
+                },
+                {
+                    "text": "what are the options you have"
+                },
+                {
+                    "text": "for example"
+                },
+                {
+                    "text": "give examples"
+                }
+            ]
+        },
+        {
+            "intent": "COMMON_PARAPHRASE",
+            "examples": [
+                {
+                    "text": "what?"
+                },
+                {
+                    "text": "i don't understand"
+                },
+                {
+                    "text": "i don't understand what is that"
+                },
+                {
+                    "text": "explain that please"
+                },
+                {
+                    "text": "what is that please?"
+                },
+                {
+                    "text": "how do you mean that?"
+                },
+                {
+                    "text": "why?"
+                },
+                {
+                    "text": "why do you say that?"
+                },
+                {
+                    "text": "what do you mean by that?"
+                },
+                {
+                    "text": "tell me more"
+                },
+                {
+                    "text": "can you explain that?"
+                },
+                {
+                    "text": "what"
+                },
+                {
+                    "text": "which?"
+                },
+                {
+                    "text": "which are those?"
+                }
+            ]
+        },
+        {
+            "intent": "COMMON_REPEAT",
+            "examples": [
+                {
+                    "text": "say again"
+                },
+                {
+                    "text": "say that again"
+                },
+                {
+                    "text": "repeat that"
+                },
+                {
+                    "text": "once more please"
+                },
+                {
+                    "text": "once more"
+                },
+                {
+                    "text": "please repeat"
+                },
+                {
+                    "text": "i did not hear that"
+                },
+                {
+                    "text": "i missed that"
+                },
+                {
+                    "text": "one more times"
+                },
+                {
+                    "text": "repeat"
+                },
+                {
+                    "text": "again"
+                },
+                {
+                    "text": "say it again"
+                },
+                {
+                    "text": "say agai"
+                }
+            ]
+        },
+        {
+            "intent": "READY_FOR_TUTORIAL",
+            "examples": [
+                {
+                    "text": "i am ready for tutorial"
+                },
+                {
+                    "text": "let's start with tutorial"
+                },
+                {
+                    "text": "let's begin with tutorial"
+                },
+                {
+                    "text": "i am ready to begin"
+                },
+                {
+                    "text": "let's begin"
+                },
+                {
+                    "text": "yes i am ready"
+                },
+                {
+                    "text": "we can start"
+                },
+                {
+                    "text": "i am ready"
+                }
+            ]
+        },
+        {
+            "intent": "REPAIR",
+            "examples": [
+                {
+                    "text": "no it is not correct."
+                },
+                {
+                    "text": "i did not say that, correct it."
+                },
+                {
+                    "text": "i did not say that."
+                },
+                {
+                    "text": "that is not correct."
+                }
+            ]
+        },
+        {
+            "intent": "THATSALL",
+            "examples": [
+                {
+                    "text": "thats all."
+                },
+                {
+                    "text": "none, that is all."
+                },
+                {
+                    "text": "that is all."
+                },
+                {
+                    "text": "no next activity."
+                },
+                {
+                    "text": "there is no next route."
+                },
+                {
+                    "text": "there is no next activity."
+                }
+            ]
+        },
+        {
+            "intent": "TUTORIAL_ALREADY_FINISHED",
+            "examples": [
+                {
+                    "text": "i already finished the tutorial"
+                },
+                {
+                    "text": "already finished"
+                },
+                {
+                    "text": "i am after tutorial already"
+                },
+                {
+                    "text": "tutorial finished"
+                },
+                {
+                    "text": "i have done the tutorial already"
+                },
+                {
+                    "text": "skip the tutorial"
+                },
+                {
+                    "text": "skip tutorial"
+                }
+            ]
+        },
+        {
+            "intent": "TUTORIAL_NEXT",
+            "examples": [
+                {
+                    "text": "you can continue"
+                },
+                {
+                    "text": "we can continue"
+                },
+                {
+                    "text": "continue with tutorial"
+                },
+                {
+                    "text": "next tutorial step"
+                }
+            ]
+        },
+        {
+            "intent": "TUTORIAL_REPEAT",
+            "examples": [
+                {
+                    "text": "please repeat tutorial step"
+                },
+                {
+                    "text": "repeat last tutorial"
+                },
+                {
+                    "text": "repeat tutorial step"
+                },
+                {
+                    "text": "say that tutorial again"
+                }
+            ]
+        },
+        {
+            "intent": "USER_DESCRIBING_WAYS",
+            "examples": [
+                {
+                    "text": "go by bus, go by tram, go by taxi, go by underground, go by metro, walk"
+                },
+                {
+                    "text": "going by bus, going by tram, taking taxi, using underground"
+                },
+                {
+                    "text": "by bus, by tram, by taxi, on foot"
+                },
+                {
+                    "text": "take a taxi, take a tram, take a bus, take a car"
+                },
+                {
+                    "text": "on foot only, walking only, only on foot, walking"
+                },
+                {
+                    "text": "by tram and by bus, on foot and by tram, on foot and by bus"
+                }
+            ]
+        },
+        {
+            "intent": "agent_description",
+            "examples": [
+                {
+                    "text": "where do you live?"
+                },
+                {
+                    "text": "do you have children?"
+                },
+                {
+                    "text": "how many friends do you have"
+                },
+                {
+                    "text": "how old are you?"
+                },
+                {
+                    "text": "where are you from?"
+                },
+                {
+                    "text": "intro"
+                },
+                {
+                    "text": "introduction"
+                },
+                {
+                    "text": "hello"
+                },
+                {
+                    "text": "who are you?"
+                },
+                {
+                    "text": "what's your name?"
+                },
+                {
+                    "text": "when were you born?"
+                }
+            ]
+        },
+        {
+            "intent": "does_not_know",
+            "examples": [
+                {
+                    "text": "i don't know, what should i do?"
+                },
+                {
+                    "text": "i don't understand"
+                },
+                {
+                    "text": "i do not understand"
+                },
+                {
+                    "text": "how many should it be?"
+                },
+                {
+                    "text": "how should i do that?"
+                },
+                {
+                    "text": "i don't understand that at all"
+                },
+                {
+                    "text": "what does that mean?"
+                },
+                {
+                    "text": "how should i talk to you?"
+                },
+                {
+                    "text": "help me, i don't know what to do?"
+                },
+                {
+                    "text": "i do not know what to do"
+                },
+                {
+                    "text": "what?"
+                }
+            ]
+        },
+        {
+            "intent": "does_not_make_sense",
+            "examples": [
+                {
+                    "text": "it cannot be done in different way"
+                },
+                {
+                    "text": "no values"
+                },
+                {
+                    "text": "no more parts"
+                },
+                {
+                    "text": "how this can have any value?"
+                },
+                {
+                    "text": "that is nonsense"
+                },
+                {
+                    "text": "there a no other parts"
+                },
+                {
+                    "text": "there are no other ways of doing it"
+                },
+                {
+                    "text": "that's it"
+                },
+                {
+                    "text": "it has no more parts"
+                },
+                {
+                    "text": "it makes no sense any more"
+                },
+                {
+                    "text": "there is no other way how to do it"
+                },
+                {
+                    "text": "no other"
+                },
+                {
+                    "text": "none"
+                },
+                {
+                    "text": "it does not exist"
+                }
+            ]
+        },
+        {
+            "intent": "experiment_description",
+            "examples": [
+                {
+                    "text": "experiment"
+                },
+                {
+                    "text": "what is the experiment about?"
+                },
+                {
+                    "text": "what will we do today?"
+                },
+                {
+                    "text": "what is the course of the experiment?"
+                }
+            ]
+        },
+        {
+            "intent": "user_describes_activities",
+            "examples": []
+        }
+    ],
+    "entities": [
+        {
+            "entity": "positive-negative",
+            "values": [
+                {
+                    "value": "negative",
+                    "synonyms": [
+                        "negatively"
+                    ]
+                },
+                {
+                    "value": "positive",
+                    "synonyms": [
+                        "positively"
+                    ]
+                }
+            ],
+            "fuzzy_match": true
+        },
+        {
+            "entity": "silence",
+            "values": [
+                {
+                    "value": "silence",
+                    "synonyms": [
+                        "...",
+                        "hm",
+                        "hmm",
+                        "um"
+                    ]
+                }
+            ],
+            "fuzzy_match": true
+        },
+        {
+            "entity": "sys-number",
+            "values": [],
+            "fuzzy_match": true
+        },
+        {
+            "entity": "yes_no",
+            "values": [
+                {
+                    "value": "yes",
+                    "synonyms": [
+                        "clear",
+                        "fine",
+                        "great",
+                        "ok",
+                        "okay",
+                        "right",
+                        "sure",
+                        "yep"
+                    ]
+                },
+                {
+                    "value": "no",
+                    "synonyms": [
+                        "no way",
+                        "noo",
+                        "nope",
+                        "not at all",
+                        "wrong"
+                    ]
+                }
+            ],
+            "fuzzy_match": true
+        }
+    ],
+    "dialog_nodes": [
+        {
+            "dialog_node": "welcome",
+            "title": "Welcome",
+            "conditions": "($command == \"startquest\") and !(#READY_FOR_TUTORIAL)",
+            "output": {
+                "text": {
+                    "values": [
+                        "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?",
+                        "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?"
+                    ],
+                    "selection_policy": "random"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "Hi, , I would like to get from you a description of your travel behavior. Can we start with tutorial?"
+            },
+            "type": "standard"
+        },
+        {
+            "dialog_node": "ready to start tutorial",
+            "title": "Ready to start tutorial",
+            "conditions": "#READY_FOR_TUTORIAL",
+            "output": {
+                "text": {
+                    "values": "At first I would like to inform you that you can always ask me for an explanation. If you will not understand something, you can ask for repetition or I will try to rephrase my question. This six step tutorial should give you overview of how the system works, can we go next?",
+                    "selection_policy": "random"
+                }
+            },
+            "context": {
+                "command": "",
+                "example": "Other people said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. Can I continue?",
+                "tutorialFinished": "false",
+                "tutorialIterator": -1,
+                "tutorial": {
+                    "steps": [
+                        {
+                            "instruction": "In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Can I continue?"
+                        },
+                        {
+                            "instruction": "For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them.",
+                            "example": "For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values."
+                        },
+                        {
+                            "instruction": "I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you. Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.",
+                            "example": ""
+                        },
+                        {
+                            "instruction": "System can fully help you with some activities, for example finding where you are or identifying which way to continue. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. So I will also ask if you can do this activity or not and how difficult it would be. For activities where system can not help you at all, I will ask If you are able to do it alone or you need to ask someone else to help.",
+                            "example": ""
+                        },
+                        {
+                            "instruction": "It is all from the tutorial, now we can start with the description of your travel behavior. Please say if you are ready.",
+                            "example": ""
+                        }
+                    ]
+                }
+            },
+            "previous_sibling": "welcome",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "tutorial_next",
+            "title": "Tutorial next",
+            "conditions": "#COMMON_CONTROL_NEXT or #TUTORIAL_NEXT",
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "I am trying to explain how the description of your travelling behavior will work.",
+                "tutorialIterator": "<? $tutorialIterator = T(java.lang.Math).min($tutorialIterator + 1, $tutorial.steps.size()-1) ?>"
+            },
+            "next_step": {
+                "dialog_node": "tutorial_step_output",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "previous_sibling": "ready to start tutorial",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "tutorial_repeat",
+            "title": "Tutorial repeat",
+            "conditions": "#TUTORIAL_REPEAT or #COMMON_REPEAT",
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "I just repeated the current tutorial step."
+            },
+            "next_step": {
+                "dialog_node": "tutorial_step_output",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "previous_sibling": "tutorial_next",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "cooking_previous",
+            "title": "Tutorial previous",
+            "conditions": "#COMMON_CONTROL_PREVIOUS",
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "I just told you the previous step.",
+                "tutorialIterator": "<? $tutorialIterator = T(java.lang.Math).max($tutorialIterator - 1, 0) ?>"
+            },
+            "next_step": {
+                "dialog_node": "tutorial_step_output",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "previous_sibling": "tutorial_repeat",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "tutorial_step_output",
+            "title": "tutorial step output",
+            "conditions": "false",
+            "output": {
+                "text": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+            },
+            "previous_sibling": "cooking_previous",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "tutorial_finish",
+            "title": "Finished tutorial node",
+            "conditions": "#TUTORIAL_ALREADY_FINISHED",
+            "output": {
+                "text": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+            },
+            "context": {
+                "tutorialFinished": "true",
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "I just told you the last step.",
+                "tutorialIterator": "<? $tutorialIterator = $tutorial.steps.size()-1 ?>"
+            },
+            "previous_sibling": "tutorial_step_output",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "concretisation",
+            "title": "concret",
+            "type": "standard",
+            "conditions": "$command == \"concret\" and !(#USER_DESCRIBING_WAYS)",
+            "output": {
+                "text": {
+                    "values": [
+                        "Let’s talk about your traveling to <?$concret?> on your own. Pick a destination where you have more than one option of how to get there. Please go one by one, what is the first route you can take to <?$concret?>?",
+                        "Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. What is the first route you can take to <?$concret?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "concret_array": ""
+            },
+            "previous_sibling": "tutorial_finish",
+            "digress_in": "does_not_return"
+        },
+        {
+            "dialog_node": "store_ways_of",
+            "title": "store ways of",
+            "type": "standard",
+            "conditions": "#USER_DESCRIBING_WAYS",
+            "context": {
+                "concret_value": "<?input.text?>"
+            },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "concretisation"
+        },
+        {
+            "dialog_node": "repeat_answer_way_of",
+            "title": "Repeat answer - way of",
+            "conditions": "$concret_value",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said that route you take to <?$concret?> is: <?$concret_value?>. Is it correct?"
+                    ]
+                }
+            },
+            "parent": "store_ways_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "correct_answer_way_of",
+            "title": "Correct answer - way of",
+            "conditions": "@yes_no:yes",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great, what is the next route you can take to <?$concret?>? Say thats all, when you are done."
+                    ]
+                }
+            },
+            "context": {
+                "concret_array": "<?$concret_array.append($concret_value)?>"
+            },
+            "next_step": {
+                "dialog_node": "store_ways_of",
+                "behavior": "jump_to",
+                "selector": "user_input"
+            },
+            "parent": "repeat_answer_way_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "incorrect_answer_way_of",
+            "title": "Incorrect answer - way of",
+            "conditions": "@yes_no:no",
+            "output": {
+                "text": {
+                    "values": [
+                        "Oh sorry, let's try it again. What is the next route you can take to <?$concret?>?"
+                    ]
+                }
+            },
+            "next_step": {
+                "dialog_node": "store_ways_of",
+                "behavior": "jump_to",
+                "selector": "user_input"
+            },
+            "parent": "repeat_answer_way_of",
+            "previous_sibling": "correct_answer_way_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "that_is_all_ways_of",
+            "title": "Thats all - ways of",
+            "type": "standard",
+            "conditions": "#THATSALL",
+            "output": {},
+            "parent": "concretisation",
+            "previous_sibling": "store_ways_of"
+        },
+        {
+            "dialog_node": "only_one_way_of",
+            "title": "Only one way of",
+            "type": "response_condition",
+            "conditions": "$concret_array.size() == 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said that route you take to <?$concret?> is: <?$concret_array.join(', ')?>. Is that correct?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "parent": "that_is_all_ways_of"
+        },
+        {
+            "dialog_node": "more_ways_of",
+            "title": "More ways of",
+            "type": "response_condition",
+            "conditions": "$concret_array.size() > 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said that different routes you take to <?$concret?> are: <?$concret_array.join(', ')?>. Is that correct?"
+                    ]
+                }
+            },
+            "parent": "that_is_all_ways_of",
+            "previous_sibling": "only_one_way_of"
+        },
+        {
+            "dialog_node": "correct all ways of",
+            "title": "correct_all_ways",
+            "type": "standard",
+            "conditions": "@yes_no:yes",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great.",
+                        "Perfect.",
+                        "Thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true"
+            },
+            "parent": "that_is_all_ways_of",
+            "previous_sibling": "more_ways_of"
+        },
+        {
+            "dialog_node": "incorrect all ways of",
+            "title": "incorrect_all_ways",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "concretisation",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "that_is_all_ways_of",
+            "previous_sibling": "correct all ways of"
+        },
+        {
+            "dialog_node": "parts_of",
+            "title": "parto",
+            "type": "standard",
+            "conditions": "$command == \"parto\"",
+            "output": {
+                "text": {
+                    "values": [
+                        "Now let’s talk about activities where assistance might be helpful. Please go one by one, what is the first activity you do when you go by <?$parto?> to <?$concret?> and where assistance could be helpful?",
+                        "For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance. What is the first activity you do when you go by <?$parto?> to <?$concret?> and where assistance could be helpful?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "parto_array": ""
+            },
+            "previous_sibling": "concretisation",
+            "digress_in": "does_not_return"
+        },
+        {
+            "dialog_node": "store_parts_of",
+            "title": "store parts of",
+            "type": "standard",
+            "conditions": "#USER_DESCRIBING_PARTS",
+            "context": {
+                "parto_value": "<?input.text?>"
+            },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "parts_of"
+        },
+        {
+            "dialog_node": "repeat_answer_part_of",
+            "title": "Repeat answer - part of",
+            "conditions": "$parto_value",
+            "output": {
+                "text": {
+                    "values": [
+                        "Ok, <?$concret_value?>. Is it correct?"
+                    ]
+                }
+            },
+            "parent": "store_parts_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "correct_answer_part_of",
+            "title": "Correct answer - part of",
+            "conditions": "@yes_no:yes",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great, what is the next activity you do when you go by <?$parto?> to <?$concret?> and where assistance could be helpful? Say thats all, when you are done.",
+                        "Great, what is the next activity? Say thats all, when you are done."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "parto_array": "<?$parto_array.append($parto_value)?>"
+            },
+            "next_step": {
+                "dialog_node": "store_parts_of",
+                "behavior": "get_user_input",
+                "selector": "user_input"
+            },
+            "parent": "repeat_answer_part_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "incorrect_answer_part_of",
+            "title": "Incorrect answer - part of",
+            "conditions": "@yes_no:no",
+            "output": {
+                "text": {
+                    "values": [
+                        "Oh sorry, let's try it again. what is the next activity you do when you go by <?$parto?> to <?$concret?> and where assistance could be helpful?",
+                        "Sorry, let's try it again. What is the next activity, where assistance could be helpful?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "store_parts_of",
+                "behavior": "get_user_input",
+                "selector": "user_input"
+            },
+            "parent": "repeat_answer_part_of",
+            "previous_sibling": "correct_answer_part_of",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "that_is_all_parts_of",
+            "title": "Thats all - parts of",
+            "type": "standard",
+            "conditions": "#THATSALL",
+            "output": {},
+            "parent": "parts_of",
+            "previous_sibling": "store_parts_of",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "only_one_part_of",
+            "title": "Only one part of",
+            "type": "response_condition",
+            "conditions": "$parto_array.size() == 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "The activity when you go by <?$parto?> to <?$concret?> and assistance might be helpful is: <?$parto_array.join(', ')?>, is it correct?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "parent": "that_is_all_parts_of"
+        },
+        {
+            "dialog_node": "more_parts_of",
+            "title": "More parts of",
+            "type": "response_condition",
+            "conditions": "$parto_array.size() > 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Different activities when you go by <?$parto?> to <?$concret?> and assistance might be helpful are: <?$parto_array.join(', ')?>, is it correct?"
+                    ]
+                }
+            },
+            "parent": "that_is_all_parts_of",
+            "previous_sibling": "only_one_part_of"
+        },
+        {
+            "dialog_node": "correct all parts of",
+            "title": "correct_all_parts",
+            "type": "standard",
+            "conditions": "@yes_no:yes",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great.",
+                        "Perfect.",
+                        "Thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true"
+            },
+            "parent": "that_is_all_parts_of",
+            "previous_sibling": "more_parts_of"
+        },
+        {
+            "dialog_node": "incorrect all parts of",
+            "title": "incorrect_all_parts",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "parts_of",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "that_is_all_parts_of",
+            "previous_sibling": "correct all parts of"
+        },
+        {
+            "dialog_node": "node_9_1517569800899",
+            "title": "dialog init from the UI",
+            "type": "standard",
+            "conditions": "$command  == \"init\"",
+            "output": {},
+            "metadata": {},
+            "previous_sibling": "parts_of"
+        },
+        {
+            "dialog_node": "get_values_start",
+            "title": "get values",
+            "type": "standard",
+            "conditions": "$command == \"value\"",
+            "output": {
+                "text": {
+                    "values": [
+                        "Which values does the activity  <?$value?>?. promote or demote? I will ask later if they are negative or positive. First you can just mention the values."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {
+                "fallback": "leave",
+                "_customization": {
+                    "mcr": false
+                }
+            },
+            "previous_sibling": "node_9_1517569800899",
+            "digress_in": "does_not_return",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "node_5_1517870109477",
+            "title": "None",
+            "type": "standard",
+            "conditions": "#does_not_know || @silence",
+            "output": {
+                "text": {
+                    "values": [
+                        "Which values are influenced both positively and negatively by doing this activity? So what ideals, such as health or independence, is this activity good or bad for?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "get_values_start",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "get_values_start"
+        },
+        {
+            "dialog_node": "node_1_1518098783467",
+            "title": "does not make sence (noValues)",
+            "type": "standard",
+            "conditions": "#does_not_make_sense",
+            "output": {
+                "text": {
+                    "values": [
+                        "Should I continue with different activity?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "get_values_start",
+            "previous_sibling": "node_5_1517870109477"
+        },
+        {
+            "dialog_node": "node_2_1518098783471",
+            "title": "None",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "OK."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "noValues"
+            },
+            "metadata": {},
+            "parent": "node_1_1518098783467"
+        },
+        {
+            "dialog_node": "node_3_1518098783471",
+            "title": "None",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "get_values_start",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "node_1_1518098783467",
+            "previous_sibling": "node_2_1518098783471"
+        },
+        {
+            "dialog_node": "node_6_1517870327423",
+            "title": "store [] values",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {},
+            "context": {
+                "values_array": "<?input.text.split(', ')?>"
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "get_values_start",
+            "previous_sibling": "node_1_1518098783467"
+        },
+        {
+            "dialog_node": "node_7_1517870989448",
+            "title": "repeat selected []",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {},
+            "metadata": {
+                "_customization": {
+                    "mcr": true
+                }
+            },
+            "parent": "node_6_1517870327423",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "node_13_1518169490135",
+            "title": "None",
+            "type": "response_condition",
+            "conditions": "$values_array.size() == 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Is the value <?$values_array.join(', ')?> influenced by doing the activity <?$value?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "node_7_1517870989448"
+        },
+        {
+            "dialog_node": "node_14_1518169501351",
+            "title": "None",
+            "type": "response_condition",
+            "conditions": "$values_array.size() > 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Are the values <?$values_array.join(', ')?> influenced by doing the activity <?$value?>?"
+                    ]
+                }
+            },
+            "metadata": {},
+            "parent": "node_7_1517870989448",
+            "previous_sibling": "node_13_1518169490135"
+        },
+        {
+            "dialog_node": "node_8_1517871048967",
+            "title": "correct",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great. Now I will ask for each value, if it is positively or negatively influenced by doing of the activity <?$value?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "iterator": 0,
+                "polarities_array": "<? new JsonArray() ?>",
+                "polarities_array_literals": "<? new JsonArray() ?>"
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "node_7_1517870989448",
+            "previous_sibling": "node_14_1518169501351"
+        },
+        {
+            "dialog_node": "node_16_1517871660790",
+            "title": "question",
+            "type": "standard",
+            "conditions": "$iterator < $values_array.size()",
+            "output": {
+                "text": {
+                    "values": [
+                        "Does doing the activity <?$value?> influence the value <?$values_array.get($iterator)?> positively or negatively?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "node_8_1517871048967"
+        },
+        {
+            "dialog_node": "node_14_1517871553249",
+            "title": "None",
+            "type": "standard",
+            "conditions": "@positive-negative",
+            "output": {
+                "text": {
+                    "values": [
+                        "Is the value <?$values_array.get($iterator)?> influenced <?$response_literal?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "response": "@positive-negative",
+                "response_literal": "@positive-negative.literal"
+            },
+            "metadata": {
+                "_customization": {
+                    "mcr": false
+                }
+            },
+            "parent": "node_16_1517871660790",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "node_20_1517873067065",
+            "title": "correct increase iterator",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great.",
+                        "Perfect.",
+                        "Thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "iterator": "<?$iterator + 1?>",
+                "polarities_array": "<? $polarities_array.append($response) ?>",
+                "polarities_array_literals": "<? $polarities_array_literals.append($response_literal) ?>"
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "node_16_1517871660790",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "node_14_1517871553249"
+        },
+        {
+            "dialog_node": "node_22_1517873161520",
+            "title": "incorrect",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "node_16_1517871660790",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "node_14_1517871553249",
+            "previous_sibling": "node_20_1517873067065"
+        },
+        {
+            "dialog_node": "node_19_1517872090731",
+            "title": "None",
+            "type": "response_condition",
+            "disabled": true,
+            "output": {
+                "text": {
+                    "values": [
+                        "You entered <?$input.text?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "node_14_1517871553249",
+            "previous_sibling": "node_22_1517873161520"
+        },
+        {
+            "dialog_node": "node_23_1517873252778",
+            "title": "None",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "I need you to say positively or negatively. Let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "node_16_1517871660790",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "node_16_1517871660790",
+            "previous_sibling": "node_14_1517871553249"
+        },
+        {
+            "dialog_node": "node_2_1517874664622",
+            "title": "recap",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "To be sure, I'll repeat the values influenced by doing the activity <?$value?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "iterator": -1
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "node_8_1517871048967",
+            "previous_sibling": "node_16_1517871660790"
+        },
+        {
+            "dialog_node": "node_1_1517924014882",
+            "title": "None",
+            "type": "standard",
+            "conditions": "$iterator < $values_array.size() - 1",
+            "output": {},
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "node_2_1517874664622"
+        },
+        {
+            "dialog_node": "node_6_1517924844593",
+            "title": "printout",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "The value <?$values_array.get($iterator)?> is influenced <?$polarities_array_literals.get($iterator)?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "iterator": "<?$iterator + 1?>"
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "node_1_1517924014882",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "node_1_1517924014882"
+        },
+        {
+            "dialog_node": "node_3_1517924244867",
+            "title": "check summary",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Is that right?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "node_2_1517874664622",
+            "previous_sibling": "node_1_1517924014882"
+        },
+        {
+            "dialog_node": "node_4_1517924255578",
+            "title": "correct",
+            "type": "standard",
+            "conditions": "@yes_no:yes",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great.",
+                        "Perfect.",
+                        "Thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true"
+            },
+            "metadata": {},
+            "parent": "node_3_1517924244867"
+        },
+        {
+            "dialog_node": "node_5_1517924309487",
+            "title": "incorrect",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "get_values_start",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "node_3_1517924244867",
+            "previous_sibling": "node_4_1517924255578"
+        },
+        {
+            "dialog_node": "node_9_1517871083458",
+            "title": "incorrect",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "get_values_start",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "node_7_1517870989448",
+            "previous_sibling": "node_8_1517871048967"
+        },
+        {
+            "dialog_node": "node_4_1517870016310",
+            "title": "None",
+            "type": "response_condition",
+            "disabled": true,
+            "output": {
+                "text": {
+                    "values": [
+                        "Which values does the activity <?$value?> promote or demote? I will ask later if they are negative or positive. First you can just mention the values."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "get_values_start",
+            "previous_sibling": "node_6_1517870327423"
+        },
+        {
+            "dialog_node": "slot_1_1517870015967",
+            "title": "None",
+            "type": "slot",
+            "parent": "get_values_start",
+            "previous_sibling": "node_4_1517870016310"
+        },
+        {
+            "dialog_node": "handler_2_1517870015967",
+            "title": "None",
+            "type": "event_handler",
+            "event_name": "input",
+            "parent": "slot_1_1517870015967"
+        },
+        {
+            "dialog_node": "handler_3_1517870015967",
+            "title": "None",
+            "type": "event_handler",
+            "event_name": "focus",
+            "output": {},
+            "parent": "slot_1_1517870015967",
+            "previous_sibling": "handler_2_1517870015967"
+        },
+        {
+            "dialog_node": "node_1_1518710380713",
+            "title": "all done",
+            "type": "standard",
+            "conditions": "$command == \"done\"",
+            "output": {
+                "text": {
+                    "values": [
+                        "That's it. Now the experiment leader will continue with the rest. Thank you very much for participating."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "previous_sibling": "get_values_start"
+        },
+        {
+            "dialog_node": "node_39_1517653572235",
+            "title": "agent description",
+            "type": "standard",
+            "conditions": "#agent_description",
+            "output": {
+                "text": {
+                    "values": [
+                        "I am HabInt, I'm conversational user interface - a agent which based on structure interview creates the knowledge about your activities in order to promote positive and denote negative ones. Part of me was created in Prague and part in Delft."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "previous_sibling": "node_1_1518710380713"
+        },
+        {
+            "dialog_node": "node_1_1517655208009",
+            "title": "experiment description",
+            "type": "standard",
+            "conditions": "#experiment_description",
+            "output": {
+                "text": {
+                    "values": [
+                        "The aim of the experiment is to test my first version, where I learn the habits and preferences of my users. To day we will focus on the structured dialogue about daily/weekly activities which are sometimes stressful, which will help me to learn more about you. When you came across something odd in my reactions please remember it for later when the experiment leader will ask you for all your experiences."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "previous_sibling": "node_39_1517653572235"
+        },
+        {
+            "dialog_node": "V ostatních případech",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "I don't understand, try to reformulate your question.",
+                        "Can you ask once again a little different? I did not understand.",
+                        "I did not understand what did you ask."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "previous_sibling": "node_1_1517655208009"
+        },
+        {
+            "dialog_node": "repeat",
+            "title": "Repeat",
+            "conditions": "#COMMON_REPEAT",
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "previous_sibling": "V ostatních případech",
+            "digress_in": "returns",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_5",
+            "title": "Repeat not null",
+            "conditions": "$repeat != null",
+            "output": {
+                "text": "<speak>I said: <emphasis level=\"strong\"><? $repeat[0] ?></emphasis></speak>"
+            },
+            "parent": "repeat",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_6",
+            "title": "Repeat null",
+            "conditions": "true",
+            "output": {
+                "text": "I can't repeat that."
+            },
+            "parent": "repeat",
+            "previous_sibling": "node_5",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "paraphrase",
+            "title": "Paraphrase",
+            "conditions": "#COMMON_PARAPHRASE",
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "previous_sibling": "repeat",
+            "digress_in": "returns",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_7",
+            "title": "Paraphrase not null",
+            "conditions": "$paraphrase != null",
+            "output": {
+                "text": "<speak><emphasis level=\"moderate\"><? $paraphrase ?></emphasis></speak>"
+            },
+            "parent": "paraphrase",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_8",
+            "title": "Paraphrase null",
+            "conditions": "true",
+            "output": {
+                "text": "I don't have any more details."
+            },
+            "parent": "paraphrase",
+            "previous_sibling": "node_7",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "example",
+            "title": "Example",
+            "conditions": "#COMMON_EXAMPLE",
+            "output": {
+                "text": "<? $example != null ? $example : \"I don't have any examples.\" ?>"
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
+            "previous_sibling": "paraphrase",
+            "digress_in": "returns",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "anything_else",
+            "title": "Fallback",
+            "conditions": "anything_else",
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": ""
+            },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "previous_sibling": "example",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_9",
+            "title": "Anything else",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "What, please?",
+                        "Say that again, please.",
+                        "Once more, please."
+                    ],
+                    "selection_policy": "random"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "example": "",
+                "paraphrase": "I'm saying that I did not undestand you, try it again."
+            },
+            "parent": "anything_else",
+            "type": "standard"
+        }
+    ]
+}
