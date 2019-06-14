@@ -1,0 +1,476 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <node name="get_values_start" title="get values">
+    <type>standard</type>
+    <condition>$command == "value"</condition>
+    <context>
+        <promoted_array>&lt;? new JsonArray() ?&gt;</promoted_array>
+        <demoted_array>&lt;? new JsonArray() ?&gt;</demoted_array>
+        <promoted_finished>false</promoted_finished>
+        <demoted_finished>false</demoted_finished>
+    </context>
+    <output>
+      <textValues>
+        <values structure="listItem">Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value. Can I continue?
+        </values>
+        <selection_policy>sequential</selection_policy>
+      </textValues>
+    </output>    
+    <digress_in>does_not_return</digress_in>
+    <digress_out>allow_all</digress_out>
+    <nodes>
+        <node name="promoted_values" title="Promoted values">
+            <condition>@yes_no:yes and $promoted_finished == "false"</condition>
+                <output>
+                    <textValues>
+                      <values structure="listItem">What values from the list would generally be positively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                </output>    
+            <nodes>
+                <node name="does_not_know_promoted" title="None">
+                  <type>standard</type>
+                  <condition>#does_not_know || @silence</condition>
+                  
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value.
+                        </values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                  <goto>
+                    <behavior>jump_to</behavior>
+                    <target>get_values_start</target>
+                    <selector>body</selector>
+                  </goto>
+                  <metadata structure="emptyDict"/>
+                </node>
+                <node name="no_promoted_values" title="No promoted values (noValues)">
+                  <type>standard</type>
+                  <condition>#does_not_make_sense and !@value</condition>
+                 
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You said there is no positively supported value. Can I continue next?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+                  
+                  <metadata structure="emptyDict"/>
+                  <nodes>
+                    <node name="continue_with_demoted" title="None">
+                      <type>standard</type>
+                      <condition>@yes_no == 'yes'</condition>
+                      <context>
+                        <promoted_finished>true</promoted_finished>
+                      </context>
+                      <output>
+                        <textValues>
+                          <values structure="listItem">OK.</values>
+                          <selection_policy>sequential</selection_policy>
+                        </textValues>
+                      </output>
+                      
+                      <metadata structure="emptyDict"/>
+                    </node>
+                    <node name="node_3_1518098783471" title="None">
+                      <type>standard</type>
+                      <condition>anything_else</condition>
+                      
+                      <output>
+                        <textValues>
+                          <values structure="listItem">No worries, let's try it again.</values>
+                          <selection_policy>sequential</selection_policy>
+                        </textValues>
+                      </output>
+                      <goto>
+                        <behavior>jump_to</behavior>
+                        <target>get_values_start</target>
+                        <selector>body</selector>
+                      </goto>
+                      <metadata structure="emptyDict"/>
+                    </node>
+                  </nodes>
+                </node>
+                <node name="store_promoted_values" title="store promoted values">
+                  <condition>anything_else</condition>
+                  <slots>
+                  <slot variable="$promoted_array">
+                      <handlers>
+                          <handler eventName="input">
+                              <condition>@value:comfort</condition>
+                              <context>
+                                  <promoted_array>&lt;?$promoted_array.append("comfort")?&gt;</promoted_array>
+                              </context>
+                          </handler>
+                      </handlers>
+                  </slot>
+                  <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:health</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("health")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+                <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:independence</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("independence")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+                <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:safety</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("safety")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+                <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:socializing</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("socializing")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+                <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:time-management</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("time-management")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+                <slot variable="$promoted_array">
+                    <handlers>
+                        <handler eventName="input">
+                            <condition>@value:wealth</condition>
+                            <context>
+                                <promoted_array>&lt;?$promoted_array.append("wealth")?&gt;</promoted_array>
+                            </context>
+                        </handler>
+                    </handlers>
+                </slot>
+            </slots>
+            <goto>
+              <behavior>skip_user_input</behavior>
+              <target>first_child</target>
+            </goto>
+            <nodes>
+              <node name="repeat_promoted_values" title="repeat promoted values">
+                <type>standard</type>
+                <condition>anything_else</condition>
+                
+                <output structure="emptyDict"/>
+                
+                <digress_out>allow_all</digress_out>
+                <nodes>
+                  <node name="only_one_promoted" title="Only one promoted value">
+                    <type>response_condition</type>
+                    <condition>$promoted_array.size() == 1</condition>
+                    
+                    <output>
+                      <textValues>
+                        <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                        <selection_policy>sequential</selection_policy>
+                      </textValues>
+                    </output>
+                    
+                    <metadata structure="emptyDict"/>
+                  </node>
+                  <node name="more_promoted_values" title="More promoted values">
+                    <type>response_condition</type>
+                    <condition>$promoted_array.size() &gt; 1</condition>
+                    
+                    <output>
+                      <textValues>
+                        <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                      </textValues>
+                    </output>
+                    
+                    <metadata structure="emptyDict"/>
+                  </node>
+                  <node name="correct_all_promoted" title="correct all promoted">
+                    <type>standard</type>
+                    <condition>@yes_no == 'yes'</condition>
+                    <context>
+                        <promoted_finished>true</promoted_finished>
+                    </context>                        
+                    <output>
+                      <textValues>
+                        <values structure="listItem">Great.</values>
+                        <values structure="listItem">Perfect.</values>
+                        <values structure="listItem">Thanks.</values>
+                        <selection_policy>sequential</selection_policy>
+                      </textValues>
+                    </output>
+                    <goto>
+                      <behavior>jump_to</behavior>
+                      <target>demoted_values</target>
+                      <selector>condition</selector>
+                    </goto>
+                  </node>
+                  <node name="incorrect_all_promoted" title="incorrect all promoted">
+                    <type>standard</type>
+                    <condition>anything_else</condition>                    
+                    <output>
+                      <textValues>
+                        <values structure="listItem">Sorry, let's try it again.</values>
+                        <values structure="listItem">No worries, let's try it again.</values>
+                        <selection_policy>sequential</selection_policy>
+                      </textValues>
+                    </output>
+                    <goto>
+                      <behavior>jump_to</behavior>
+                      <target>promoted_values</target>
+                      <selector>body</selector>
+                    </goto>
+                  </node>
+                </nodes>
+              </node>
+            </nodes>
+                </node>
+            </nodes>
+        </node>
+        <node name="demoted_values" title="Demoted values">
+                <condition>$demoted_finished == "false" and $promoted_finished == "true"</condition>
+                <output>
+                    <textValues>
+                      <values structure="listItem">What values from the list would generally be negatively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                </output> 
+                <nodes>
+                    <node name="does_not_know_demoted" title="None">
+                      <type>standard</type>
+                      <condition>#does_not_know || @silence</condition>
+                      
+                      <output>
+                        <textValues>
+                          <values structure="listItem">You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value.
+                            </values>
+                          <selection_policy>sequential</selection_policy>
+                        </textValues>
+                      </output>
+                      <goto>
+                        <behavior>jump_to</behavior>
+                        <target>get_values_start</target>
+                        <selector>body</selector>
+                      </goto>
+                      <metadata structure="emptyDict"/>
+                    </node>
+                    <node name="no_demoted_values" title="No demoted values (noValues)">
+                      <type>standard</type>
+                      <condition>#does_not_make_sense and !@value</condition>
+                     
+                      <output>
+                        <textValues>
+                          <values structure="listItem">You said there is no negatively supported values, is that correct?</values>
+                          <selection_policy>sequential</selection_policy>
+                        </textValues>
+                      </output>
+                      
+                      <metadata structure="emptyDict"/>
+                      <nodes>
+                        <node name="correct_no_demoted" title="Correct - no demoted">
+                          <type>standard</type>
+                          <condition>@yes_no == 'yes'</condition>
+                          <context>
+                            <demoted_finished>true</demoted_finished>
+                            <correct>true</correct>
+                          </context>
+                          <output>
+                            <textValues>
+                              <values structure="listItem">Thank you, this is all regarding your personal values when choosing route: &lt;?$value?&gt; to: &lt;?$concret?&gt;</values>
+                              <selection_policy>sequential</selection_policy>
+                            </textValues>
+                          </output>
+                          
+                          <metadata structure="emptyDict"/>
+                        </node>
+                        <node name="incorrect_no_demoted" title="Incorrect - no demoted">
+                          <type>standard</type>
+                          <condition>anything_else</condition>
+                          
+                          <output>
+                            <textValues>
+                              <values structure="listItem">No worries, let's try it again.</values>
+                              <selection_policy>sequential</selection_policy>
+                            </textValues>
+                          </output>
+                          <goto>
+                            <behavior>jump_to</behavior>
+                            <target>get_values_start</target>
+                            <selector>body</selector>
+                          </goto>
+                          <metadata structure="emptyDict"/>
+                        </node>
+                      </nodes>
+                    </node>
+                    <node name="store_demoted_values" title="store demoted values">
+                      <condition>anything_else</condition>
+                      <slots>
+                      <slot variable="$demoted_array">
+                          <handlers>
+                              <handler eventName="input">
+                                  <condition>@value:comfort</condition>
+                                  <context>
+                                      <demoted_array>&lt;?$demoted_array.append("comfort")?&gt;</demoted_array>
+                                  </context>
+                              </handler>
+                          </handlers>
+                      </slot>
+                      <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:health</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("health")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                    <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:independence</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("independence")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                    <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:safety</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("safety")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                    <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:socializing</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("socializing")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                    <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:time-management</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("time-management")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                    <slot variable="$demoted_array">
+                        <handlers>
+                            <handler eventName="input">
+                                <condition>@value:wealth</condition>
+                                <context>
+                                    <demoted_array>&lt;?$demoted_array.append("wealth")?&gt;</demoted_array>
+                                </context>
+                            </handler>
+                        </handlers>
+                    </slot>
+                </slots>
+                <goto>
+                  <behavior>skip_user_input</behavior>
+                  <target>first_child</target>
+                </goto>
+                <nodes>
+                  <node name="repeat_demoted_values" title="repeat demoted values">
+                    <type>standard</type>
+                    <condition>anything_else</condition>
+                    
+                    <output structure="emptyDict"/>
+                    
+                    <digress_out>allow_all</digress_out>
+                    <nodes>
+                      <node name="only_one_demoted" title="Only one demoted value">
+                        <type>response_condition</type>
+                        <condition>$demoted_array.size() == 1</condition>
+                        
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                        
+                        <metadata structure="emptyDict"/>
+                      </node>
+                      <node name="more_demoted_values" title="More demoted values">
+                        <type>response_condition</type>
+                        <condition>$demoted_array.size() &gt; 1</condition>
+                        
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                          </textValues>
+                        </output>
+                        
+                        <metadata structure="emptyDict"/>
+                      </node>
+                      <node name="correct_all_demoted" title="correct all demoted">
+                        <type>standard</type>
+                        <condition>@yes_no == 'yes'</condition>
+                        <context>
+                            <demoted_finished>true</demoted_finished>
+                            <correct>true</correct>
+                        </context>                        
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Thank you, this is all regarding your personal values when choosing route: &lt;?$value?&gt; to: &lt;?$concret?&gt;</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                      </node>
+                      <node name="incorrect_all_demoted" title="incorrect all demoted">
+                        <type>standard</type>
+                        <condition>anything_else</condition>                    
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Sorry, let's try it again.</values>
+                            <values structure="listItem">No worries, let's try it again.</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                        <goto>
+                          <behavior>jump_to</behavior>
+                          <target>demoted_values</target>
+                          <selector>body</selector>
+                        </goto>
+                      </node>
+                    </nodes>
+                  </node>
+                </nodes>
+                    </node>
+                </nodes>
+        </node>
+
+    </nodes>
+        
+    </node>
+</nodes>

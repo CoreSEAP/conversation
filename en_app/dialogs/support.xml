@@ -1,0 +1,246 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <node name="support_partly" title="User capability for partly supported">
+        <condition>$command == "usercappart"</condition>
+        <context>
+            <capable_array>&lt;? new JsonArray() ?&gt;</capable_array>
+            <sometimes_array>&lt;? new JsonArray() ?&gt;</sometimes_array>
+            <notcapable_array>&lt;? new JsonArray() ?&gt;</notcapable_array>
+            <iterator type="number">0</iterator>
+        </context>
+        <output>
+                <textValues>
+                  <values structure="listItem">Let's talk about system support and your cappabilities.</values>
+                  <selection_policy>sequential</selection_policy>
+                </textValues>
+        </output>
+        <goto>
+            <behavior>skip_user_input</behavior>
+            <target>first_child</target>
+            <selector>body</selector>
+        </goto>
+        <nodes>
+            <node name="store_capability_partly" title="Store capability for partly supported">
+                <condition>$iterator &lt; $usercappart_array.size()</condition>
+                <output>
+                    <textValues>
+                        <values structure="listItem">System can partly help with activities: &lt;? $usercappart_array.join(', ') ?&gt;. For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with: &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this, or not?</values>
+                        <values structure="listItem">For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this, or not?</values>
+                        
+                    </textValues>
+                </output>
+                <nodes>
+                    <node name="capable_partly_support" title="User capable (partly support)">
+                        <condition>@yes_no:yes or input.text.contains('slower') or input.text.contains('but slower')</condition>
+                        <context>
+                            <capable_array>&lt;? $capable_array.append($usercappart_array.get($iterator - 1)) ?&gt;</capable_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                            
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_capability_partly</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="sometimes_capable_partly_support" title="User sometimes capable (partly support)">
+                        <condition>@maybe</condition>
+                        <context>
+                            <sometimes_array>&lt;? $sometimes_array.append($usercappart_array.get($iterator - 1)) ?&gt;</sometimes_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_capability_partly</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="notcapable_partly_support" title="User notcapable (partly support)">
+                        <condition>@yes_no:no or (input.text.contains('not') or input.text.contains('could not') or input.text.contains('cannot'))</condition>
+                        <context>
+                            <notcapable_array>&lt;? $notcapable_array.append($usercappart_array.get($iterator - 1)) ?&gt;</notcapable_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_capability_partly</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="anything_else_partly_support" title="Fallback (partly support)">
+                            <condition>intents[0].confidence &lt; 0.5 or anything_else</condition>
+                            <output>
+                                <textValues>
+                                    <values structure="listItem">Please choose from these answers: Yes, or Maybe sometimes, or No, I could not.</values>
+                                </textValues>
+                            </output>
+                            <goto>
+                                <behavior>jump_to</behavior>
+                                <target>store_capability_partly</target>
+                                <selector>condition</selector>
+                            </goto>
+                    </node>
+                </nodes>
+            </node>
+            <node name="no_partly_supported" title="No partly supported.">
+                    <condition>$usercappart_array.size() == 0</condition>
+                    <context>
+                        <correct>true</correct>
+                    </context>
+                    <output>
+                            <text>Unfortunately, there are no activities system can partly help you with.</text>
+                    </output>
+            </node>
+            <node name="all_partly_stored" title="All partly stored">
+                    <condition>$iterator == $usercappart_array.size()</condition>
+                    <context>
+                        <correct>true</correct>
+                    </context>
+                    <output>
+                            <text>I have it all.</text>
+                    </output>
+            </node>
+        </nodes>
+    </node>
+    <node name="support_not" title="User capability for not supported">
+        <condition>$command == "usercapnot"</condition>
+        <context>
+                <capable_array>&lt;? new JsonArray() ?&gt;</capable_array>
+                <sometimes_array>&lt;? new JsonArray() ?&gt;</sometimes_array>
+                <notcapable_array>&lt;? new JsonArray() ?&gt;</notcapable_array>
+                <iterator type="number">0</iterator>
+        </context>
+        <output>
+                <textValues>
+                  <values structure="listItem">System can not help you with activities: &lt;? $usercapnot_array.join(', ') ?&gt;.</values>
+                  <selection_policy>sequential</selection_policy>
+                </textValues>
+        </output>
+        <goto>
+             <behavior>skip_user_input</behavior>
+            <target>first_child</target>
+            <selector>body</selector>
+        </goto>
+        <nodes>
+            <node name="store_notcapable" title="Store capability for not supported">
+                <condition>$iterator &lt; $usercapnot_array.size()</condition>
+                <output>
+                    <textValues>
+                        <values structure="listItem">For activity: &lt;? $usercapnot_array.get($iterator) ?&gt;, system can not help. Would you be able to complete this activity alone, or would you need to ask someone else to help?</values>
+                    </textValues>
+                </output>
+                <nodes>
+                    <node name="capable_no_support" title="User capable (no support)">
+                        <condition>@yes_no:yes or input.text.contains('slower') or input.text.contains('but slower')</condition>
+                        <context>
+                            <capable_array>&lt;? $capable_array.append($usercapnot_array.get($iterator - 1)) ?&gt;</capable_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                            
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_notcapable</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="sometimes_capable_no_support" title="User sometimes capable (no support)">
+                        <condition>@maybe</condition>
+                        <context>
+                            <sometimes_array>&lt;? $sometimes_array.append($usercapnot_array.get($iterator - 1)) ?&gt;</sometimes_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_notcapable</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="notcapable_no_support" title="User notcapable (no support)">
+                        <condition>@yes_no:no or (input.text.contains('ask') or input.text.contains('someone'))</condition>
+                        <context>
+                            <notcapable_array>&lt;? $notcapable_array.append($usercapnot_array.get($iterator - 1)) ?&gt;</notcapable_array>
+                            <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                        </context>
+                        <output>
+                            <textValues>
+                                <values structure="listItem">OK, thanks.</values>
+                                <values structure="listItem">OK.</values>
+                                <values structure="listItem">Thanks.</values>
+                            </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>store_notcapable</target>
+                            <selector>condition</selector>
+                        </goto>
+                    </node>
+                    <node name="anything_else_no_support" title="Fallback (no support)">
+                            <condition>intents[0].confidence &lt; 0.5 or anything_else</condition>
+                            <output>
+                                <textValues>
+                                    <values structure="listItem">Please choose from these answers: Yes, but slower, or Maybe, or No I need to ask someone</values>
+                                </textValues>
+                            </output>
+                            <goto>
+                                <behavior>jump_to</behavior>
+                                <target>store_notcapable</target>
+                                <selector>condition</selector>
+                            </goto>
+                    </node>
+                </nodes>
+            </node>
+            <node name="no_not_supported" title="No not supported.">
+                    <condition>$usercapnot_array.size() == 0</condition>
+                    <context>
+                        <correct>true</correct>
+                    </context>
+                    <output>
+                            <text>There are no activities system can not help you with.</text>
+                    </output>
+            </node>
+            <node name="all_partly_stored_no_support" title="All partly stored">
+                    <condition>$iterator == $usercapnot_array.size()</condition>
+                    <context>
+                        <correct>true</correct>
+                    </context>
+                    <output>
+                            <text>I have it all.</text>
+                    </output>
+            </node>
+        </nodes>
+    </node>
+</nodes>

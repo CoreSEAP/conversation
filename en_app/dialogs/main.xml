@@ -9,8 +9,14 @@
     <!-- nodes for concretisation (ways of) -->
     <import>concret.xml</import>
 
+    <!-- nodes for values -->
+    <import>values.xml</import>
+
     <!-- nodes for parts of -->
     <import>parto.xml</import>
+
+    <!-- nodes for support -->
+    <import>support.xml</import>
 
     <!-- rest dialog, should be splitted -->
     <import>dialog.xml</import>

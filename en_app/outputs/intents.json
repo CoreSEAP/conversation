@@ -196,6 +196,34 @@
         ]
     },
     {
+        "intent": "NOACTIVITY",
+        "examples": [
+            {
+                "text": "there is no such activity."
+            },
+            {
+                "text": "there is no activity."
+            },
+            {
+                "text": "nothing."
+            },
+            {
+                "text": "no activity."
+            }
+        ]
+    },
+    {
+        "intent": "NOROUTE",
+        "examples": [
+            {
+                "text": "no such route."
+            },
+            {
+                "text": "there is no such route."
+            }
+        ]
+    },
+    {
         "intent": "READY_FOR_TUTORIAL",
         "examples": [
             {
@@ -214,9 +242,6 @@
                 "text": "let's begin"
             },
             {
-                "text": "yes i am ready"
-            },
-            {
                 "text": "we can start"
             },
             {
@@ -228,7 +253,7 @@
         "intent": "REPAIR",
         "examples": [
             {
-                "text": "no it is not correct."
+                "text": "it is not correct."
             },
             {
                 "text": "i did not say that, correct it."
@@ -245,7 +270,7 @@
         "intent": "THATSALL",
         "examples": [
             {
-                "text": "thats all."
+                "text": "that's all."
             },
             {
                 "text": "none, that is all."
@@ -321,6 +346,20 @@
             },
             {
                 "text": "say that tutorial again"
+            }
+        ]
+    },
+    {
+        "intent": "USER_DESCRIBING_PARTS",
+        "examples": [
+            {
+                "text": "identifying stop, identifying station, identifying bus, identifying entrance, identifying crossing, identifying where i am"
+            },
+            {
+                "text": "finding stop, finding station, finding bus, finding entrance, finding crossing"
+            },
+            {
+                "text": "crossing the street, crossing, pedestrian crossing"
             }
         ]
     },

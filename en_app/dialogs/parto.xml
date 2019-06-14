@@ -3,7 +3,7 @@
     <type>standard</type>
     <condition>$command == "parto"</condition>
     <context>
-        <parto_array></parto_array>
+      <parto_array>&lt;? new JsonArray() ?&gt;</parto_array>
     </context>
     <digress_in>does_not_return</digress_in>
     <output>
@@ -16,10 +16,11 @@
     <nodes>
       <node name="store_parts_of" title="store parts of">
         <type>standard</type>
-        <condition>anything_else</condition>
+        <condition>(intents[0].confidence &lt; 0.5) or #USER_DESCRIBING_PARTS</condition>
         <context>
           <parto_value>&lt;?input.text?&gt;</parto_value>
         </context>
+        
         <goto>
           <behavior>skip_user_input</behavior>
           <target>first_child</target>
@@ -30,7 +31,7 @@
             
             <output>
               <textValues>
-                <values structure="listItem">Ok, &lt;?$concret_value?&gt;. Is it correct?</values>
+                <values structure="listItem">Ok, &lt;?$parto_value?&gt;. Is it correct?</values>
               </textValues>
             </output>
             <nodes>
@@ -41,13 +42,14 @@
                 </context>
                 <output>
                   <textValues>
-                    <values structure="listItem">Great, what is the next activity you do when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful? Say thats all, when you are done.</values>
+                    <values structure="listItem">Great, you can say: that's all, when you are done. What is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+                    <values structure="listItem">Great. What is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where you might need help?</values>
                     <values structure="listItem">Great, what is the next activity? Say thats all, when you are done.</values>
                     <selection_policy>sequential</selection_policy>
                   </textValues>
                 </output>
                 <goto>
-                  <behavior>get_user_input</behavior>
+                  <behavior>jump_to</behavior>
                   <target>store_parts_of</target>
                 </goto>
               </node>
@@ -55,13 +57,13 @@
                   <condition>@yes_no:no</condition>
                   <output>
                       <textValues>
-                        <values structure="listItem">Oh sorry, let's try it again. what is the next activity you do when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+                        <values structure="listItem">Oh sorry, let's try it again. what is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
                         <values structure="listItem">Sorry, let's try it again. What is the next activity, where assistance could be helpful?</values>
                         <selection_policy>sequential</selection_policy>
                       </textValues>
                   </output>
                   <goto>
-                      <behavior>get_user_input</behavior>
+                      <behavior>jump_to</behavior>
                       <target>store_parts_of</target>
                   </goto>
               </node>
@@ -71,16 +73,26 @@
       </node>
       <node name="that_is_all_parts_of" title="Thats all - parts of">
           <type>standard</type>
-          <condition>#THATSALL</condition>
+          <condition>#THATSALL or #NOACTIVITY</condition>
           <output structure="emptyDict"/>
           <digress_out>allow_all</digress_out>
           <nodes>
+              <node name="no_part_of" title="No part of">
+                  <type>response_condition</type>
+                  <condition>$parto_array.size() == 0</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You said that there are no acitivites where assistance might be helpful, is it correct?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+              </node>
               <node name="only_one_part_of" title="Only one part of">
                   <type>response_condition</type>
                   <condition>$parto_array.size() == 1</condition>
                   <output>
                     <textValues>
-                      <values structure="listItem">The activity when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful is: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
+                      <values structure="listItem">To be sure, I will repeat it. The activity when you choose route: &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful is: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
                   </output>
@@ -90,7 +102,7 @@
                   <condition>$parto_array.size() &gt; 1</condition>
                   <output>
                     <textValues>
-                      <values structure="listItem">Different activities when you go by &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful are: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
+                      <values structure="listItem">To be sure, I will repeat it. Different activities when you choose route: &lt;?$parto?&gt; to &lt;?$concret?&gt; and assistance might be helpful are: &lt;?$parto_array.join(', ')?&gt;, is it correct?</values>
                     </textValues>
                   </output>
               </node>

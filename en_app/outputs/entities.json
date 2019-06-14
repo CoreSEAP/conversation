@@ -1,5 +1,20 @@
 [
     {
+        "entity": "maybe",
+        "values": [
+            {
+                "value": "maybe",
+                "synonyms": [
+                    "I could maybe",
+                    "I could sometimes",
+                    "maybe sometimes",
+                    "sometimes"
+                ]
+            }
+        ],
+        "fuzzy_match": true
+    },
+    {
         "entity": "positive-negative",
         "values": [
             {
@@ -38,6 +53,81 @@
         "fuzzy_match": true
     },
     {
+        "entity": "value",
+        "values": [
+            {
+                "value": "comfort",
+                "synonyms": [
+                    "relaxation",
+                    "simplicity of the route"
+                ]
+            },
+            {
+                "value": "health",
+                "synonyms": [
+                    "excercise",
+                    "movement",
+                    "physical condition"
+                ]
+            },
+            {
+                "value": "safety",
+                "synonyms": [
+                    "Confidence",
+                    "Security",
+                    "confidence on the route",
+                    "feeling safe"
+                ]
+            },
+            {
+                "value": "independence",
+                "synonyms": [
+                    "autonomy",
+                    "freedom",
+                    "freedom to chose",
+                    "individual orientation",
+                    "self-direction",
+                    "self-suficiency",
+                    "total independence"
+                ]
+            },
+            {
+                "value": "socializing",
+                "synonyms": [
+                    "beeing with person I like",
+                    "company of someone",
+                    "company of the friend",
+                    "good company",
+                    "meet with people",
+                    "meeting with people",
+                    "possibility to meet people"
+                ]
+            },
+            {
+                "value": "time-management",
+                "synonyms": [
+                    "accuracy",
+                    "frequent connections",
+                    "getting there in time",
+                    "punctuality",
+                    "reliability",
+                    "time",
+                    "time availability",
+                    "time factor",
+                    "time management"
+                ]
+            },
+            {
+                "value": "wealth",
+                "synonyms": [
+                    "money",
+                    "price"
+                ]
+            }
+        ],
+        "fuzzy_match": true
+    },
+    {
         "entity": "yes_no",
         "values": [
             {
@@ -56,9 +146,12 @@
             {
                 "value": "no",
                 "synonyms": [
+                    "cannot",
+                    "could not",
                     "no way",
                     "noo",
                     "nope",
+                    "not",
                     "not at all",
                     "wrong"
                 ]

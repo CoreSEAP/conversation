@@ -3,8 +3,8 @@
     <type>standard</type>
     <condition>$command == "concret" and !(#USER_DESCRIBING_WAYS)</condition>
     <context>
-        <concret_array></concret_array>
-    </context>
+        <concret_array>&lt;? new JsonArray() ?&gt;</concret_array>
+      </context>
     <digress_in>does_not_return</digress_in>
     <output>
       <textValues>
@@ -73,7 +73,7 @@
       </node> -->
       <node name="store_ways_of" title="store ways of">
         <type>standard</type>
-        <condition>#USER_DESCRIBING_WAYS</condition>
+        <condition>(intents[0].confidence &lt; 0.5) or #USER_DESCRIBING_WAYS</condition>
         <context>
           <concret_value>&lt;?input.text?&gt;</concret_value>
         </context>
@@ -124,9 +124,19 @@
       </node>
       <node name="that_is_all_ways_of" title="Thats all - ways of">
           <type>standard</type>
-          <condition>#THATSALL</condition>
+          <condition>#THATSALL or #NOROUTE</condition>
           <output structure="emptyDict"/>
           <nodes>
+              <node name="no_way_of" title="No way of">
+                  <type>response_condition</type>
+                  <condition>$concret_array.size() == 0</condition>
+                  <output>
+                    <textValues>
+                      <values structure="listItem">You said that there are no routes to: &lt;?$concret?&gt;, is it correct?</values>
+                      <selection_policy>sequential</selection_policy>
+                    </textValues>
+                  </output>
+              </node>
               <node name="only_one_way_of" title="Only one way of">
                   <type>response_condition</type>
                   <condition>$concret_array.size() == 1</condition>
