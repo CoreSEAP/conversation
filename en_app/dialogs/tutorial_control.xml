@@ -45,7 +45,7 @@
         <condition>false</condition>
         <context>
             <repeat>&lt;? output.text ?&gt;</repeat>
-            <example>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</example>
+            <example>&lt;? $tutorial.steps[$tutorialIterator].example ?&gt;</example>
         </context>
         <output>            
             <text>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</text>

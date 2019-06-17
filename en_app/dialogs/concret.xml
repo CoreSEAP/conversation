@@ -14,63 +14,6 @@
       </textValues>
     </output>
     <nodes>
-      <!-- <node name="does_not_know_ways" title="If user dont know">
-        <type>standard</type>
-        <condition>#does_not_know || @silence</condition>
-        
-        <goto>
-          <behavior>jump_to</behavior>
-          <target>concretisation</target>
-          <selector>body</selector>
-        </goto>
-      </node>
-      <node name="node_7_1517567820102" title="does not make sense (branchCompleted)">
-        <type>standard</type>
-        <condition>#does_not_make_sense</condition>
-        
-        <output>
-          <textValues>
-            <values structure="listItem">Should I continue with different activity?</values>
-            <selection_policy>sequential</selection_policy>
-          </textValues>
-        </output>
-        
-        <metadata structure="emptyDict"/>
-        <nodes>
-          <node name="node_37_1517652758093" title="None">
-            <type>standard</type>
-            <condition>@yes_no == 'yes'</condition>
-            <context>
-              <correct>branchCompleted</correct>
-            </context>
-            <output>
-              <textValues>
-                <values structure="listItem">OK.</values>
-                <selection_policy>sequential</selection_policy>
-              </textValues>
-            </output>
-            
-            <metadata structure="emptyDict"/>
-          </node>
-          <node name="node_38_1517652761245" title="None">
-            <type>standard</type>
-            <condition>anything_else</condition>
-            
-            <output>
-              <textValues>
-                <values structure="listItem">No worries, let's try it again.</values>
-                <selection_policy>sequential</selection_policy>
-              </textValues>
-            </output>
-            <goto>
-              <behavior>jump_to</behavior>
-              <target>concretisation</target>
-              <selector>body</selector>
-            </goto>
-            <metadata structure="emptyDict"/>
-          </node>
-        </nodes>
-      </node> -->
       <node name="store_ways_of" title="store ways of">
         <type>standard</type>
         <condition>(intents[0].confidence &lt; 0.5) or #USER_DESCRIBING_WAYS</condition>

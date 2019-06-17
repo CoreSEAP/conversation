@@ -822,7 +822,7 @@
             },
             "context": {
                 "repeat": "<? output.text ?>",
-                "example": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+                "example": "<? $tutorial.steps[$tutorialIterator].example ?>"
             },
             "previous_sibling": "cooking_previous",
             "type": "standard"
@@ -1253,123 +1253,123 @@
             "previous_sibling": "correct_all_promoted"
         },
         {
-            "dialog_node": "node_38",
+            "dialog_node": "node_66",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
             "previous_sibling": "repeat_promoted_values"
         },
         {
-            "dialog_node": "node_39",
+            "dialog_node": "node_67",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"comfort\")?>"
             },
-            "parent": "node_38"
+            "parent": "node_66"
         },
         {
-            "dialog_node": "node_40",
+            "dialog_node": "node_68",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_38"
+            "previous_sibling": "node_66"
         },
         {
-            "dialog_node": "node_41",
+            "dialog_node": "node_69",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:health",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"health\")?>"
             },
-            "parent": "node_40"
+            "parent": "node_68"
         },
         {
-            "dialog_node": "node_42",
+            "dialog_node": "node_70",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_40"
+            "previous_sibling": "node_68"
         },
         {
-            "dialog_node": "node_43",
+            "dialog_node": "node_71",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:independence",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"independence\")?>"
             },
-            "parent": "node_42"
+            "parent": "node_70"
         },
         {
-            "dialog_node": "node_44",
+            "dialog_node": "node_72",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_42"
+            "previous_sibling": "node_70"
         },
         {
-            "dialog_node": "node_45",
+            "dialog_node": "node_73",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:safety",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"safety\")?>"
             },
-            "parent": "node_44"
+            "parent": "node_72"
         },
         {
-            "dialog_node": "node_46",
+            "dialog_node": "node_74",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_44"
+            "previous_sibling": "node_72"
         },
         {
-            "dialog_node": "node_47",
+            "dialog_node": "node_75",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:socializing",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
             },
-            "parent": "node_46"
+            "parent": "node_74"
         },
         {
-            "dialog_node": "node_48",
+            "dialog_node": "node_76",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_46"
+            "previous_sibling": "node_74"
         },
         {
-            "dialog_node": "node_49",
+            "dialog_node": "node_77",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:time-management",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
             },
-            "parent": "node_48"
+            "parent": "node_76"
         },
         {
-            "dialog_node": "node_50",
+            "dialog_node": "node_78",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
-            "previous_sibling": "node_48"
+            "previous_sibling": "node_76"
         },
         {
-            "dialog_node": "node_51",
+            "dialog_node": "node_79",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_50"
+            "parent": "node_78"
         },
         {
             "dialog_node": "demoted_values",
@@ -1564,123 +1564,123 @@
             "previous_sibling": "correct_all_demoted"
         },
         {
-            "dialog_node": "node_52",
+            "dialog_node": "node_80",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
             "previous_sibling": "repeat_demoted_values"
         },
         {
-            "dialog_node": "node_53",
+            "dialog_node": "node_81",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"comfort\")?>"
             },
-            "parent": "node_52"
+            "parent": "node_80"
         },
         {
-            "dialog_node": "node_54",
+            "dialog_node": "node_82",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_52"
+            "previous_sibling": "node_80"
         },
         {
-            "dialog_node": "node_55",
+            "dialog_node": "node_83",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:health",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"health\")?>"
             },
-            "parent": "node_54"
+            "parent": "node_82"
         },
         {
-            "dialog_node": "node_56",
+            "dialog_node": "node_84",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_54"
+            "previous_sibling": "node_82"
         },
         {
-            "dialog_node": "node_57",
+            "dialog_node": "node_85",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:independence",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"independence\")?>"
             },
-            "parent": "node_56"
+            "parent": "node_84"
         },
         {
-            "dialog_node": "node_58",
+            "dialog_node": "node_86",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_56"
+            "previous_sibling": "node_84"
         },
         {
-            "dialog_node": "node_59",
+            "dialog_node": "node_87",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:safety",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"safety\")?>"
             },
-            "parent": "node_58"
+            "parent": "node_86"
         },
         {
-            "dialog_node": "node_60",
+            "dialog_node": "node_88",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_58"
+            "previous_sibling": "node_86"
         },
         {
-            "dialog_node": "node_61",
+            "dialog_node": "node_89",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:socializing",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
             },
-            "parent": "node_60"
+            "parent": "node_88"
         },
         {
-            "dialog_node": "node_62",
+            "dialog_node": "node_90",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_60"
+            "previous_sibling": "node_88"
         },
         {
-            "dialog_node": "node_63",
+            "dialog_node": "node_91",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:time-management",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
             },
-            "parent": "node_62"
+            "parent": "node_90"
         },
         {
-            "dialog_node": "node_64",
+            "dialog_node": "node_92",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
-            "previous_sibling": "node_62"
+            "previous_sibling": "node_90"
         },
         {
-            "dialog_node": "node_65",
+            "dialog_node": "node_93",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_64"
+            "parent": "node_92"
         },
         {
             "dialog_node": "parts_of",
@@ -2209,11 +2209,876 @@
             "type": "standard"
         },
         {
+            "dialog_node": "values_support_intro",
+            "title": "Values about support intro",
+            "conditions": "$command == \"valuesupport\"",
+            "output": {
+                "text": {
+                    "values": [
+                        "Now, I would like to ask you about what values are positively or negatively supported for different types of assistance."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "promoted_values_support": "<? new JsonArray() ?>",
+                "promoted_support_finished": "false",
+                "demoted_values_support": "<? new JsonArray() ?>",
+                "demoted_support_finished": "false",
+                "iterator": 0,
+                "support": {
+                    "types": [
+                        {
+                            "description": "The system would assist you when this is helpful",
+                            "short_desc": "system would assist you",
+                            "identificator": "system",
+                            "promoted": "<? new JsonArray() ?>",
+                            "demoted": "<? new JsonArray() ?>"
+                        },
+                        {
+                            "description": "The system could not help you, so you had to do a more difficult action by yourself",
+                            "short_desc": "you do the action alone",
+                            "identificator": "alone",
+                            "promoted": "<? new JsonArray() ?>",
+                            "demoted": "<? new JsonArray() ?>"
+                        },
+                        {
+                            "description": "The system could not help you, so you ask a stranger for help",
+                            "short_desc": "you ask someone for help",
+                            "identificator": "bystander",
+                            "promoted": "<? new JsonArray() ?>",
+                            "demoted": "<? new JsonArray() ?>"
+                        }
+                    ]
+                }
+            },
+            "previous_sibling": "support_not",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "promoted_values_support",
+            "title": "Promoted values for support",
+            "conditions": "$promoted_support_finished == \"false\" and ($iterator < $support.types.size()) ",
+            "output": {
+                "text": {
+                    "values": [
+                        "What values would be positively supported if: <?$support.types[$iterator].description?>. Choose values in this list: <?$value_list.join(', ')?>.",
+                        "What values would be positively supported if: <?$support.types[$iterator].description?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "promoted_array": "<? new JsonArray() ?>"
+            },
+            "parent": "values_support_intro",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "does_not_know_promoted_support",
+            "title": "Does not know or silence",
+            "type": "standard",
+            "conditions": "#does_not_know || @silence",
+            "output": {
+                "text": {
+                    "values": [
+                        "You can choose values in this list: <?$value_list.join(', ')?>. You can also say none or no value."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "promoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "promoted_values_support"
+        },
+        {
+            "dialog_node": "no_promoted_support_values",
+            "title": "No promoted support values (noValues)",
+            "type": "standard",
+            "conditions": "#does_not_make_sense and !@value",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said there is no positively supported value. Can I continue next?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "parent": "promoted_values_support",
+            "previous_sibling": "does_not_know_promoted_support"
+        },
+        {
+            "dialog_node": "continue_with_demoted_support",
+            "title": "None",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "OK."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "promoted_finished": "true"
+            },
+            "parent": "no_promoted_support_values"
+        },
+        {
+            "dialog_node": "node_3_1518098783473",
+            "title": "None",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "values_support_intro",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "no_promoted_support_values",
+            "previous_sibling": "continue_with_demoted_support"
+        },
+        {
+            "dialog_node": "store_promoted_support_values",
+            "title": "store promoted support values",
+            "type": "frame",
+            "conditions": "anything_else",
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "promoted_values_support",
+            "previous_sibling": "no_promoted_support_values"
+        },
+        {
+            "dialog_node": "repeat_promoted_support_values",
+            "title": "repeat promoted values",
+            "type": "standard",
+            "conditions": "anything_else",
+            "parent": "store_promoted_support_values",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "only_one_promoted_support",
+            "title": "Only one promoted value",
+            "type": "response_condition",
+            "conditions": "$promoted_array.size() == 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Is value <?$promoted_array.join(', ')?> promoted when <?$support.types[$iterator].short_desc?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "repeat_promoted_support_values"
+        },
+        {
+            "dialog_node": "more_promoted_values_support",
+            "title": "More promoted values",
+            "type": "response_condition",
+            "conditions": "$promoted_array.size() > 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Are values <?$promoted_array.join(', ')?> promoted when <?$support.types[$iterator].short_desc?>?"
+                    ]
+                }
+            },
+            "metadata": {},
+            "parent": "repeat_promoted_support_values",
+            "previous_sibling": "only_one_promoted_support"
+        },
+        {
+            "dialog_node": "correct_all_promoted_support",
+            "title": "correct all promoted support values",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Great.",
+                        "Perfect.",
+                        "Thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "promoted_support_finnished": "true",
+                "demoted_support_finnished": "false",
+                "temp": "<?$support.types[$iterator].promoted = $support.types[$iterator].promoted.append($promoted_array)?>"
+            },
+            "next_step": {
+                "dialog_node": "demoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "repeat_promoted_support_values",
+            "previous_sibling": "more_promoted_values_support"
+        },
+        {
+            "dialog_node": "incorrect_all_promoted_support",
+            "title": "incorrect all promoted",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "promoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "repeat_promoted_support_values",
+            "previous_sibling": "correct_all_promoted_support"
+        },
+        {
+            "dialog_node": "node_94",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "repeat_promoted_support_values"
+        },
+        {
+            "dialog_node": "node_95",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:comfort",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"comfort\")?>"
+            },
+            "parent": "node_94"
+        },
+        {
+            "dialog_node": "node_96",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_94"
+        },
+        {
+            "dialog_node": "node_97",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:health",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"health\")?>"
+            },
+            "parent": "node_96"
+        },
+        {
+            "dialog_node": "node_98",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_96"
+        },
+        {
+            "dialog_node": "node_99",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:independence",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"independence\")?>"
+            },
+            "parent": "node_98"
+        },
+        {
+            "dialog_node": "node_100",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_98"
+        },
+        {
+            "dialog_node": "node_101",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:safety",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"safety\")?>"
+            },
+            "parent": "node_100"
+        },
+        {
+            "dialog_node": "node_102",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_100"
+        },
+        {
+            "dialog_node": "node_103",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:socializing",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
+            },
+            "parent": "node_102"
+        },
+        {
+            "dialog_node": "node_104",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_102"
+        },
+        {
+            "dialog_node": "node_105",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_104"
+        },
+        {
+            "dialog_node": "node_106",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_104"
+        },
+        {
+            "dialog_node": "node_107",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:wealth",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"wealth\")?>"
+            },
+            "parent": "node_106"
+        },
+        {
+            "dialog_node": "demoted_values_support",
+            "title": "Demoted values for support",
+            "conditions": "$demoted_support_finished == \"false\" and $promoted_support_finished == \"true\" and $iterator < $support.types.size()",
+            "output": {
+                "text": {
+                    "values": [
+                        "What values would be negatively supported if: <?$support.types[$iterator].description?>. Choose values in this list: <?$value_list.join(', ')?>.",
+                        "What values would be negatively supported if: <?$support.types[$iterator].description?>."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>",
+                "demoted_array": "<? new JsonArray() ?>"
+            },
+            "parent": "values_support_intro",
+            "previous_sibling": "promoted_values_support",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "does_not_know_demoted_support",
+            "title": "Does not know or silence",
+            "type": "standard",
+            "conditions": "#does_not_know || @silence",
+            "output": {
+                "text": {
+                    "values": [
+                        "You can choose values in this list: <?$value_list.join(' ,')?>"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "demoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "demoted_values_support"
+        },
+        {
+            "dialog_node": "no_demoted_support_values",
+            "title": "No demoted values (noValues)",
+            "type": "standard",
+            "conditions": "#does_not_make_sense and !@value",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said there is no negatively supported value, is that correct?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "parent": "demoted_values_support",
+            "previous_sibling": "does_not_know_demoted_support"
+        },
+        {
+            "dialog_node": "correct_no_demoted_support_values",
+            "title": "Correct - no demoted support values",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Ok.",
+                        "Ok, thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "promoted_support_finnished": "false",
+                "demoted_support_finnished": "true",
+                "iterator": "<?$iterator + 1?>"
+            },
+            "parent": "no_demoted_support_values"
+        },
+        {
+            "dialog_node": "incorrect_no_demoted_support",
+            "title": "Incorrect - no demoted support values",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "demoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "no_demoted_support_values",
+            "previous_sibling": "correct_no_demoted_support_values"
+        },
+        {
+            "dialog_node": "store_demoted_support_values",
+            "title": "store demoted support values",
+            "type": "frame",
+            "conditions": "anything_else",
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
+            "parent": "demoted_values_support",
+            "previous_sibling": "no_demoted_support_values"
+        },
+        {
+            "dialog_node": "repeat_demoted_support_values",
+            "title": "repeat demoted support values",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {},
+            "parent": "store_demoted_support_values",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "only_one_demoted_support",
+            "title": "Only one demoted support value",
+            "type": "response_condition",
+            "conditions": "$demoted_array.size() == 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Is value <?$demoted_array.join(', ')?> demoted when <?$support.types[$iterator].short_desc?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "repeat_demoted_support_values"
+        },
+        {
+            "dialog_node": "more_demoted_support_values",
+            "title": "More demoted support values",
+            "type": "response_condition",
+            "conditions": "$demoted_array.size() > 1",
+            "output": {
+                "text": {
+                    "values": [
+                        "Are values <?$demoted_array.join(', ')?> demoted when <?$support.types[$iterator].short_desc?>?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "repeat_demoted_support_values",
+            "previous_sibling": "only_one_demoted_support"
+        },
+        {
+            "dialog_node": "correct_all_demoted_support",
+            "title": "correct all demoted support values",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Thank you.",
+                        "Ok, thanks."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "promoted_support_finnished": "false",
+                "demoted_support_finnished": "true",
+                "temp": "<?$support.types[$iterator].demoted = $support.types[$iterator].demoted.append($demoted_array)?>",
+                "iterator": "<?$iterator + 1?>"
+            },
+            "next_step": {
+                "dialog_node": "promoted_values_support",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "repeat_demoted_support_values",
+            "previous_sibling": "more_demoted_support_values"
+        },
+        {
+            "dialog_node": "incorrect_all_demoted_support",
+            "title": "incorrect all demoted support values",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "Sorry, let's try it again.",
+                        "No worries, let's try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "demoted_values_support",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "repeat_demoted_support_values",
+            "previous_sibling": "correct_all_demoted_support"
+        },
+        {
+            "dialog_node": "node_108",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "repeat_demoted_support_values"
+        },
+        {
+            "dialog_node": "node_109",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:comfort",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"comfort\")?>"
+            },
+            "parent": "node_108"
+        },
+        {
+            "dialog_node": "node_110",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_108"
+        },
+        {
+            "dialog_node": "node_111",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:health",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"health\")?>"
+            },
+            "parent": "node_110"
+        },
+        {
+            "dialog_node": "node_112",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_110"
+        },
+        {
+            "dialog_node": "node_113",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:independence",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"independence\")?>"
+            },
+            "parent": "node_112"
+        },
+        {
+            "dialog_node": "node_114",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_112"
+        },
+        {
+            "dialog_node": "node_115",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:safety",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"safety\")?>"
+            },
+            "parent": "node_114"
+        },
+        {
+            "dialog_node": "node_116",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_114"
+        },
+        {
+            "dialog_node": "node_117",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:socializing",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
+            },
+            "parent": "node_116"
+        },
+        {
+            "dialog_node": "node_118",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_116"
+        },
+        {
+            "dialog_node": "node_119",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_118"
+        },
+        {
+            "dialog_node": "node_120",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_118"
+        },
+        {
+            "dialog_node": "node_121",
+            "event_name": "input",
+            "type": "event_handler",
+            "conditions": "@value:wealth",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"wealth\")?>"
+            },
+            "parent": "node_120"
+        },
+        {
+            "dialog_node": "all_support_values_done",
+            "title": "All support values done",
+            "conditions": "$iterator == $support.types.size()",
+            "output": {
+                "text": {
+                    "values": [
+                        "OK. Thats all from this part."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true"
+            },
+            "parent": "values_support_intro",
+            "previous_sibling": "demoted_values_support",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_values_intro",
+            "title": "Rating values introduction",
+            "conditions": "$command == \"valuerating\"",
+            "output": {
+                "text": {
+                    "values": [
+                        "You mentioned a <? $value_array.size() ?> values, I will read them one by one and assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "example": "For example, I would rate independence with number 10, because its super important for me to be independent.",
+                "paraphrase": "I will read you values you said before and you will assign nuber from 1 to 10 based on the importance. Ok?",
+                "repeat": "<? output.text ?>",
+                "rating_array": "<? new JsonArray() ?>",
+                "iterator": 0
+            },
+            "previous_sibling": "values_support_intro",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_question",
+            "title": "Rating question",
+            "conditions": "$iterator < $value_array.size()",
+            "output": {
+                "text": {
+                    "values": [
+                        "How important is <? $value_array.get($iterator) ?> for you, on the level from 1 to 10?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
+            "parent": "rating_values_intro",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_in_bounds",
+            "title": "Rating in bounds",
+            "conditions": "@sys-number and @sys-number > 0 and @sys-number < 11",
+            "output": {
+                "text": {
+                    "values": [
+                        "Ok, you said @sys-number for <? $value_array.get($iterator) ?> is it correct?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "rating": "@sys-number"
+            },
+            "parent": "rating_question",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_correct",
+            "title": "Ratign corect",
+            "conditions": "@yes_no:yes or input.text.contains('correct')",
+            "context": {
+                "rating_array": "<? $rating_array.append($rating) ?>",
+                "iterator": "<?$iterator + 1?>"
+            },
+            "next_step": {
+                "dialog_node": "rating_question",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "rating_in_bounds",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_incorrect",
+            "title": "Ratign incorect",
+            "conditions": "@yes_no:no or input.text.contains('not correct')",
+            "output": {
+                "text": {
+                    "values": [
+                        "Ok, try again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "rating_question",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "rating_in_bounds",
+            "previous_sibling": "rating_correct",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_out_of_bounds",
+            "title": "Rating out of bounds",
+            "conditions": "@sys-number",
+            "output": {
+                "text": {
+                    "values": [
+                        "This was not the number from 1 to 10, we will try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "rating_question",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "rating_question",
+            "previous_sibling": "rating_in_bounds",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_not_number",
+            "title": "Rating not number",
+            "conditions": "!@sys-number",
+            "output": {
+                "text": {
+                    "values": [
+                        "Please rate the value on the level from 1 to 10, we will try it again."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "next_step": {
+                "dialog_node": "rating_question",
+                "behavior": "jump_to",
+                "selector": "condition"
+            },
+            "parent": "rating_question",
+            "previous_sibling": "rating_out_of_bounds",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "rating_all_done",
+            "title": "Rating all done",
+            "conditions": "$iterator == $value_array.size()",
+            "output": {
+                "text": {
+                    "values": [
+                        "Thats all, thank you."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true"
+            },
+            "parent": "rating_values_intro",
+            "previous_sibling": "rating_question",
+            "type": "standard"
+        },
+        {
             "dialog_node": "node_9_1517569800899",
             "title": "dialog init from the UI",
             "type": "standard",
             "conditions": "$command  == \"init\"",
-            "previous_sibling": "support_not"
+            "previous_sibling": "rating_values_intro"
         },
         {
             "dialog_node": "node_1_1518710380713",
@@ -2228,43 +3093,11 @@
                     "selection_policy": "sequential"
                 }
             },
-            "metadata": {},
             "previous_sibling": "node_9_1517569800899"
         },
         {
-            "dialog_node": "node_39_1517653572235",
-            "title": "agent description",
-            "type": "standard",
-            "conditions": "#agent_description",
-            "output": {
-                "text": {
-                    "values": [
-                        "I am HabInt, I'm conversational user interface - a agent which based on structure interview creates the knowledge about your activities in order to promote positive and denote negative ones. Part of me was created in Prague and part in Delft."
-                    ],
-                    "selection_policy": "sequential"
-                }
-            },
-            "metadata": {},
-            "previous_sibling": "node_1_1518710380713"
-        },
-        {
-            "dialog_node": "node_1_1517655208009",
-            "title": "experiment description",
-            "type": "standard",
-            "conditions": "#experiment_description",
-            "output": {
-                "text": {
-                    "values": [
-                        "The aim of the experiment is to test my first version, where I learn the habits and preferences of my users. To day we will focus on the structured dialogue about daily/weekly activities which are sometimes stressful, which will help me to learn more about you. When you came across something odd in my reactions please remember it for later when the experiment leader will ask you for all your experiences."
-                    ],
-                    "selection_policy": "sequential"
-                }
-            },
-            "metadata": {},
-            "previous_sibling": "node_39_1517653572235"
-        },
-        {
-            "dialog_node": "V ostatních případech",
+            "dialog_node": "in_other_cases",
+            "title": "In other cases",
             "type": "standard",
             "conditions": "anything_else",
             "output": {
@@ -2277,8 +3110,7 @@
                     "selection_policy": "sequential"
                 }
             },
-            "metadata": {},
-            "previous_sibling": "node_1_1517655208009"
+            "previous_sibling": "node_1_1518710380713"
         },
         {
             "dialog_node": "repeat",
@@ -2289,12 +3121,12 @@
                 "behavior": "skip_user_input",
                 "selector": "user_input"
             },
-            "previous_sibling": "V ostatních případech",
+            "previous_sibling": "in_other_cases",
             "digress_in": "returns",
             "type": "standard"
         },
         {
-            "dialog_node": "node_33",
+            "dialog_node": "node_61",
             "title": "Repeat not null",
             "conditions": "$repeat != null",
             "output": {
@@ -2304,14 +3136,14 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_34",
+            "dialog_node": "node_62",
             "title": "Repeat null",
             "conditions": "true",
             "output": {
                 "text": "I can't repeat that."
             },
             "parent": "repeat",
-            "previous_sibling": "node_33",
+            "previous_sibling": "node_61",
             "type": "standard"
         },
         {
@@ -2331,7 +3163,7 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_35",
+            "dialog_node": "node_63",
             "title": "Paraphrase not null",
             "conditions": "$paraphrase != null",
             "output": {
@@ -2341,14 +3173,14 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_36",
+            "dialog_node": "node_64",
             "title": "Paraphrase null",
             "conditions": "true",
             "output": {
                 "text": "I don't have any more details."
             },
             "parent": "paraphrase",
-            "previous_sibling": "node_35",
+            "previous_sibling": "node_63",
             "type": "standard"
         },
         {
@@ -2383,7 +3215,7 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_37",
+            "dialog_node": "node_65",
             "title": "Anything else",
             "conditions": "anything_else",
             "output": {

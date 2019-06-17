@@ -3,52 +3,21 @@
     <type>standard</type>
     <condition>$command  == "init"</condition>
   </node>
-  
-
-  
+    
   <node name="node_1_1518710380713" title="all done">
     <type>standard</type>
-    <condition>$command == "done"</condition>
-    
+    <condition>$command == "done"</condition>    
     <output>
       <textValues>
         <values structure="listItem">That's it. Now the experiment leader will continue with the rest. Thank you very much for participating.</values>
         <selection_policy>sequential</selection_policy>
       </textValues>
     </output>
-    
-    <metadata structure="emptyDict"/>
   </node>
-  <node name="node_39_1517653572235" title="agent description">
+  
+  <node name="in_other_cases" title="In other cases">
     <type>standard</type>
-    <condition>#agent_description</condition>
-    
-    <output>
-      <textValues>
-        <values structure="listItem">I am HabInt, I'm conversational user interface - a agent which based on structure interview creates the knowledge about your activities in order to promote positive and denote negative ones. Part of me was created in Prague and part in Delft.</values>
-        <selection_policy>sequential</selection_policy>
-      </textValues>
-    </output>
-    
-    <metadata structure="emptyDict"/>
-  </node>
-  <node name="node_1_1517655208009" title="experiment description">
-    <type>standard</type>
-    <condition>#experiment_description</condition>
-    
-    <output>
-      <textValues>
-        <values structure="listItem">The aim of the experiment is to test my first version, where I learn the habits and preferences of my users. To day we will focus on the structured dialogue about daily/weekly activities which are sometimes stressful, which will help me to learn more about you. When you came across something odd in my reactions please remember it for later when the experiment leader will ask you for all your experiences.</values>
-        <selection_policy>sequential</selection_policy>
-      </textValues>
-    </output>
-    
-    <metadata structure="emptyDict"/>
-  </node>
-  <node name="V ostatních případech">
-    <type>standard</type>
-    <condition>anything_else</condition>
-    
+    <condition>anything_else</condition>    
     <output>
       <textValues>
         <values structure="listItem">I don't understand, try to reformulate your question.</values>
@@ -57,7 +26,5 @@
         <selection_policy>sequential</selection_policy>
       </textValues>
     </output>
-    
-    <metadata structure="emptyDict"/>
   </node>
 </nodes>

@@ -1,0 +1,119 @@
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <node name="rating_values_intro" title="Rating values introduction">
+        <condition>$command == "valuerating"</condition>
+        <context>
+            <example>For example, I would rate independence with number 10, because its super important for me to be independent.</example>
+            <paraphrase>I will read you values you said before and you will assign nuber from 1 to 10 based on the importance. Ok?</paraphrase>
+            <repeat>&lt;? output.text ?&gt;</repeat>
+            <rating_array>&lt;? new JsonArray() ?&gt;</rating_array>
+            <iterator type="number">0</iterator>
+        </context>
+        <output>
+          <textValues>
+            <values structure="listItem">You mentioned a &lt;? $value_array.size() ?&gt; values, I will read them one by one and assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?</values>
+            <selection_policy>sequential</selection_policy>
+          </textValues>
+        </output>
+        <nodes>
+            <node name="rating_question" title="Rating question">
+                <condition>$iterator &lt; $value_array.size()</condition>
+                <context>
+                    <repeat>&lt;? output.text ?&gt;</repeat>
+                </context>
+                <output>
+                  <textValues>
+                    <values structure="listItem">How important is &lt;? $value_array.get($iterator) ?&gt; for you, on the level from 1 to 10?</values>
+                    <selection_policy>sequential</selection_policy>
+                  </textValues>
+                </output>
+                <nodes>
+                    <node name="rating_in_bounds" title="Rating in bounds">
+                        <condition>@sys-number and @sys-number &gt; 0 and @sys-number &lt; 11</condition>  
+                        <context>
+                            <rating>@sys-number</rating>
+                        </context>                      
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Ok, you said @sys-number for &lt;? $value_array.get($iterator) ?&gt; is it correct?</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                        <nodes>
+                            <node name="rating_correct" title="Ratign corect">
+                                <condition>@yes_no:yes or input.text.contains('correct')</condition>
+                                <context>
+                                    <rating_array>&lt;? $rating_array.append($rating) ?&gt;</rating_array>
+                                    <iterator>&lt;?$iterator + 1?&gt;</iterator>
+                                </context>
+                                <goto>
+                                    <behavior>jump_to</behavior>
+                                    <target>rating_question</target>
+                                    <selector>condition</selector>
+                                </goto>
+                            </node>
+                            <node name="rating_incorrect" title="Ratign incorect">
+                                <condition>@yes_no:no or input.text.contains('not correct')</condition>
+                                <output>
+                                  <textValues>
+                                    <values structure="listItem">Ok, try again.</values>
+                                    <selection_policy>sequential</selection_policy>
+                                  </textValues>
+                                </output>
+                                <goto>
+                                    <behavior>jump_to</behavior>
+                                    <target>rating_question</target>
+                                    <selector>condition</selector>
+                                </goto>
+                            </node>
+                        </nodes>                        
+                    </node>
+                    <node name="rating_out_of_bounds" title="Rating out of bounds">
+                        <condition>@sys-number</condition>
+                        <output>
+                          <textValues>
+                            <values structure="listItem">This was not the number from 1 to 10, we will try it again.</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>rating_question</target>
+                            <selector>condition</selector>
+                        </goto>
+
+                    </node>
+                    <node name="rating_not_number" title="Rating not number">
+                        <condition>!@sys-number</condition>
+                        <output>
+                          <textValues>
+                            <values structure="listItem">Please rate the value on the level from 1 to 10, we will try it again.</values>
+                            <selection_policy>sequential</selection_policy>
+                          </textValues>
+                        </output>
+                        <goto>
+                            <behavior>jump_to</behavior>
+                            <target>rating_question</target>
+                            <selector>condition</selector>
+                        </goto>
+
+                    </node>
+                </nodes>
+
+            </node>
+            <node name="rating_all_done" title="Rating all done">
+                    <condition>$iterator == $value_array.size()</condition>
+                    <context>
+                        <correct>true</correct>
+                    </context>
+                    <output>
+                      <textValues>
+                        <values structure="listItem">Thats all, thank you.</values>
+                        <selection_policy>sequential</selection_policy>
+                      </textValues>
+                    </output>
+                </node>
+        </nodes>    
+
+    </node>
+
+</nodes>

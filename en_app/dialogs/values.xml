@@ -7,6 +7,7 @@
         <demoted_array>&lt;? new JsonArray() ?&gt;</demoted_array>
         <promoted_finished>false</promoted_finished>
         <demoted_finished>false</demoted_finished>
+        <repeat>&lt;? output.text ?&gt;</repeat>
     </context>
     <output>
       <textValues>
@@ -20,6 +21,9 @@
     <nodes>
         <node name="promoted_values" title="Promoted values">
             <condition>@yes_no:yes and $promoted_finished == "false"</condition>
+            <context>
+              <repeat>&lt;? output.text ?&gt;</repeat>
+            </context>
                 <output>
                     <textValues>
                       <values structure="listItem">What values from the list would generally be positively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -30,10 +34,12 @@
                 <node name="does_not_know_promoted" title="None">
                   <type>standard</type>
                   <condition>#does_not_know || @silence</condition>
-                  
+                  <context>
+                    <repeat>&lt;? output.text ?&gt;</repeat>
+                  </context>
                   <output>
                     <textValues>
-                      <values structure="listItem">You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value.
+                      <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;. You can also say none or no value.
                         </values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
@@ -48,7 +54,9 @@
                 <node name="no_promoted_values" title="No promoted values (noValues)">
                   <type>standard</type>
                   <condition>#does_not_make_sense and !@value</condition>
-                 
+                  <context>
+                    <repeat>&lt;? output.text ?&gt;</repeat>
+                  </context>
                   <output>
                     <textValues>
                       <values structure="listItem">You said there is no positively supported value. Can I continue next?</values>
@@ -76,7 +84,6 @@
                     <node name="node_3_1518098783471" title="None">
                       <type>standard</type>
                       <condition>anything_else</condition>
-                      
                       <output>
                         <textValues>
                           <values structure="listItem">No worries, let's try it again.</values>
@@ -182,7 +189,9 @@
                   <node name="only_one_promoted" title="Only one promoted value">
                     <type>response_condition</type>
                     <condition>$promoted_array.size() == 1</condition>
-                    
+                    <context>
+                      <repeat>&lt;? output.text ?&gt;</repeat>
+                    </context>
                     <output>
                       <textValues>
                         <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -195,7 +204,9 @@
                   <node name="more_promoted_values" title="More promoted values">
                     <type>response_condition</type>
                     <condition>$promoted_array.size() &gt; 1</condition>
-                    
+                    <context>
+                      <repeat>&lt;? output.text ?&gt;</repeat>
+                    </context>
                     <output>
                       <textValues>
                         <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -248,6 +259,9 @@
         </node>
         <node name="demoted_values" title="Demoted values">
                 <condition>$demoted_finished == "false" and $promoted_finished == "true"</condition>
+                <context>
+                  <repeat>&lt;? output.text ?&gt;</repeat>
+                </context>
                 <output>
                     <textValues>
                       <values structure="listItem">What values from the list would generally be negatively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -258,10 +272,12 @@
                     <node name="does_not_know_demoted" title="None">
                       <type>standard</type>
                       <condition>#does_not_know || @silence</condition>
-                      
+                      <context>
+                        <repeat>&lt;? output.text ?&gt;</repeat>
+                      </context>
                       <output>
                         <textValues>
-                          <values structure="listItem">You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value.
+                          <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;. You can also say none or no value.
                             </values>
                           <selection_policy>sequential</selection_policy>
                         </textValues>
@@ -292,6 +308,7 @@
                           <context>
                             <demoted_finished>true</demoted_finished>
                             <correct>true</correct>
+                            <repeat>&lt;? output.text ?&gt;</repeat>
                           </context>
                           <output>
                             <textValues>
@@ -411,7 +428,9 @@
                       <node name="only_one_demoted" title="Only one demoted value">
                         <type>response_condition</type>
                         <condition>$demoted_array.size() == 1</condition>
-                        
+                        <context>
+                          <repeat>&lt;? output.text ?&gt;</repeat>
+                        </context>
                         <output>
                           <textValues>
                             <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -424,7 +443,9 @@
                       <node name="more_demoted_values" title="More demoted values">
                         <type>response_condition</type>
                         <condition>$demoted_array.size() &gt; 1</condition>
-                        
+                        <context>
+                          <repeat>&lt;? output.text ?&gt;</repeat>
+                        </context>
                         <output>
                           <textValues>
                             <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
@@ -439,6 +460,7 @@
                         <context>
                             <demoted_finished>true</demoted_finished>
                             <correct>true</correct>
+                            <repeat>&lt;? output.text ?&gt;</repeat>
                         </context>                        
                         <output>
                           <textValues>

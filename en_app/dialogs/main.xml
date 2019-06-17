@@ -18,6 +18,12 @@
     <!-- nodes for support -->
     <import>support.xml</import>
 
+    <!-- nodes for support values -->
+    <import>values_support.xml</import>
+
+    <!-- nodes for rating values -->
+    <import>rating_values.xml</import>
+
     <!-- rest dialog, should be splitted -->
     <import>dialog.xml</import>
 
