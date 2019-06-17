@@ -5,7 +5,7 @@
         <context>
             <repeat>&lt;? output.text ?&gt;</repeat>
             <example></example>
-            <paraphrase>Hi, , I would like to get from you a description of your travel behavior. Can we start with tutorial?</paraphrase>
+            <paraphrase>Hi, I would like to get from you a description of your travel behavior. Can we start with tutorial?</paraphrase>
             
         </context>
         <output>
@@ -27,18 +27,19 @@
             <tutorial>               
                 <steps>
                     <instruction>In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Can I continue?</instruction>
+                    <example>For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi.</example>
                 </steps>
                 <steps>
                     <instruction>For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them.</instruction>
                     <example>For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values.</example>
                 </steps>
                 <steps>
-                    <instruction>I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you. Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.</instruction>
-                    <example></example>
+                    <instruction>I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you.</instruction>
+                    <example>Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.</example>
                 </steps>
                 <steps>
                     <instruction>System can fully help you with some activities, for example finding where you are or identifying which way to continue. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. So I will also ask if you can do this activity or not and how difficult it would be. For activities where system can not help you at all, I will ask If you are able to do it alone or you need to ask someone else to help. </instruction>
-                    <example></example>
+                    <example>You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. Sometimes you might also have to ask for assistance from someone else on the street to continue safely.</example>
                 </steps>
                 <steps>
                     <instruction>It is all from the tutorial, now we can start with the description of your travel behavior. Please say if you are ready.</instruction>

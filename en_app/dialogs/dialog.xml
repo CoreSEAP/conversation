@@ -27,4 +27,14 @@
       </textValues>
     </output>
   </node>
+
+  <node name="value_list" title="Value list">
+      <condition>#LIST_OF_VALUES</condition>    
+      <output>
+        <textValues>
+          <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;. You can also say none or no value.</values>
+        </textValues>
+      </output>
+
+  </node>
 </nodes>

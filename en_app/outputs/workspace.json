@@ -200,6 +200,26 @@
             ]
         },
         {
+            "intent": "LIST_OF_VALUES",
+            "examples": [
+                {
+                    "text": "give me the list of values."
+                },
+                {
+                    "text": "what is the list of values."
+                },
+                {
+                    "text": "what are the values?"
+                },
+                {
+                    "text": "what are the options for values?"
+                },
+                {
+                    "text": "list of values."
+                }
+            ]
+        },
+        {
             "intent": "NOACTIVITY",
             "examples": [
                 {
@@ -441,9 +461,6 @@
                     "text": "i do not understand"
                 },
                 {
-                    "text": "how many should it be?"
-                },
-                {
                     "text": "how should i do that?"
                 },
                 {
@@ -460,9 +477,6 @@
                 },
                 {
                     "text": "i do not know what to do"
-                },
-                {
-                    "text": "what?"
                 }
             ]
         },
@@ -529,10 +543,6 @@
                     "text": "what is the course of the experiment?"
                 }
             ]
-        },
-        {
-            "intent": "user_describes_activities",
-            "examples": []
         }
     ],
     "entities": [
@@ -714,7 +724,7 @@
             "context": {
                 "repeat": "<? output.text ?>",
                 "example": "",
-                "paraphrase": "Hi, , I would like to get from you a description of your travel behavior. Can we start with tutorial?"
+                "paraphrase": "Hi, I would like to get from you a description of your travel behavior. Can we start with tutorial?"
             },
             "type": "standard"
         },
@@ -736,19 +746,20 @@
                 "tutorial": {
                     "steps": [
                         {
-                            "instruction": "In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Can I continue?"
+                            "instruction": "In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Can I continue?",
+                            "example": "For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi."
                         },
                         {
                             "instruction": "For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them.",
                             "example": "For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values."
                         },
                         {
-                            "instruction": "I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you. Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.",
-                            "example": ""
+                            "instruction": "I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you.",
+                            "example": "Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance."
                         },
                         {
                             "instruction": "System can fully help you with some activities, for example finding where you are or identifying which way to continue. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. So I will also ask if you can do this activity or not and how difficult it would be. For activities where system can not help you at all, I will ask If you are able to do it alone or you need to ask someone else to help.",
-                            "example": ""
+                            "example": "You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. Sometimes you might also have to ask for assistance from someone else on the street to continue safely."
                         },
                         {
                             "instruction": "It is all from the tutorial, now we can start with the description of your travel behavior. Please say if you are ready.",
@@ -1050,7 +1061,8 @@
                 "promoted_array": "<? new JsonArray() ?>",
                 "demoted_array": "<? new JsonArray() ?>",
                 "promoted_finished": "false",
-                "demoted_finished": "false"
+                "demoted_finished": "false",
+                "repeat": "<? output.text ?>"
             },
             "previous_sibling": "concretisation",
             "digress_in": "does_not_return",
@@ -1068,6 +1080,9 @@
                     "selection_policy": "sequential"
                 }
             },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
             "parent": "get_values_start",
             "type": "standard"
         },
@@ -1075,14 +1090,17 @@
             "dialog_node": "does_not_know_promoted",
             "title": "None",
             "type": "standard",
-            "conditions": "#does_not_know || @silence",
+            "conditions": "#does_not_know || @silence || #LIST_OF_VALUES",
             "output": {
                 "text": {
                     "values": [
-                        "You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value."
+                        "You can choose values in this list: <?$value_list.join(' ,')?>. You can also say none or no value."
                     ],
                     "selection_policy": "sequential"
                 }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "next_step": {
@@ -1104,6 +1122,9 @@
                     ],
                     "selection_policy": "sequential"
                 }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "parent": "promoted_values",
@@ -1185,6 +1206,9 @@
                     "selection_policy": "sequential"
                 }
             },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
             "metadata": {},
             "parent": "repeat_promoted_values"
         },
@@ -1199,6 +1223,9 @@
                         "Are values <?$promoted_array.join(', ')?> promoted when choosing <?$value?> to: <?$concret?>?"
                     ]
                 }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "parent": "repeat_promoted_values",
@@ -1383,6 +1410,9 @@
                     "selection_policy": "sequential"
                 }
             },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
             "parent": "get_values_start",
             "previous_sibling": "promoted_values",
             "type": "standard"
@@ -1391,14 +1421,17 @@
             "dialog_node": "does_not_know_demoted",
             "title": "None",
             "type": "standard",
-            "conditions": "#does_not_know || @silence",
+            "conditions": "#does_not_know || @silence || #LIST_OF_VALUES",
             "output": {
                 "text": {
                     "values": [
-                        "You can choose values in this list: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value."
+                        "You can choose values in this list: <?$value_list.join(' ,')?>. You can also say none or no value."
                     ],
                     "selection_policy": "sequential"
                 }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "next_step": {
@@ -1440,7 +1473,8 @@
             },
             "context": {
                 "demoted_finished": "true",
-                "correct": "true"
+                "correct": "true",
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "parent": "no_demoted_values"
@@ -1502,6 +1536,9 @@
                     "selection_policy": "sequential"
                 }
             },
+            "context": {
+                "repeat": "<? output.text ?>"
+            },
             "metadata": {},
             "parent": "repeat_demoted_values"
         },
@@ -1516,6 +1553,9 @@
                         "Are values <?$demoted_array.join(', ')?> demoted when choosing <?$value?> to: <?$concret?>?"
                     ]
                 }
+            },
+            "context": {
+                "repeat": "<? output.text ?>"
             },
             "metadata": {},
             "parent": "repeat_demoted_values",
@@ -1536,7 +1576,8 @@
             },
             "context": {
                 "demoted_finished": "true",
-                "correct": "true"
+                "correct": "true",
+                "repeat": "<? output.text ?>"
             },
             "parent": "repeat_demoted_values",
             "previous_sibling": "more_demoted_values"
@@ -2280,7 +2321,7 @@
             "dialog_node": "does_not_know_promoted_support",
             "title": "Does not know or silence",
             "type": "standard",
-            "conditions": "#does_not_know || @silence",
+            "conditions": "#does_not_know || @silence || #LIST_OF_VALUES",
             "output": {
                 "text": {
                     "values": [
@@ -2599,7 +2640,7 @@
             "dialog_node": "does_not_know_demoted_support",
             "title": "Does not know or silence",
             "type": "standard",
-            "conditions": "#does_not_know || @silence",
+            "conditions": "#does_not_know || @silence || #LIST_OF_VALUES",
             "output": {
                 "text": {
                     "values": [
@@ -3113,6 +3154,20 @@
             "previous_sibling": "node_1_1518710380713"
         },
         {
+            "dialog_node": "value_list",
+            "title": "Value list",
+            "conditions": "#LIST_OF_VALUES",
+            "output": {
+                "text": {
+                    "values": [
+                        "You can choose values in this list: <?$value_list.join(' ,')?>. You can also say none or no value."
+                    ]
+                }
+            },
+            "previous_sibling": "in_other_cases",
+            "type": "standard"
+        },
+        {
             "dialog_node": "repeat",
             "title": "Repeat",
             "conditions": "#COMMON_REPEAT",
@@ -3121,7 +3176,7 @@
                 "behavior": "skip_user_input",
                 "selector": "user_input"
             },
-            "previous_sibling": "in_other_cases",
+            "previous_sibling": "value_list",
             "digress_in": "returns",
             "type": "standard"
         },

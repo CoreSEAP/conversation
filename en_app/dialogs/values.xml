@@ -33,7 +33,7 @@
             <nodes>
                 <node name="does_not_know_promoted" title="None">
                   <type>standard</type>
-                  <condition>#does_not_know || @silence</condition>
+                  <condition>#does_not_know || @silence || #LIST_OF_VALUES</condition>
                   <context>
                     <repeat>&lt;? output.text ?&gt;</repeat>
                   </context>
@@ -271,7 +271,7 @@
                 <nodes>
                     <node name="does_not_know_demoted" title="None">
                       <type>standard</type>
-                      <condition>#does_not_know || @silence</condition>
+                      <condition>#does_not_know || @silence || #LIST_OF_VALUES</condition>
                       <context>
                         <repeat>&lt;? output.text ?&gt;</repeat>
                       </context>

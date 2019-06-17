@@ -56,7 +56,7 @@
                 <nodes>
                     <node name="does_not_know_promoted_support" title="Does not know or silence">
                       <type>standard</type>
-                      <condition>#does_not_know || @silence</condition>                      
+                      <condition>#does_not_know || @silence || #LIST_OF_VALUES</condition>                      
                       <output>
                         <textValues>
                           <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(', ')?&gt;. You can also say none or no value.
@@ -281,7 +281,7 @@
               <nodes>
                   <node name="does_not_know_demoted_support" title="Does not know or silence">
                     <type>standard</type>
-                    <condition>#does_not_know || @silence</condition>                    
+                    <condition>#does_not_know || @silence || #LIST_OF_VALUES</condition>                    
                     <output>
                       <textValues>
                         <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;</values>

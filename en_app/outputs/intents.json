@@ -196,6 +196,26 @@
         ]
     },
     {
+        "intent": "LIST_OF_VALUES",
+        "examples": [
+            {
+                "text": "give me the list of values."
+            },
+            {
+                "text": "what is the list of values."
+            },
+            {
+                "text": "what are the values?"
+            },
+            {
+                "text": "what are the options for values?"
+            },
+            {
+                "text": "list of values."
+            }
+        ]
+    },
+    {
         "intent": "NOACTIVITY",
         "examples": [
             {
@@ -437,9 +457,6 @@
                 "text": "i do not understand"
             },
             {
-                "text": "how many should it be?"
-            },
-            {
                 "text": "how should i do that?"
             },
             {
@@ -456,9 +473,6 @@
             },
             {
                 "text": "i do not know what to do"
-            },
-            {
-                "text": "what?"
             }
         ]
     },
@@ -525,9 +539,5 @@
                 "text": "what is the course of the experiment?"
             }
         ]
-    },
-    {
-        "intent": "user_describes_activities",
-        "examples": []
     }
 ]
