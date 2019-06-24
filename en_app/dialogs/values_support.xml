@@ -11,7 +11,7 @@
             <iterator type="number">0</iterator>
             <support>
                 <types>
-                    <description>The system would assist you when this is helpful</description>
+                    <description>The system would assist you when it is helpful</description>
                     <short_desc>system would assist you</short_desc>
                     <identificator>system</identificator>
                     <promoted>&lt;? new JsonArray() ?&gt;</promoted>
@@ -92,6 +92,11 @@
                               <selection_policy>sequential</selection_policy>
                             </textValues>
                           </output>
+                          <goto>
+                            <behavior>jump_to</behavior>
+                            <target>demoted_values_support</target>
+                            <selector>body</selector>
+                          </goto>
                         </node>
                         <node name="node_3_1518098783473" title="None">
                           <type>standard</type>
@@ -319,6 +324,11 @@
                             <selection_policy>sequential</selection_policy>
                           </textValues>
                         </output>
+                        <goto>
+                          <behavior>jump_to</behavior>
+                          <target>promoted_values_support</target>
+                          <selector>condition</selector>
+                        </goto>
                       </node>
                       <node name="incorrect_no_demoted_support" title="Incorrect - no demoted support values">
                         <type>standard</type>

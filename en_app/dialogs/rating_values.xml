@@ -10,7 +10,7 @@
         </context>
         <output>
           <textValues>
-            <values structure="listItem">You mentioned a &lt;? $value_array.size() ?&gt; values, I will read them one by one and assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?</values>
+            <values structure="listItem">You mentioned a &lt;? $value_array.size() ?&gt; values, I will read them one by one and you will assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?</values>
             <selection_policy>sequential</selection_policy>
           </textValues>
         </output>

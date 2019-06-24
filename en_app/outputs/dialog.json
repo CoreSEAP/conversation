@@ -2,82 +2,79 @@
     {
         "dialog_node": "welcome",
         "title": "Welcome",
-        "conditions": "($command == \"startquest\") and !(#READY_FOR_TUTORIAL)",
-        "output": {
-            "text": {
-                "values": [
-                    "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?",
-                    "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?"
-                ],
-                "selection_policy": "random"
-            }
-        },
+        "conditions": "$command == \"startquest\"",
         "context": {
             "repeat": "<? output.text ?>",
             "example": "",
-            "paraphrase": "Hi, I would like to get from you a description of your travel behavior. Can we start with tutorial?"
-        },
-        "type": "standard"
-    },
-    {
-        "dialog_node": "ready to start tutorial",
-        "title": "Ready to start tutorial",
-        "conditions": "#READY_FOR_TUTORIAL",
-        "output": {
-            "text": {
-                "values": "At first I would like to inform you that you can always ask me for an explanation. If you will not understand something, you can ask for repetition or I will try to rephrase my question. This six step tutorial should give you overview of how the system works, can we go next?",
-                "selection_policy": "random"
-            }
-        },
-        "context": {
-            "command": "",
-            "example": "Other people said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. Can I continue?",
-            "tutorialFinished": "false",
-            "tutorialIterator": -1,
+            "paraphrase": "Hi, I would like to get from you a description of your travel behavior. We will start with tutorial.",
+            "correct": "false",
+            "tutorialIterator": 0,
             "tutorial": {
                 "steps": [
                     {
-                        "instruction": "In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Can I continue?",
+                        "instruction": "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial.",
+                        "example": ""
+                    },
+                    {
+                        "instruction": "At first I would like to inform you that you can always ask me for an explanation. If you will not understand something, you can ask for repetition or I will try to rephrase my question. This six step tutorial should give you overview of how the system works, can we go next?",
+                        "example": "For example say 'repeat' and I will repeat the question, or say 'give me example' and I will try to give you example."
+                    },
+                    {
+                        "instruction": "In the beginning, we will talk about the different routes to some destination. For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi. Say 'next' to proceed.",
                         "example": "For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi."
                     },
                     {
-                        "instruction": "For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them.",
+                        "instruction": "For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them. Can we go next?",
                         "example": "For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values."
                     },
                     {
-                        "instruction": "I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you.",
+                        "instruction": "I will also ask you about activities which are part of the routes you take to destination. Specifically about the activities where some assistance or help would be useful to you. Can we go next?",
                         "example": "Activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance."
                     },
                     {
-                        "instruction": "System can fully help you with some activities, for example finding where you are or identifying which way to continue. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. So I will also ask if you can do this activity or not and how difficult it would be. For activities where system can not help you at all, I will ask If you are able to do it alone or you need to ask someone else to help.",
-                        "example": "You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. Sometimes you might also have to ask for assistance from someone else on the street to continue safely."
-                    },
-                    {
-                        "instruction": "It is all from the tutorial, now we can start with the description of your travel behavior. Please say if you are ready.",
-                        "example": ""
+                        "instruction": "System can fully help you with some activities, for example finding where you are or identifying which way to continue. With other activities system can support you only partly for instance crossing the street. So I will also ask if you can do this activity or not and how difficult it would be. For activities where system can not help you at all, I will ask If you are able to do it alone or you need to ask someone else to help.",
+                        "example": "You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. Sometimes you might also have to ask for assistance from someone else on the street to continue safely."
                     }
                 ]
             }
         },
-        "previous_sibling": "welcome",
+        "next_step": {
+            "dialog_node": "first_child",
+            "behavior": "skip_user_input",
+            "selector": "user_input"
+        },
+        "type": "standard"
+    },
+    {
+        "dialog_node": "tutorial_step_start",
+        "title": "Tutorial step start",
+        "conditions": "$correct == \"false\" and ($tutorialIterator < $tutorial.steps.size()) ",
+        "output": {
+            "text": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+        },
+        "context": {
+            "repeat": "<? output.text ?>",
+            "example": "<? $tutorial.steps[$tutorialIterator].example ?>"
+        },
+        "parent": "welcome",
         "type": "standard"
     },
     {
         "dialog_node": "tutorial_next",
         "title": "Tutorial next",
-        "conditions": "#COMMON_CONTROL_NEXT or #TUTORIAL_NEXT",
+        "conditions": "#COMMON_CONTROL_NEXT or #TUTORIAL_NEXT or @yes_no:yes",
         "context": {
             "repeat": "<? output.text ?>",
             "example": "",
             "paraphrase": "I am trying to explain how the description of your travelling behavior will work.",
-            "tutorialIterator": "<? $tutorialIterator = T(java.lang.Math).min($tutorialIterator + 1, $tutorial.steps.size()-1) ?>"
+            "tutorialIterator": "<? $tutorialIterator = $tutorialIterator + 1 ?>"
         },
         "next_step": {
-            "dialog_node": "tutorial_step_output",
+            "dialog_node": "tutorial_step_start",
             "behavior": "jump_to",
-            "selector": "body"
+            "selector": "condition"
         },
-        "previous_sibling": "ready to start tutorial",
+        "parent": "tutorial_step_start",
         "type": "standard"
     },
     {
@@ -90,15 +87,16 @@
             "paraphrase": "I just repeated the current tutorial step."
         },
         "next_step": {
-            "dialog_node": "tutorial_step_output",
+            "dialog_node": "tutorial_step_start",
             "behavior": "jump_to",
             "selector": "body"
         },
+        "parent": "tutorial_step_start",
         "previous_sibling": "tutorial_next",
         "type": "standard"
     },
     {
-        "dialog_node": "cooking_previous",
+        "dialog_node": "tutorial_previous",
         "title": "Tutorial previous",
         "conditions": "#COMMON_CONTROL_PREVIOUS",
         "context": {
@@ -108,42 +106,64 @@
             "tutorialIterator": "<? $tutorialIterator = T(java.lang.Math).max($tutorialIterator - 1, 0) ?>"
         },
         "next_step": {
-            "dialog_node": "tutorial_step_output",
+            "dialog_node": "tutorial_step_start",
             "behavior": "jump_to",
-            "selector": "body"
+            "selector": "condition"
         },
+        "parent": "tutorial_step_start",
         "previous_sibling": "tutorial_repeat",
         "type": "standard"
     },
     {
-        "dialog_node": "tutorial_step_output",
-        "title": "tutorial step output",
-        "conditions": "false",
+        "dialog_node": "tutorial_example",
+        "title": "Example",
+        "conditions": "#COMMON_EXAMPLE",
         "output": {
-            "text": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
+            "text": "<? $example != null ? $example : \"I don't have any examples.\" ?>"
         },
         "context": {
             "repeat": "<? output.text ?>",
-            "example": "<? $tutorial.steps[$tutorialIterator].example ?>"
+            "tutorialIterator": "<? $tutorialIterator = $tutorialIterator + 1 ?>"
         },
-        "previous_sibling": "cooking_previous",
+        "parent": "tutorial_step_start",
+        "previous_sibling": "tutorial_previous",
         "type": "standard"
     },
     {
-        "dialog_node": "tutorial_finish",
-        "title": "Finished tutorial node",
+        "dialog_node": "tutorial_already_finish",
+        "title": "Finished tutorial already",
         "conditions": "#TUTORIAL_ALREADY_FINISHED",
         "output": {
             "text": "<? $tutorial.steps[$tutorialIterator].instruction ?>"
         },
         "context": {
-            "tutorialFinished": "true",
+            "correct": "true",
             "repeat": "<? output.text ?>",
             "example": "",
             "paraphrase": "I just told you the last step.",
             "tutorialIterator": "<? $tutorialIterator = $tutorial.steps.size()-1 ?>"
         },
-        "previous_sibling": "tutorial_step_output",
+        "parent": "tutorial_step_start",
+        "previous_sibling": "tutorial_example",
+        "type": "standard"
+    },
+    {
+        "dialog_node": "turorial_finished",
+        "title": "Tutorial finished",
+        "conditions": "$tutorialIterator == $tutorial.steps.size()",
+        "output": {
+            "text": {
+                "values": [
+                    "It is all from the tutorial, now we can start with the description of your travel behavior."
+                ],
+                "selection_policy": "sequential"
+            }
+        },
+        "context": {
+            "correct": "true"
+        },
+        "parent": "welcome",
+        "previous_sibling": "tutorial_step_start",
         "type": "standard"
     },
     {
@@ -163,7 +183,7 @@
         "context": {
             "concret_array": "<? new JsonArray() ?>"
         },
-        "previous_sibling": "tutorial_finish",
+        "previous_sibling": "welcome",
         "digress_in": "does_not_return"
     },
     {
@@ -343,7 +363,7 @@
         "output": {
             "text": {
                 "values": [
-                    "Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value. Can I continue?"
+                    "Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: <?$value_list.join(', ')?>. You can also say none or no value. Can I continue?"
                 ],
                 "selection_policy": "sequential"
             }
@@ -1562,7 +1582,7 @@
             "support": {
                 "types": [
                     {
-                        "description": "The system would assist you when this is helpful",
+                        "description": "The system would assist you when it is helpful",
                         "short_desc": "system would assist you",
                         "identificator": "system",
                         "promoted": "<? new JsonArray() ?>",
@@ -1659,6 +1679,11 @@
         },
         "context": {
             "promoted_finished": "true"
+        },
+        "next_step": {
+            "dialog_node": "demoted_values_support",
+            "behavior": "jump_to",
+            "selector": "body"
         },
         "parent": "no_promoted_support_values"
     },
@@ -1981,6 +2006,11 @@
             "promoted_support_finnished": "false",
             "demoted_support_finnished": "true",
             "iterator": "<?$iterator + 1?>"
+        },
+        "next_step": {
+            "dialog_node": "promoted_values_support",
+            "behavior": "jump_to",
+            "selector": "condition"
         },
         "parent": "no_demoted_support_values"
     },
@@ -2410,6 +2440,14 @@
         "title": "dialog init from the UI",
         "type": "standard",
         "conditions": "$command  == \"init\"",
+        "output": {
+            "text": {
+                "values": [
+                    "Welcome."
+                ],
+                "selection_policy": "sequential"
+            }
+        },
         "previous_sibling": "rating_values_intro"
     },
     {

@@ -11,7 +11,7 @@
     </context>
     <output>
       <textValues>
-        <values structure="listItem">Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: comfort, health, independence, safety, socializing, time-management and wealth. You can also say none or no value. Can I continue?
+        <values structure="listItem">Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: &lt;?$value_list.join(', ')?&gt;. You can also say none or no value. Can I continue?
         </values>
         <selection_policy>sequential</selection_policy>
       </textValues>

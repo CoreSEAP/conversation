@@ -2,6 +2,12 @@
   <node name="node_9_1517569800899" title="dialog init from the UI">
     <type>standard</type>
     <condition>$command  == "init"</condition>
+    <output>
+      <textValues>
+        <values structure="listItem">Welcome.</values>
+        <selection_policy>sequential</selection_policy>
+      </textValues>
+    </output>
   </node>
     
   <node name="node_1_1518710380713" title="all done">

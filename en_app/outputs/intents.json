@@ -270,23 +270,6 @@
         ]
     },
     {
-        "intent": "REPAIR",
-        "examples": [
-            {
-                "text": "it is not correct."
-            },
-            {
-                "text": "i did not say that, correct it."
-            },
-            {
-                "text": "i did not say that."
-            },
-            {
-                "text": "that is not correct."
-            }
-        ]
-    },
-    {
         "intent": "THATSALL",
         "examples": [
             {
