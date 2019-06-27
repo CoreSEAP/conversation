@@ -54,8 +54,23 @@
             <repeat>&lt;? output.text ?&gt;</repeat>
         </context>
         <digress_in>returns</digress_in>
-        <output>
-            <text>&lt;? $example != null ? $example : "I don't have any examples." ?&gt;</text>
-        </output>
+        <goto>
+            <behavior>skip_user_input</behavior>
+            <target>first_child</target>
+        </goto>
+        <nodes>
+            <node title="example not null">
+                <condition>$example != null</condition>
+                <output>
+                    <text>&lt;? $example ?&gt;</text>
+                </output>
+            </node>
+            <node title="example null">
+                <condition>true</condition>
+                <output>
+                    <text>I don't have any example.</text>
+                </output>
+            </node>
+        </nodes>
     </node>
 </nodes>

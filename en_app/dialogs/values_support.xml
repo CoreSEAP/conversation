@@ -1,13 +1,16 @@
 <nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <node name="values_support_intro" title="Values about support intro">
-        <condition>$command == "valuesupport"</condition>
+        <condition>$command == "valuesupport" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE) and !(#COMMON_REPEAT)</condition>
+        <digress_in>returns</digress_in>
+        <digress_out>allow_all</digress_out>
         <context>
             <repeat>&lt;? output.text ?&gt;</repeat>
             <promoted_values_support>&lt;? new JsonArray() ?&gt;</promoted_values_support> 
             <promoted_support_finished>false</promoted_support_finished>           
             <demoted_values_support>&lt;? new JsonArray() ?&gt;</demoted_values_support>
             <demoted_support_finished>false</demoted_support_finished>
-            
+            <example>You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. Sometimes you might also have to ask for assistance from someone else on the street to continue safely.</example>
+            <paraphrase></paraphrase>
             <iterator type="number">0</iterator>
             <support>
                 <types>
@@ -39,17 +42,21 @@
               <selection_policy>sequential</selection_policy>
             </textValues>
         </output>
+        <goto>
+          <behavior>skip_user_input</behavior>
+          <target>first_child</target>
+        </goto>
         <nodes>
             <node name="promoted_values_support" title="Promoted values for support">
                 <condition>$promoted_support_finished == "false" and ($iterator &lt; $support.types.size()) </condition>
                 <context>
                     <repeat>&lt;? output.text ?&gt;</repeat>
+                    
                     <promoted_array>&lt;? new JsonArray() ?&gt;</promoted_array>
                 </context>
                     <output>
                         <textValues>
-                          <values structure="listItem">What values would be positively supported if: &lt;?$support.types[$iterator].description?&gt;. Choose values in this list: &lt;?$value_list.join(', ')?&gt;.</values>
-                          <values structure="listItem">What values would be positively supported if: &lt;?$support.types[$iterator].description?&gt;.</values>
+                          <values structure="listItem">What values would be positively supported if: &lt;?$support.types[$iterator].description?&gt;. </values>
                           <selection_policy>sequential</selection_policy>
                         </textValues>
                     </output>    
@@ -117,7 +124,7 @@
                       </nodes>
                     </node>
                     <node name="store_promoted_support_values" title="store promoted support values">
-                      <condition>anything_else</condition>
+                      <condition>@value</condition>
                       <slots>
                       <slot variable="$promoted_array">
                           <handlers>
@@ -206,7 +213,7 @@
                         
                         <output>
                           <textValues>
-                            <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; promoted when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
+                            <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; possitively supported when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
                             <selection_policy>sequential</selection_policy>
                           </textValues>
                         </output>
@@ -219,7 +226,7 @@
                         
                         <output>
                           <textValues>
-                            <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; promoted when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
+                            <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; possitively supported when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
                           </textValues>
                         </output>
                         
@@ -229,8 +236,8 @@
                         <type>standard</type>
                         <condition>@yes_no == 'yes'</condition>
                         <context>
-                            <promoted_support_finnished>true</promoted_support_finnished>
-                            <demoted_support_finnished>false</demoted_support_finnished>
+                            <promoted_support_finished>true</promoted_support_finished>
+                            <demoted_support_finished>false</demoted_support_finished>
                             <temp>&lt;?$support.types[$iterator].promoted = $support.types[$iterator].promoted.append($promoted_array)?&gt;</temp>
                             
                         </context>                        
@@ -274,11 +281,11 @@
               <condition>$demoted_support_finished == "false" and $promoted_support_finished == "true" and $iterator &lt; $support.types.size()</condition>
               <context>
                 <repeat>&lt;? output.text ?&gt;</repeat>
+
                 <demoted_array>&lt;? new JsonArray() ?&gt;</demoted_array>
               </context>              
               <output>
                   <textValues>
-                    <values structure="listItem">What values would be negatively supported if: &lt;?$support.types[$iterator].description?&gt;. Choose values in this list: &lt;?$value_list.join(', ')?&gt;.</values>
                     <values structure="listItem">What values would be negatively supported if: &lt;?$support.types[$iterator].description?&gt;.</values>
                     <selection_policy>sequential</selection_policy>
                   </textValues>
@@ -313,8 +320,8 @@
                         <type>standard</type>
                         <condition>@yes_no == 'yes'</condition>
                         <context>
-                          <promoted_support_finnished>false</promoted_support_finnished>
-                          <demoted_support_finnished>true</demoted_support_finnished>                          
+                          <promoted_support_finished>false</promoted_support_finished>
+                          <demoted_support_finished>true</demoted_support_finished>                          
                           <iterator>&lt;?$iterator + 1?&gt;</iterator>
                         </context>
                         <output>
@@ -349,7 +356,7 @@
                     </nodes>
                   </node>
                   <node name="store_demoted_support_values" title="store demoted support values">
-                    <condition>anything_else</condition>
+                    <condition>@value</condition>
                     <slots>
                     <slot variable="$demoted_array">
                         <handlers>
@@ -441,7 +448,7 @@
                       
                       <output>
                         <textValues>
-                          <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; demoted when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
+                          <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; negatively supported when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
                             <selection_policy>sequential</selection_policy>
                         </textValues>
                       </output>
@@ -454,7 +461,7 @@
                       
                       <output>
                         <textValues>
-                          <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; demoted when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
+                          <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; negatively supported when &lt;?$support.types[$iterator].short_desc?&gt;?</values>
                             <selection_policy>sequential</selection_policy>
                         </textValues>
                       </output>
@@ -465,8 +472,8 @@
                       <type>standard</type>
                       <condition>@yes_no == 'yes'</condition>
                       <context>
-                        <promoted_support_finnished>false</promoted_support_finnished>
-                        <demoted_support_finnished>true</demoted_support_finnished>
+                        <promoted_support_finished>false</promoted_support_finished>
+                        <demoted_support_finished>true</demoted_support_finished>
                         <temp>&lt;?$support.types[$iterator].demoted = $support.types[$iterator].demoted.append($demoted_array)?&gt;</temp>
                         <iterator>&lt;?$iterator + 1?&gt;</iterator>
                       </context>                        
@@ -512,7 +519,7 @@
               </context>
               <output>
                   <textValues>
-                    <values structure="listItem">OK. Thats all from this part.</values>                    
+                    <values structure="listItem">Thats all from this part.</values>                    
                     <selection_policy>sequential</selection_policy>
                   </textValues>
               </output> 

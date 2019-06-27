@@ -23,8 +23,8 @@
                 <condition>$iterator &lt; $usercappart_array.size()</condition>
                 <output>
                     <textValues>
-                        <values structure="listItem">System can partly help with activities: &lt;? $usercappart_array.join(', ') ?&gt;. For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with: &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this, or not?</values>
-                        <values structure="listItem">For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this, or not?</values>
+                        <values structure="listItem">System can partly help with activities: &lt;? $usercappart_array.join(', ') ?&gt;. For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with: &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this? Choose from yes, maybe but slower, or not able.</values>
+                        <values structure="listItem">For activity: &lt;? $usercappart_array.get($iterator) ?&gt;, system can help with &lt;? $support_descriptions.get($iterator) ?&gt;. Would you be able to complete the activity if system do this? Choose from yes, maybe but slower, or not able.</values>
                         
                     </textValues>
                 </output>
@@ -151,7 +151,7 @@
                 </output>
                 <nodes>
                     <node name="capable_no_support" title="User capable (no support)">
-                        <condition>@yes_no:yes or input.text.contains('slower') or input.text.contains('but slower')</condition>
+                        <condition>@yes_no:yes or input.text.contains('alone')</condition>
                         <context>
                             <capable_array>&lt;? $capable_array.append($usercapnot_array.get($iterator - 1)) ?&gt;</capable_array>
                             <iterator>&lt;?$iterator + 1?&gt;</iterator>

@@ -23,7 +23,7 @@
   
   <node name="in_other_cases" title="In other cases">
     <type>standard</type>
-    <condition>anything_else</condition>    
+    <condition>intents[0].confidence &lt; 0.5</condition>    
     <output>
       <textValues>
         <values structure="listItem">I don't understand, try to reformulate your question.</values>

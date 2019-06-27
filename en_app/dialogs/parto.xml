@@ -1,19 +1,71 @@
 <nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <node name="parts_of" title="parto">
     <type>standard</type>
-    <condition>$command == "parto"</condition>
+    <condition>$command == "parto" and !(#COMMON_EXAMPLE) and !(#COMMON_REPEAT) and !(#COMMON_PARAPHRASE)</condition>
     <context>
-      <parto_array>&lt;? new JsonArray() ?&gt;</parto_array>
+      
+      <example>For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.</example>
+      <paraphrase>Now I would like to get activities where you might need some help or assistance. Please go one by one.</paraphrase>
     </context>
-    <digress_in>does_not_return</digress_in>
+    <digress_out>allow_all</digress_out>
+    <digress_in>returns</digress_in>
     <output>
       <textValues>
-        <values structure="listItem">Now let’s talk about activities where assistance might be helpful. Please go one by one, what is the first activity you do when you choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
-        <values structure="listItem">For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance. What is the first activity you do when choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+        <values structure="listItem">Now let’s talk about activities where assistance might be helpful, please go one by one. What is the first activity you do when you choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
+        <values structure="listItem">What is the &lt;? ($parto_array.size()==0)? "first" : "next" ?&gt; activity you do when you choose route &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful? Please say one by one.</values>
+        <append>true</append>
         <selection_policy>sequential</selection_policy>
       </textValues>
     </output>
     <nodes>
+        <node name="no_parts" title="No parts">
+            <type>standard</type>
+            <condition>#does_not_make_sense and !(#USER_DESCRIBING_PARTS)</condition>
+           
+            <output>
+              <textValues>
+                <values structure="listItem">You said there are no such activities, is that correct?</values>
+                <selection_policy>sequential</selection_policy>
+              </textValues>
+            </output>
+            
+            <metadata structure="emptyDict"/>
+            <nodes>
+              <node name="correct_no_parts" title="Correct - no parts">
+                <type>standard</type>
+                <condition>@yes_no == 'yes'</condition>
+                <context>
+                  <correct>true</correct>
+                  <repeat>&lt;? output.text ?&gt;</repeat>
+                </context>
+                <output>
+                  <textValues>
+                    <values structure="listItem">Thank you.</values>
+                    <selection_policy>sequential</selection_policy>
+                  </textValues>
+                </output>
+              </node>
+              <node name="incorrect_no_parts" title="Incorrect - no parts">
+                <type>standard</type>
+                <condition>anything_else</condition> 
+                <context>
+                    <parto_array>&lt;? new JsonArray() ?&gt;</parto_array>
+                </context>               
+                <output>
+                  <textValues>
+                    <values structure="listItem">No worries, let's try it again.</values>
+                    <selection_policy>sequential</selection_policy>
+                  </textValues>
+                </output>
+                <goto>
+                  <behavior>jump_to</behavior>
+                  <target>parts_of</target>
+                  <selector>body</selector>
+                </goto>
+                <metadata structure="emptyDict"/>
+              </node>
+            </nodes>
+          </node>
       <node name="store_parts_of" title="store parts of">
         <type>standard</type>
         <condition>(intents[0].confidence &lt; 0.5) or #USER_DESCRIBING_PARTS</condition>
@@ -43,8 +95,8 @@
                 <output>
                   <textValues>
                     <values structure="listItem">Great, you can say: that's all, when you are done. What is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
-                    <values structure="listItem">Great. What is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where you might need help?</values>
                     <values structure="listItem">Great, what is the next activity? Say thats all, when you are done.</values>
+                    <append>true</append>
                     <selection_policy>sequential</selection_policy>
                   </textValues>
                 </output>
@@ -54,7 +106,7 @@
                 </goto>
               </node>
               <node name="incorrect_answer_part_of" title="Incorrect answer - part of">
-                  <condition>@yes_no:no</condition>
+                  <condition>@yes_no:no or (intents[0].confidence &lt; 0.5)</condition>
                   <output>
                       <textValues>
                         <values structure="listItem">Oh sorry, let's try it again. what is the next activity you do when you choose: &lt;?$parto?&gt; to &lt;?$concret?&gt; and where assistance could be helpful?</values>
@@ -123,7 +175,10 @@
                 </node>
                 <node name="incorrect all parts of" title="incorrect_all_parts">
                   <type>standard</type>
-                  <condition>anything_else</condition>
+                  <condition>anything_else or (intents[0].confidence &lt; 0.5)</condition>
+                  <context>
+                      <parto_array>&lt;? new JsonArray() ?&gt;</parto_array>
+                  </context>
                   <output>
                     <textValues>
                       <values structure="listItem">Sorry, let's try it again.</values>

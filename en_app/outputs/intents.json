@@ -120,13 +120,16 @@
                 "text": "explain that please"
             },
             {
+                "text": "please explain"
+            },
+            {
+                "text": "explain it"
+            },
+            {
                 "text": "what is that please?"
             },
             {
                 "text": "how do you mean that?"
-            },
-            {
-                "text": "why?"
             },
             {
                 "text": "why do you say that?"
@@ -139,15 +142,6 @@
             },
             {
                 "text": "can you explain that?"
-            },
-            {
-                "text": "what"
-            },
-            {
-                "text": "which?"
-            },
-            {
-                "text": "which are those?"
             }
         ]
     },
@@ -199,6 +193,15 @@
         "intent": "LIST_OF_VALUES",
         "examples": [
             {
+                "text": "can you name the values?"
+            },
+            {
+                "text": "can you give me the values?"
+            },
+            {
+                "text": "can you name them?"
+            },
+            {
                 "text": "give me the list of values."
             },
             {
@@ -211,7 +214,22 @@
                 "text": "what are the options for values?"
             },
             {
+                "text": "what are the options?"
+            },
+            {
+                "text": "what i can choose from?"
+            },
+            {
+                "text": "what i can choose?"
+            },
+            {
+                "text": "what values i can choose?"
+            },
+            {
                 "text": "list of values."
+            },
+            {
+                "text": "repeat the list."
             }
         ]
     },
@@ -359,7 +377,16 @@
                 "text": "identifying stop, identifying station, identifying bus, identifying entrance, identifying crossing, identifying where i am"
             },
             {
-                "text": "finding stop, finding station, finding bus, finding entrance, finding crossing"
+                "text": "finding stop, finding station, finding metro, finding metro station, finding bus, finding entrance, finding crossing, finding tram stop, finding bus stop, finding taxi"
+            },
+            {
+                "text": "find tram stop, find bus stop, find entrance to, find crossing, find station, find door, find taxi, find taxi driver"
+            },
+            {
+                "text": "get on the bus, get on the tram, get off the bus, get off the tram, get on the taxi"
+            },
+            {
+                "text": "getting on the bus, getting on the tram, getting on the underground, getting on the metro"
             },
             {
                 "text": "crossing the street, crossing, pedestrian crossing"

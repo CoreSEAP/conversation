@@ -30,7 +30,7 @@
     <!-- nodes to digress to -->
     <import>digressions.xml</import>
 
-    <!-- fallback -->
-    <import>fallback.xml</import>
+    <!-- fallback 
+    <import>fallback.xml</import>-->
 
 </nodes>

@@ -1,35 +1,34 @@
 <nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <node name="get_values_start" title="get values">
     <type>standard</type>
-    <condition>$command == "value"</condition>
+    <condition>$command == "value" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE) and !(#COMMON_REPEAT)</condition>
+    <digress_in>returns</digress_in>
+    <digress_out>allow_all</digress_out>
     <context>
         <promoted_array>&lt;? new JsonArray() ?&gt;</promoted_array>
         <demoted_array>&lt;? new JsonArray() ?&gt;</demoted_array>
-        <promoted_finished>false</promoted_finished>
-        <demoted_finished>false</demoted_finished>
         <repeat>&lt;? output.text ?&gt;</repeat>
+        <example>For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values.</example>
+        <paraphrase>For each route I will ask you about your personal values, because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values in: &lt;?$value_list.join(', ')?&gt;, or say ‘no value’ if it’s none of them.</paraphrase>
     </context>
-    <output>
-      <textValues>
-        <values structure="listItem">Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: &lt;?$value_list.join(', ')?&gt;. You can also say none or no value. Can I continue?
-        </values>
-        <selection_policy>sequential</selection_policy>
-      </textValues>
-    </output>    
-    <digress_in>does_not_return</digress_in>
-    <digress_out>allow_all</digress_out>
+    <goto>
+      <behavior>skip_user_input</behavior>
+      <target>first_child</target>
+    </goto>    
     <nodes>
         <node name="promoted_values" title="Promoted values">
-            <condition>@yes_no:yes and $promoted_finished == "false"</condition>
+            <condition>$promoted_finished == "false"</condition>
             <context>
               <repeat>&lt;? output.text ?&gt;</repeat>
+              <example>For example, when you choose to order a food by delivery service it can positively support your comfort and time-management.</example>
             </context>
                 <output>
                     <textValues>
-                      <values structure="listItem">What values from the list would generally be positively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                      <values structure="listItem">What values from the list would generally be positively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;? You can say more at once.</values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
-                </output>    
+                </output>
+
             <nodes>
                 <node name="does_not_know_promoted" title="None">
                   <type>standard</type>
@@ -39,14 +38,14 @@
                   </context>
                   <output>
                     <textValues>
-                      <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;. You can also say none or no value.
+                      <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(', ')?&gt;. You can also say none or no value.
                         </values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
                   </output>
                   <goto>
                     <behavior>jump_to</behavior>
-                    <target>get_values_start</target>
+                    <target>promoted_values</target>
                     <selector>body</selector>
                   </goto>
                   <metadata structure="emptyDict"/>
@@ -100,7 +99,7 @@
                   </nodes>
                 </node>
                 <node name="store_promoted_values" title="store promoted values">
-                  <condition>anything_else</condition>
+                  <condition>@value</condition>
                   <slots>
                   <slot variable="$promoted_array">
                       <handlers>
@@ -194,7 +193,7 @@
                     </context>
                     <output>
                       <textValues>
-                        <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                        <values structure="listItem">Is value &lt;?$promoted_array.join(', ')?&gt; possitively supported when choosing route &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
                         <selection_policy>sequential</selection_policy>
                       </textValues>
                     </output>
@@ -209,7 +208,7 @@
                     </context>
                     <output>
                       <textValues>
-                        <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; promoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                        <values structure="listItem">Are values &lt;?$promoted_array.join(', ')?&gt; possitively supported when choosing route &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
                       </textValues>
                     </output>
                     
@@ -247,7 +246,7 @@
                     </output>
                     <goto>
                       <behavior>jump_to</behavior>
-                      <target>promoted_values</target>
+                      <target>get_values_start</target>
                       <selector>body</selector>
                     </goto>
                   </node>
@@ -261,10 +260,11 @@
                 <condition>$demoted_finished == "false" and $promoted_finished == "true"</condition>
                 <context>
                   <repeat>&lt;? output.text ?&gt;</repeat>
+                  <example>For example, when you choose to order a food by delivery service it can negatively support your independence and socializing values.</example>
                 </context>
                 <output>
                     <textValues>
-                      <values structure="listItem">What values from the list would generally be negatively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                      <values structure="listItem">What values from the list would generally be negatively supported when you choose route: &lt;?$value?&gt; to: &lt;?$concret?&gt;? You can say more at once.</values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
                 </output> 
@@ -277,14 +277,14 @@
                       </context>
                       <output>
                         <textValues>
-                          <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(' ,')?&gt;. You can also say none or no value.
+                          <values structure="listItem">You can choose values in this list: &lt;?$value_list.join(', ')?&gt;. You can also say none or no value.
                             </values>
                           <selection_policy>sequential</selection_policy>
                         </textValues>
                       </output>
                       <goto>
                         <behavior>jump_to</behavior>
-                        <target>get_values_start</target>
+                        <target>demoted_values</target>
                         <selector>body</selector>
                       </goto>
                       <metadata structure="emptyDict"/>
@@ -339,7 +339,7 @@
                       </nodes>
                     </node>
                     <node name="store_demoted_values" title="store demoted values">
-                      <condition>anything_else</condition>
+                      <condition>@value</condition>
                       <slots>
                       <slot variable="$demoted_array">
                           <handlers>
@@ -433,7 +433,7 @@
                         </context>
                         <output>
                           <textValues>
-                            <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                            <values structure="listItem">Is value &lt;?$demoted_array.join(', ')?&gt; negatively supported when choosing route &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
                             <selection_policy>sequential</selection_policy>
                           </textValues>
                         </output>
@@ -448,7 +448,7 @@
                         </context>
                         <output>
                           <textValues>
-                            <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; demoted when choosing &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
+                            <values structure="listItem">Are values &lt;?$demoted_array.join(', ')?&gt; negatively supported when choosing route &lt;?$value?&gt; to: &lt;?$concret?&gt;?</values>
                           </textValues>
                         </output>
                         
@@ -464,7 +464,7 @@
                         </context>                        
                         <output>
                           <textValues>
-                            <values structure="listItem">Thank you, this is all regarding your personal values when choosing route: &lt;?$value?&gt; to: &lt;?$concret?&gt;</values>
+                            <values structure="listItem">Thank you.</values>
                             <selection_policy>sequential</selection_policy>
                           </textValues>
                         </output>

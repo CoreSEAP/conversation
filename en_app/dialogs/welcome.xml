@@ -1,16 +1,16 @@
 <nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <node name="welcome" title="Welcome">
-        <condition>$command == "startquest"</condition>
+        <condition>$command == "startquest" and !(#COMMON_CONTROL_NEXT or #COMMON_CONTROL_PREVIOUS or #COMMON_PARAPHRASE or #TUTORIAL_NEXT or #TUTORIAL_REPEAT or #COMMON_REPEAT or #COMMON_EXAMPLE)</condition>
+        <digress_in>returns</digress_in>
         <context>
             <repeat>&lt;? output.text ?&gt;</repeat>
             <example></example>
-            <paraphrase>Hi, I would like to get from you a description of your travel behavior. We will start with tutorial.</paraphrase>
+            <paraphrase>Hi, I would like to get from you a description of your travel behavior. Can we start with the tutorial?</paraphrase>
             <correct>false</correct>
-            <tutorialIterator type="number">0</tutorialIterator>
             <tutorial>
                 <steps>
-                    <instruction>Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial.</instruction>
+                    <instruction>Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?</instruction>
                      <example></example>
                 </steps> 
                 <steps>
@@ -22,7 +22,7 @@
                     <example>For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi.</example>
                 </steps>
                 <steps>
-                    <instruction>For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them. Can we go next?</instruction>
+                    <instruction>For each route I will ask you about your personal values, because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values: &lt;?$value_list.join(', ')?&gt;, or you can say ‘no value’ if it’s none of them. Can we go next?</instruction>
                     <example>For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values.</example>
                 </steps>
                 <steps>
@@ -45,6 +45,7 @@
                 <context>
                     <repeat>&lt;? output.text ?&gt;</repeat>
                     <example>&lt;? $tutorial.steps[$tutorialIterator].example ?&gt;</example>
+                    <paraphrase>&lt;? $tutorial.steps[$tutorialIterator].example ?&gt;</paraphrase>
                 </context>
                     <output>
                         <text>&lt;? $tutorial.steps[$tutorialIterator].instruction ?&gt;</text>
@@ -100,6 +101,10 @@
                         <output>
                             <text>&lt;? $example != null ? $example : "I don't have any examples." ?&gt;</text>
                         </output>
+                        <goto>
+                            <behavior>jump_to</behavior>    
+                            <target>tutorial_step_start</target>
+                        </goto>
                     </node>
                 
                     <node name="tutorial_already_finish" title="Finished tutorial already">

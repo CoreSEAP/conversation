@@ -124,13 +124,16 @@
                     "text": "explain that please"
                 },
                 {
+                    "text": "please explain"
+                },
+                {
+                    "text": "explain it"
+                },
+                {
                     "text": "what is that please?"
                 },
                 {
                     "text": "how do you mean that?"
-                },
-                {
-                    "text": "why?"
                 },
                 {
                     "text": "why do you say that?"
@@ -143,15 +146,6 @@
                 },
                 {
                     "text": "can you explain that?"
-                },
-                {
-                    "text": "what"
-                },
-                {
-                    "text": "which?"
-                },
-                {
-                    "text": "which are those?"
                 }
             ]
         },
@@ -203,6 +197,15 @@
             "intent": "LIST_OF_VALUES",
             "examples": [
                 {
+                    "text": "can you name the values?"
+                },
+                {
+                    "text": "can you give me the values?"
+                },
+                {
+                    "text": "can you name them?"
+                },
+                {
                     "text": "give me the list of values."
                 },
                 {
@@ -215,7 +218,22 @@
                     "text": "what are the options for values?"
                 },
                 {
+                    "text": "what are the options?"
+                },
+                {
+                    "text": "what i can choose from?"
+                },
+                {
+                    "text": "what i can choose?"
+                },
+                {
+                    "text": "what values i can choose?"
+                },
+                {
                     "text": "list of values."
+                },
+                {
+                    "text": "repeat the list."
                 }
             ]
         },
@@ -363,7 +381,16 @@
                     "text": "identifying stop, identifying station, identifying bus, identifying entrance, identifying crossing, identifying where i am"
                 },
                 {
-                    "text": "finding stop, finding station, finding bus, finding entrance, finding crossing"
+                    "text": "finding stop, finding station, finding metro, finding metro station, finding bus, finding entrance, finding crossing, finding tram stop, finding bus stop, finding taxi"
+                },
+                {
+                    "text": "find tram stop, find bus stop, find entrance to, find crossing, find station, find door, find taxi, find taxi driver"
+                },
+                {
+                    "text": "get on the bus, get on the tram, get off the bus, get off the tram, get on the taxi"
+                },
+                {
+                    "text": "getting on the bus, getting on the tram, getting on the underground, getting on the metro"
                 },
                 {
                     "text": "crossing the street, crossing, pedestrian crossing"
@@ -694,17 +721,16 @@
         {
             "dialog_node": "welcome",
             "title": "Welcome",
-            "conditions": "$command == \"startquest\"",
+            "conditions": "$command == \"startquest\" and !(#COMMON_CONTROL_NEXT or #COMMON_CONTROL_PREVIOUS or #COMMON_PARAPHRASE or #TUTORIAL_NEXT or #TUTORIAL_REPEAT or #COMMON_REPEAT or #COMMON_EXAMPLE)",
             "context": {
                 "repeat": "<? output.text ?>",
                 "example": "",
-                "paraphrase": "Hi, I would like to get from you a description of your travel behavior. We will start with tutorial.",
+                "paraphrase": "Hi, I would like to get from you a description of your travel behavior. Can we start with the tutorial?",
                 "correct": "false",
-                "tutorialIterator": 0,
                 "tutorial": {
                     "steps": [
                         {
-                            "instruction": "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial.",
+                            "instruction": "Hello, I would like to get from you a description of your travel behavior. I will try to store your behavior patterns to help you choose what route to take and to offer you assistance in places or situations where you might need it. Next part will be the tutorial, are you ready?",
                             "example": ""
                         },
                         {
@@ -716,7 +742,7 @@
                             "example": "For example, different routes to an airport are: going only by bus number 20, going by bus number 10 and train or taking a taxi."
                         },
                         {
-                            "instruction": "For each route I will ask you about your personal values,  because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values of: comfort, health, independence, safety, socializing, time-management and wealth, or say ‘no value’ if it’s none of them. Can we go next?",
+                            "instruction": "For each route I will ask you about your personal values, because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values: <?$value_list.join(', ')?>, or you can say ‘no value’ if it’s none of them. Can we go next?",
                             "example": "For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values."
                         },
                         {
@@ -735,6 +761,7 @@
                 "behavior": "skip_user_input",
                 "selector": "user_input"
             },
+            "digress_in": "returns",
             "type": "standard"
         },
         {
@@ -746,7 +773,8 @@
             },
             "context": {
                 "repeat": "<? output.text ?>",
-                "example": "<? $tutorial.steps[$tutorialIterator].example ?>"
+                "example": "<? $tutorial.steps[$tutorialIterator].example ?>",
+                "paraphrase": "<? $tutorial.steps[$tutorialIterator].example ?>"
             },
             "parent": "welcome",
             "type": "standard"
@@ -817,6 +845,11 @@
                 "repeat": "<? output.text ?>",
                 "tutorialIterator": "<? $tutorialIterator = $tutorialIterator + 1 ?>"
             },
+            "next_step": {
+                "dialog_node": "tutorial_step_start",
+                "behavior": "jump_to",
+                "selector": "user_input"
+            },
             "parent": "tutorial_step_start",
             "previous_sibling": "tutorial_previous",
             "type": "standard"
@@ -867,12 +900,13 @@
                 "text": {
                     "values": [
                         "Let’s talk about your traveling to <?$concret?> on your own. Pick a destination where you have more than one option of how to get there. Please go one by one, what is the first route you can take to <?$concret?>?",
-                        "Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. What is the first route you can take to <?$concret?>?"
+                        "What route you can take to <?$concret?>?"
                     ],
                     "selection_policy": "sequential"
                 }
             },
             "context": {
+                "example": "Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi.",
                 "concret_array": "<? new JsonArray() ?>"
             },
             "previous_sibling": "welcome",
@@ -966,10 +1000,15 @@
             "output": {
                 "text": {
                     "values": [
-                        "You said that there are no routes to: <?$concret?>, is it correct?"
+                        "You said that there are no routes. Pick a destination where you have more than one option to get there please."
                     ],
                     "selection_policy": "sequential"
                 }
+            },
+            "next_step": {
+                "dialog_node": "concretisation",
+                "behavior": "jump_to",
+                "selector": "body"
             },
             "parent": "that_is_all_ways_of"
         },
@@ -1051,40 +1090,38 @@
             "dialog_node": "get_values_start",
             "title": "get values",
             "type": "standard",
-            "conditions": "$command == \"value\"",
-            "output": {
-                "text": {
-                    "values": [
-                        "Now I would like to ask you about your personal values when choosing different routes. This is the list of values that can be positively or negatively supported when choosing a route: <?$value_list.join(', ')?>. You can also say none or no value. Can I continue?"
-                    ],
-                    "selection_policy": "sequential"
-                }
-            },
+            "conditions": "$command == \"value\" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE) and !(#COMMON_REPEAT)",
             "context": {
                 "promoted_array": "<? new JsonArray() ?>",
                 "demoted_array": "<? new JsonArray() ?>",
-                "promoted_finished": "false",
-                "demoted_finished": "false",
-                "repeat": "<? output.text ?>"
+                "repeat": "<? output.text ?>",
+                "example": "For example, when you choose to order a food by delivery service it can positively support comfort and time-management, but it can negatively support independence and socializing values.",
+                "paraphrase": "For each route I will ask you about your personal values, because I would like to better understand what is important to you. Choosing some route can positively or negatively support some of these values. You can choose the values in: <?$value_list.join(', ')?>, or say ‘no value’ if it’s none of them."
+            },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
             },
             "previous_sibling": "concretisation",
-            "digress_in": "does_not_return",
+            "digress_in": "returns",
             "digress_out": "allow_all"
         },
         {
             "dialog_node": "promoted_values",
             "title": "Promoted values",
-            "conditions": "@yes_no:yes and $promoted_finished == \"false\"",
+            "conditions": "$promoted_finished == \"false\"",
             "output": {
                 "text": {
                     "values": [
-                        "What values from the list would generally be positively supported when you choose route: <?$value?> to: <?$concret?>?"
+                        "What values from the list would generally be positively supported when you choose route: <?$value?> to: <?$concret?>? You can say more at once."
                     ],
                     "selection_policy": "sequential"
                 }
             },
             "context": {
-                "repeat": "<? output.text ?>"
+                "repeat": "<? output.text ?>",
+                "example": "For example, when you choose to order a food by delivery service it can positively support your comfort and time-management."
             },
             "parent": "get_values_start",
             "type": "standard"
@@ -1097,7 +1134,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "You can choose values in this list: <?$value_list.join(' ,')?>. You can also say none or no value."
+                        "You can choose values in this list: <?$value_list.join(', ')?>. You can also say none or no value."
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1107,7 +1144,7 @@
             },
             "metadata": {},
             "next_step": {
-                "dialog_node": "get_values_start",
+                "dialog_node": "promoted_values",
                 "behavior": "jump_to",
                 "selector": "body"
             },
@@ -1178,7 +1215,7 @@
             "dialog_node": "store_promoted_values",
             "title": "store promoted values",
             "type": "frame",
-            "conditions": "anything_else",
+            "conditions": "@value",
             "next_step": {
                 "dialog_node": "first_child",
                 "behavior": "skip_user_input",
@@ -1204,7 +1241,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Is value <?$promoted_array.join(', ')?> promoted when choosing <?$value?> to: <?$concret?>?"
+                        "Is value <?$promoted_array.join(', ')?> possitively supported when choosing route <?$value?> to: <?$concret?>?"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1223,7 +1260,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Are values <?$promoted_array.join(', ')?> promoted when choosing <?$value?> to: <?$concret?>?"
+                        "Are values <?$promoted_array.join(', ')?> possitively supported when choosing route <?$value?> to: <?$concret?>?"
                     ]
                 }
             },
@@ -1275,7 +1312,7 @@
                 }
             },
             "next_step": {
-                "dialog_node": "promoted_values",
+                "dialog_node": "get_values_start",
                 "behavior": "jump_to",
                 "selector": "body"
             },
@@ -1283,36 +1320,19 @@
             "previous_sibling": "correct_all_promoted"
         },
         {
-            "dialog_node": "node_66",
+            "dialog_node": "node_68",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_values",
             "previous_sibling": "repeat_promoted_values"
         },
         {
-            "dialog_node": "node_67",
+            "dialog_node": "node_69",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"comfort\")?>"
-            },
-            "parent": "node_66"
-        },
-        {
-            "dialog_node": "node_68",
-            "variable": "$promoted_array",
-            "type": "slot",
-            "parent": "store_promoted_values",
-            "previous_sibling": "node_66"
-        },
-        {
-            "dialog_node": "node_69",
-            "event_name": "input",
-            "type": "event_handler",
-            "conditions": "@value:health",
-            "context": {
-                "promoted_array": "<?$promoted_array.append(\"health\")?>"
             },
             "parent": "node_68"
         },
@@ -1327,9 +1347,9 @@
             "dialog_node": "node_71",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:independence",
+            "conditions": "@value:health",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"independence\")?>"
+                "promoted_array": "<?$promoted_array.append(\"health\")?>"
             },
             "parent": "node_70"
         },
@@ -1344,9 +1364,9 @@
             "dialog_node": "node_73",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:safety",
+            "conditions": "@value:independence",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"safety\")?>"
+                "promoted_array": "<?$promoted_array.append(\"independence\")?>"
             },
             "parent": "node_72"
         },
@@ -1361,9 +1381,9 @@
             "dialog_node": "node_75",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:socializing",
+            "conditions": "@value:safety",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
+                "promoted_array": "<?$promoted_array.append(\"safety\")?>"
             },
             "parent": "node_74"
         },
@@ -1378,9 +1398,9 @@
             "dialog_node": "node_77",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:time-management",
+            "conditions": "@value:socializing",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
+                "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
             },
             "parent": "node_76"
         },
@@ -1395,11 +1415,28 @@
             "dialog_node": "node_79",
             "event_name": "input",
             "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_78"
+        },
+        {
+            "dialog_node": "node_80",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_values",
+            "previous_sibling": "node_78"
+        },
+        {
+            "dialog_node": "node_81",
+            "event_name": "input",
+            "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_78"
+            "parent": "node_80"
         },
         {
             "dialog_node": "demoted_values",
@@ -1408,13 +1445,14 @@
             "output": {
                 "text": {
                     "values": [
-                        "What values from the list would generally be negatively supported when you choose route: <?$value?> to: <?$concret?>?"
+                        "What values from the list would generally be negatively supported when you choose route: <?$value?> to: <?$concret?>? You can say more at once."
                     ],
                     "selection_policy": "sequential"
                 }
             },
             "context": {
-                "repeat": "<? output.text ?>"
+                "repeat": "<? output.text ?>",
+                "example": "For example, when you choose to order a food by delivery service it can negatively support your independence and socializing values."
             },
             "parent": "get_values_start",
             "previous_sibling": "promoted_values",
@@ -1428,7 +1466,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "You can choose values in this list: <?$value_list.join(' ,')?>. You can also say none or no value."
+                        "You can choose values in this list: <?$value_list.join(', ')?>. You can also say none or no value."
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1438,7 +1476,7 @@
             },
             "metadata": {},
             "next_step": {
-                "dialog_node": "get_values_start",
+                "dialog_node": "demoted_values",
                 "behavior": "jump_to",
                 "selector": "body"
             },
@@ -1508,7 +1546,7 @@
             "dialog_node": "store_demoted_values",
             "title": "store demoted values",
             "type": "frame",
-            "conditions": "anything_else",
+            "conditions": "@value",
             "next_step": {
                 "dialog_node": "first_child",
                 "behavior": "skip_user_input",
@@ -1534,7 +1572,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Is value <?$demoted_array.join(', ')?> demoted when choosing <?$value?> to: <?$concret?>?"
+                        "Is value <?$demoted_array.join(', ')?> negatively supported when choosing route <?$value?> to: <?$concret?>?"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1553,7 +1591,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Are values <?$demoted_array.join(', ')?> demoted when choosing <?$value?> to: <?$concret?>?"
+                        "Are values <?$demoted_array.join(', ')?> negatively supported when choosing route <?$value?> to: <?$concret?>?"
                     ]
                 }
             },
@@ -1572,7 +1610,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Thank you, this is all regarding your personal values when choosing route: <?$value?> to: <?$concret?>"
+                        "Thank you."
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1608,36 +1646,19 @@
             "previous_sibling": "correct_all_demoted"
         },
         {
-            "dialog_node": "node_80",
+            "dialog_node": "node_82",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_values",
             "previous_sibling": "repeat_demoted_values"
         },
         {
-            "dialog_node": "node_81",
+            "dialog_node": "node_83",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"comfort\")?>"
-            },
-            "parent": "node_80"
-        },
-        {
-            "dialog_node": "node_82",
-            "variable": "$demoted_array",
-            "type": "slot",
-            "parent": "store_demoted_values",
-            "previous_sibling": "node_80"
-        },
-        {
-            "dialog_node": "node_83",
-            "event_name": "input",
-            "type": "event_handler",
-            "conditions": "@value:health",
-            "context": {
-                "demoted_array": "<?$demoted_array.append(\"health\")?>"
             },
             "parent": "node_82"
         },
@@ -1652,9 +1673,9 @@
             "dialog_node": "node_85",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:independence",
+            "conditions": "@value:health",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"independence\")?>"
+                "demoted_array": "<?$demoted_array.append(\"health\")?>"
             },
             "parent": "node_84"
         },
@@ -1669,9 +1690,9 @@
             "dialog_node": "node_87",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:safety",
+            "conditions": "@value:independence",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"safety\")?>"
+                "demoted_array": "<?$demoted_array.append(\"independence\")?>"
             },
             "parent": "node_86"
         },
@@ -1686,9 +1707,9 @@
             "dialog_node": "node_89",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:socializing",
+            "conditions": "@value:safety",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
+                "demoted_array": "<?$demoted_array.append(\"safety\")?>"
             },
             "parent": "node_88"
         },
@@ -1703,9 +1724,9 @@
             "dialog_node": "node_91",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:time-management",
+            "conditions": "@value:socializing",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
+                "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
             },
             "parent": "node_90"
         },
@@ -1720,22 +1741,96 @@
             "dialog_node": "node_93",
             "event_name": "input",
             "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_92"
+        },
+        {
+            "dialog_node": "node_94",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_values",
+            "previous_sibling": "node_92"
+        },
+        {
+            "dialog_node": "node_95",
+            "event_name": "input",
+            "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_92"
+            "parent": "node_94"
         },
         {
             "dialog_node": "parts_of",
             "title": "parto",
             "type": "standard",
-            "conditions": "$command == \"parto\"",
+            "conditions": "$command == \"parto\" and !(#COMMON_EXAMPLE) and !(#COMMON_REPEAT) and !(#COMMON_PARAPHRASE)",
             "output": {
                 "text": {
                     "values": [
-                        "Now let’s talk about activities where assistance might be helpful. Please go one by one, what is the first activity you do when you choose route <?$parto?> to <?$concret?> and where assistance could be helpful?",
-                        "For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance. What is the first activity you do when choose route <?$parto?> to <?$concret?> and where assistance could be helpful?"
+                        "Now let’s talk about activities where assistance might be helpful, please go one by one. What is the first activity you do when you choose route <?$parto?> to <?$concret?> and where assistance could be helpful?",
+                        "What is the <? ($parto_array.size()==0)? \"first\" : \"next\" ?> activity you do when you choose route <?$parto?> to <?$concret?> and where assistance could be helpful? Please say one by one."
+                    ],
+                    "append": "true",
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "example": "For example, activities, where assistance might be helpful for the route going by bus to an airport, could be: finding the bus stop, getting on the bus, crossing the street, and walking from the bus to the entrance.",
+                "paraphrase": "Now I would like to get activities where you might need some help or assistance. Please go one by one."
+            },
+            "previous_sibling": "get_values_start",
+            "digress_in": "returns",
+            "digress_out": "allow_all"
+        },
+        {
+            "dialog_node": "no_parts",
+            "title": "No parts",
+            "type": "standard",
+            "conditions": "#does_not_make_sense and !(#USER_DESCRIBING_PARTS)",
+            "output": {
+                "text": {
+                    "values": [
+                        "You said there are no such activities, is that correct?"
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "metadata": {},
+            "parent": "parts_of"
+        },
+        {
+            "dialog_node": "correct_no_parts",
+            "title": "Correct - no parts",
+            "type": "standard",
+            "conditions": "@yes_no == 'yes'",
+            "output": {
+                "text": {
+                    "values": [
+                        "Thank you."
+                    ],
+                    "selection_policy": "sequential"
+                }
+            },
+            "context": {
+                "correct": "true",
+                "repeat": "<? output.text ?>"
+            },
+            "parent": "no_parts"
+        },
+        {
+            "dialog_node": "incorrect_no_parts",
+            "title": "Incorrect - no parts",
+            "type": "standard",
+            "conditions": "anything_else",
+            "output": {
+                "text": {
+                    "values": [
+                        "No worries, let's try it again."
                     ],
                     "selection_policy": "sequential"
                 }
@@ -1743,8 +1838,14 @@
             "context": {
                 "parto_array": "<? new JsonArray() ?>"
             },
-            "previous_sibling": "get_values_start",
-            "digress_in": "does_not_return"
+            "metadata": {},
+            "next_step": {
+                "dialog_node": "parts_of",
+                "behavior": "jump_to",
+                "selector": "body"
+            },
+            "parent": "no_parts",
+            "previous_sibling": "correct_no_parts"
         },
         {
             "dialog_node": "store_parts_of",
@@ -1759,7 +1860,8 @@
                 "behavior": "skip_user_input",
                 "selector": "user_input"
             },
-            "parent": "parts_of"
+            "parent": "parts_of",
+            "previous_sibling": "no_parts"
         },
         {
             "dialog_node": "repeat_answer_part_of",
@@ -1783,9 +1885,9 @@
                 "text": {
                     "values": [
                         "Great, you can say: that's all, when you are done. What is the next activity you do when you choose: <?$parto?> to <?$concret?> and where assistance could be helpful?",
-                        "Great. What is the next activity you do when you choose: <?$parto?> to <?$concret?> and where you might need help?",
                         "Great, what is the next activity? Say thats all, when you are done."
                     ],
+                    "append": "true",
                     "selection_policy": "sequential"
                 }
             },
@@ -1803,7 +1905,7 @@
         {
             "dialog_node": "incorrect_answer_part_of",
             "title": "Incorrect answer - part of",
-            "conditions": "@yes_no:no",
+            "conditions": "@yes_no:no or (intents[0].confidence < 0.5)",
             "output": {
                 "text": {
                     "values": [
@@ -1903,7 +2005,7 @@
             "dialog_node": "incorrect all parts of",
             "title": "incorrect_all_parts",
             "type": "standard",
-            "conditions": "anything_else",
+            "conditions": "anything_else or (intents[0].confidence < 0.5)",
             "output": {
                 "text": {
                     "values": [
@@ -1912,6 +2014,9 @@
                     ],
                     "selection_policy": "sequential"
                 }
+            },
+            "context": {
+                "parto_array": "<? new JsonArray() ?>"
             },
             "next_step": {
                 "dialog_node": "parts_of",
@@ -1954,8 +2059,8 @@
             "output": {
                 "text": {
                     "values": [
-                        "System can partly help with activities: <? $usercappart_array.join(', ') ?>. For activity: <? $usercappart_array.get($iterator) ?>, system can help with: <? $support_descriptions.get($iterator) ?>. Would you be able to complete the activity if system do this, or not?",
-                        "For activity: <? $usercappart_array.get($iterator) ?>, system can help with <? $support_descriptions.get($iterator) ?>. Would you be able to complete the activity if system do this, or not?"
+                        "System can partly help with activities: <? $usercappart_array.join(', ') ?>. For activity: <? $usercappart_array.get($iterator) ?>, system can help with: <? $support_descriptions.get($iterator) ?>. Would you be able to complete the activity if system do this? Choose from yes, maybe but slower, or not able.",
+                        "For activity: <? $usercappart_array.get($iterator) ?>, system can help with <? $support_descriptions.get($iterator) ?>. Would you be able to complete the activity if system do this? Choose from yes, maybe but slower, or not able."
                     ]
                 }
             },
@@ -2130,7 +2235,7 @@
         {
             "dialog_node": "capable_no_support",
             "title": "User capable (no support)",
-            "conditions": "@yes_no:yes or input.text.contains('slower') or input.text.contains('but slower')",
+            "conditions": "@yes_no:yes or input.text.contains('alone')",
             "output": {
                 "text": {
                     "values": [
@@ -2255,7 +2360,7 @@
         {
             "dialog_node": "values_support_intro",
             "title": "Values about support intro",
-            "conditions": "$command == \"valuesupport\"",
+            "conditions": "$command == \"valuesupport\" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE) and !(#COMMON_REPEAT)",
             "output": {
                 "text": {
                     "values": [
@@ -2270,6 +2375,8 @@
                 "promoted_support_finished": "false",
                 "demoted_values_support": "<? new JsonArray() ?>",
                 "demoted_support_finished": "false",
+                "example": "You might receive assistance from the system, for instance you can get more detailed information about your route, system can now help mainly outdoors on the street. With crossing the street the system cannot fully help you, it can only help with identifying the type of crossing. Sometimes you might also have to ask for assistance from someone else on the street to continue safely.",
+                "paraphrase": "",
                 "iterator": 0,
                 "support": {
                     "types": [
@@ -2297,7 +2404,14 @@
                     ]
                 }
             },
+            "next_step": {
+                "dialog_node": "first_child",
+                "behavior": "skip_user_input",
+                "selector": "user_input"
+            },
             "previous_sibling": "support_not",
+            "digress_in": "returns",
+            "digress_out": "allow_all",
             "type": "standard"
         },
         {
@@ -2307,7 +2421,6 @@
             "output": {
                 "text": {
                     "values": [
-                        "What values would be positively supported if: <?$support.types[$iterator].description?>. Choose values in this list: <?$value_list.join(', ')?>.",
                         "What values would be positively supported if: <?$support.types[$iterator].description?>."
                     ],
                     "selection_policy": "sequential"
@@ -2405,7 +2518,7 @@
             "dialog_node": "store_promoted_support_values",
             "title": "store promoted support values",
             "type": "frame",
-            "conditions": "anything_else",
+            "conditions": "@value",
             "next_step": {
                 "dialog_node": "first_child",
                 "behavior": "skip_user_input",
@@ -2430,7 +2543,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Is value <?$promoted_array.join(', ')?> promoted when <?$support.types[$iterator].short_desc?>?"
+                        "Is value <?$promoted_array.join(', ')?> possitively supported when <?$support.types[$iterator].short_desc?>?"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -2446,7 +2559,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Are values <?$promoted_array.join(', ')?> promoted when <?$support.types[$iterator].short_desc?>?"
+                        "Are values <?$promoted_array.join(', ')?> possitively supported when <?$support.types[$iterator].short_desc?>?"
                     ]
                 }
             },
@@ -2470,8 +2583,8 @@
                 }
             },
             "context": {
-                "promoted_support_finnished": "true",
-                "demoted_support_finnished": "false",
+                "promoted_support_finished": "true",
+                "demoted_support_finished": "false",
                 "temp": "<?$support.types[$iterator].promoted = $support.types[$iterator].promoted.append($promoted_array)?>"
             },
             "next_step": {
@@ -2505,36 +2618,19 @@
             "previous_sibling": "correct_all_promoted_support"
         },
         {
-            "dialog_node": "node_94",
+            "dialog_node": "node_96",
             "variable": "$promoted_array",
             "type": "slot",
             "parent": "store_promoted_support_values",
             "previous_sibling": "repeat_promoted_support_values"
         },
         {
-            "dialog_node": "node_95",
+            "dialog_node": "node_97",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"comfort\")?>"
-            },
-            "parent": "node_94"
-        },
-        {
-            "dialog_node": "node_96",
-            "variable": "$promoted_array",
-            "type": "slot",
-            "parent": "store_promoted_support_values",
-            "previous_sibling": "node_94"
-        },
-        {
-            "dialog_node": "node_97",
-            "event_name": "input",
-            "type": "event_handler",
-            "conditions": "@value:health",
-            "context": {
-                "promoted_array": "<?$promoted_array.append(\"health\")?>"
             },
             "parent": "node_96"
         },
@@ -2549,9 +2645,9 @@
             "dialog_node": "node_99",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:independence",
+            "conditions": "@value:health",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"independence\")?>"
+                "promoted_array": "<?$promoted_array.append(\"health\")?>"
             },
             "parent": "node_98"
         },
@@ -2566,9 +2662,9 @@
             "dialog_node": "node_101",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:safety",
+            "conditions": "@value:independence",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"safety\")?>"
+                "promoted_array": "<?$promoted_array.append(\"independence\")?>"
             },
             "parent": "node_100"
         },
@@ -2583,9 +2679,9 @@
             "dialog_node": "node_103",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:socializing",
+            "conditions": "@value:safety",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
+                "promoted_array": "<?$promoted_array.append(\"safety\")?>"
             },
             "parent": "node_102"
         },
@@ -2600,9 +2696,9 @@
             "dialog_node": "node_105",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:time-management",
+            "conditions": "@value:socializing",
             "context": {
-                "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
+                "promoted_array": "<?$promoted_array.append(\"socializing\")?>"
             },
             "parent": "node_104"
         },
@@ -2617,11 +2713,28 @@
             "dialog_node": "node_107",
             "event_name": "input",
             "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "promoted_array": "<?$promoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_106"
+        },
+        {
+            "dialog_node": "node_108",
+            "variable": "$promoted_array",
+            "type": "slot",
+            "parent": "store_promoted_support_values",
+            "previous_sibling": "node_106"
+        },
+        {
+            "dialog_node": "node_109",
+            "event_name": "input",
+            "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "promoted_array": "<?$promoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_106"
+            "parent": "node_108"
         },
         {
             "dialog_node": "demoted_values_support",
@@ -2630,7 +2743,6 @@
             "output": {
                 "text": {
                     "values": [
-                        "What values would be negatively supported if: <?$support.types[$iterator].description?>. Choose values in this list: <?$value_list.join(', ')?>.",
                         "What values would be negatively supported if: <?$support.types[$iterator].description?>."
                     ],
                     "selection_policy": "sequential"
@@ -2695,8 +2807,8 @@
                 }
             },
             "context": {
-                "promoted_support_finnished": "false",
-                "demoted_support_finnished": "true",
+                "promoted_support_finished": "false",
+                "demoted_support_finished": "true",
                 "iterator": "<?$iterator + 1?>"
             },
             "next_step": {
@@ -2732,7 +2844,7 @@
             "dialog_node": "store_demoted_support_values",
             "title": "store demoted support values",
             "type": "frame",
-            "conditions": "anything_else",
+            "conditions": "@value",
             "next_step": {
                 "dialog_node": "first_child",
                 "behavior": "skip_user_input",
@@ -2758,7 +2870,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Is value <?$demoted_array.join(', ')?> demoted when <?$support.types[$iterator].short_desc?>?"
+                        "Is value <?$demoted_array.join(', ')?> negatively supported when <?$support.types[$iterator].short_desc?>?"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -2774,7 +2886,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "Are values <?$demoted_array.join(', ')?> demoted when <?$support.types[$iterator].short_desc?>?"
+                        "Are values <?$demoted_array.join(', ')?> negatively supported when <?$support.types[$iterator].short_desc?>?"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -2798,8 +2910,8 @@
                 }
             },
             "context": {
-                "promoted_support_finnished": "false",
-                "demoted_support_finnished": "true",
+                "promoted_support_finished": "false",
+                "demoted_support_finished": "true",
                 "temp": "<?$support.types[$iterator].demoted = $support.types[$iterator].demoted.append($demoted_array)?>",
                 "iterator": "<?$iterator + 1?>"
             },
@@ -2834,36 +2946,19 @@
             "previous_sibling": "correct_all_demoted_support"
         },
         {
-            "dialog_node": "node_108",
+            "dialog_node": "node_110",
             "variable": "$demoted_array",
             "type": "slot",
             "parent": "store_demoted_support_values",
             "previous_sibling": "repeat_demoted_support_values"
         },
         {
-            "dialog_node": "node_109",
+            "dialog_node": "node_111",
             "event_name": "input",
             "type": "event_handler",
             "conditions": "@value:comfort",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"comfort\")?>"
-            },
-            "parent": "node_108"
-        },
-        {
-            "dialog_node": "node_110",
-            "variable": "$demoted_array",
-            "type": "slot",
-            "parent": "store_demoted_support_values",
-            "previous_sibling": "node_108"
-        },
-        {
-            "dialog_node": "node_111",
-            "event_name": "input",
-            "type": "event_handler",
-            "conditions": "@value:health",
-            "context": {
-                "demoted_array": "<?$demoted_array.append(\"health\")?>"
             },
             "parent": "node_110"
         },
@@ -2878,9 +2973,9 @@
             "dialog_node": "node_113",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:independence",
+            "conditions": "@value:health",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"independence\")?>"
+                "demoted_array": "<?$demoted_array.append(\"health\")?>"
             },
             "parent": "node_112"
         },
@@ -2895,9 +2990,9 @@
             "dialog_node": "node_115",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:safety",
+            "conditions": "@value:independence",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"safety\")?>"
+                "demoted_array": "<?$demoted_array.append(\"independence\")?>"
             },
             "parent": "node_114"
         },
@@ -2912,9 +3007,9 @@
             "dialog_node": "node_117",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:socializing",
+            "conditions": "@value:safety",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
+                "demoted_array": "<?$demoted_array.append(\"safety\")?>"
             },
             "parent": "node_116"
         },
@@ -2929,9 +3024,9 @@
             "dialog_node": "node_119",
             "event_name": "input",
             "type": "event_handler",
-            "conditions": "@value:time-management",
+            "conditions": "@value:socializing",
             "context": {
-                "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
+                "demoted_array": "<?$demoted_array.append(\"socializing\")?>"
             },
             "parent": "node_118"
         },
@@ -2946,11 +3041,28 @@
             "dialog_node": "node_121",
             "event_name": "input",
             "type": "event_handler",
+            "conditions": "@value:time-management",
+            "context": {
+                "demoted_array": "<?$demoted_array.append(\"time-management\")?>"
+            },
+            "parent": "node_120"
+        },
+        {
+            "dialog_node": "node_122",
+            "variable": "$demoted_array",
+            "type": "slot",
+            "parent": "store_demoted_support_values",
+            "previous_sibling": "node_120"
+        },
+        {
+            "dialog_node": "node_123",
+            "event_name": "input",
+            "type": "event_handler",
             "conditions": "@value:wealth",
             "context": {
                 "demoted_array": "<?$demoted_array.append(\"wealth\")?>"
             },
-            "parent": "node_120"
+            "parent": "node_122"
         },
         {
             "dialog_node": "all_support_values_done",
@@ -2959,7 +3071,7 @@
             "output": {
                 "text": {
                     "values": [
-                        "OK. Thats all from this part."
+                        "Thats all from this part."
                     ],
                     "selection_policy": "sequential"
                 }
@@ -2974,11 +3086,12 @@
         {
             "dialog_node": "rating_values_intro",
             "title": "Rating values introduction",
-            "conditions": "$command == \"valuerating\"",
+            "conditions": "$command == \"valuerating\" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE)",
             "output": {
                 "text": {
                     "values": [
-                        "You mentioned a <? $value_array.size() ?> values, I will read them one by one and assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?"
+                        "You mentioned a <? $value_array.size() ?> values, I will read them one by one and you will assign a number from 1 to 10 based on the importance specific value has for you (where 1 is least important and 10 is most important). Can we continue?",
+                        "<? (returning_from_digression)? \"Can we continue?\" : \"Ok, Can we continue?\" ?>"
                     ],
                     "selection_policy": "sequential"
                 }
@@ -2996,7 +3109,7 @@
         {
             "dialog_node": "rating_question",
             "title": "Rating question",
-            "conditions": "$iterator < $value_array.size()",
+            "conditions": "$iterator < $value_array.size() and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE)",
             "output": {
                 "text": {
                     "values": [
@@ -3161,7 +3274,7 @@
             "dialog_node": "in_other_cases",
             "title": "In other cases",
             "type": "standard",
-            "conditions": "anything_else",
+            "conditions": "intents[0].confidence < 0.5",
             "output": {
                 "text": {
                     "values": [
@@ -3202,7 +3315,7 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_61",
+            "dialog_node": "node_62",
             "title": "Repeat not null",
             "conditions": "$repeat != null",
             "output": {
@@ -3212,14 +3325,14 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_62",
+            "dialog_node": "node_63",
             "title": "Repeat null",
             "conditions": "true",
             "output": {
                 "text": "I can't repeat that."
             },
             "parent": "repeat",
-            "previous_sibling": "node_61",
+            "previous_sibling": "node_62",
             "type": "standard"
         },
         {
@@ -3239,7 +3352,7 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_63",
+            "dialog_node": "node_64",
             "title": "Paraphrase not null",
             "conditions": "$paraphrase != null",
             "output": {
@@ -3249,67 +3362,51 @@
             "type": "standard"
         },
         {
-            "dialog_node": "node_64",
+            "dialog_node": "node_65",
             "title": "Paraphrase null",
             "conditions": "true",
             "output": {
                 "text": "I don't have any more details."
             },
             "parent": "paraphrase",
-            "previous_sibling": "node_63",
+            "previous_sibling": "node_64",
             "type": "standard"
         },
         {
             "dialog_node": "example",
             "title": "Example",
             "conditions": "#COMMON_EXAMPLE",
-            "output": {
-                "text": "<? $example != null ? $example : \"I don't have any examples.\" ?>"
-            },
             "context": {
                 "repeat": "<? output.text ?>"
-            },
-            "previous_sibling": "paraphrase",
-            "digress_in": "returns",
-            "type": "standard"
-        },
-        {
-            "dialog_node": "anything_else",
-            "title": "Fallback",
-            "conditions": "anything_else",
-            "context": {
-                "repeat": "<? output.text ?>",
-                "example": "",
-                "paraphrase": ""
             },
             "next_step": {
                 "dialog_node": "first_child",
                 "behavior": "skip_user_input",
                 "selector": "user_input"
             },
-            "previous_sibling": "example",
+            "previous_sibling": "paraphrase",
+            "digress_in": "returns",
             "type": "standard"
         },
         {
-            "dialog_node": "node_65",
-            "title": "Anything else",
-            "conditions": "anything_else",
+            "dialog_node": "node_66",
+            "title": "example not null",
+            "conditions": "$example != null",
             "output": {
-                "text": {
-                    "values": [
-                        "What, please?",
-                        "Say that again, please.",
-                        "Once more, please."
-                    ],
-                    "selection_policy": "random"
-                }
+                "text": "<? $example ?>"
             },
-            "context": {
-                "repeat": "<? output.text ?>",
-                "example": "",
-                "paraphrase": "I'm saying that I did not undestand you, try it again."
+            "parent": "example",
+            "type": "standard"
+        },
+        {
+            "dialog_node": "node_67",
+            "title": "example null",
+            "conditions": "true",
+            "output": {
+                "text": "I don't have any example."
             },
-            "parent": "anything_else",
+            "parent": "example",
+            "previous_sibling": "node_66",
             "type": "standard"
         }
     ]

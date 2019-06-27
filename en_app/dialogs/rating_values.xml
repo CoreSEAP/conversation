@@ -1,6 +1,6 @@
 <nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <node name="rating_values_intro" title="Rating values introduction">
-        <condition>$command == "valuerating"</condition>
+        <condition>$command == "valuerating" and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE)</condition>
         <context>
             <example>For example, I would rate independence with number 10, because its super important for me to be independent.</example>
             <paraphrase>I will read you values you said before and you will assign nuber from 1 to 10 based on the importance. Ok?</paraphrase>
@@ -10,13 +10,14 @@
         </context>
         <output>
           <textValues>
-            <values structure="listItem">You mentioned a &lt;? $value_array.size() ?&gt; values, I will read them one by one and you will assign a number from 1 to 10 (where 1 is least important and 10 is most important) based on the importance specific value has for you. Can we continue?</values>
+            <values structure="listItem">You mentioned a &lt;? $value_array.size() ?&gt; values, I will read them one by one and you will assign a number from 1 to 10 based on the importance specific value has for you (where 1 is least important and 10 is most important). Can we continue?</values>
+            <values structure="listItem"> &lt;? (returning_from_digression)? "Can we continue?" : "Ok, Can we continue?" ?&gt;</values>
             <selection_policy>sequential</selection_policy>
           </textValues>
         </output>
         <nodes>
             <node name="rating_question" title="Rating question">
-                <condition>$iterator &lt; $value_array.size()</condition>
+                <condition>$iterator &lt; $value_array.size() and !(#COMMON_EXAMPLE) and !(#COMMON_PARAPHRASE)</condition>
                 <context>
                     <repeat>&lt;? output.text ?&gt;</repeat>
                 </context>

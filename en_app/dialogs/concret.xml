@@ -3,13 +3,14 @@
     <type>standard</type>
     <condition>$command == "concret" and !(#USER_DESCRIBING_WAYS)</condition>
     <context>
+      <example>Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi.</example>
         <concret_array>&lt;? new JsonArray() ?&gt;</concret_array>
       </context>
     <digress_in>does_not_return</digress_in>
     <output>
       <textValues>
         <values structure="listItem">Let’s talk about your traveling to &lt;?$concret?&gt; on your own. Pick a destination where you have more than one option of how to get there. Please go one by one, what is the first route you can take to &lt;?$concret?&gt;?</values>
-        <values structure="listItem">Other people for example said that different routes to a train station are: going only on foot, going by tram number 9 or taking a taxi. What is the first route you can take to &lt;?$concret?&gt;?</values>
+        <values structure="listItem">What route you can take to &lt;?$concret?&gt;?</values>
         <selection_policy>sequential</selection_policy>
       </textValues>
     </output>
@@ -75,10 +76,15 @@
                   <condition>$concret_array.size() == 0</condition>
                   <output>
                     <textValues>
-                      <values structure="listItem">You said that there are no routes to: &lt;?$concret?&gt;, is it correct?</values>
+                      <values structure="listItem">You said that there are no routes. Pick a destination where you have more than one option to get there please.</values>
                       <selection_policy>sequential</selection_policy>
                     </textValues>
                   </output>
+                  <goto>
+                    <behavior>jump_to</behavior>
+                    <target>concretisation</target>
+                    <selector>body</selector>
+                  </goto>
               </node>
               <node name="only_one_way_of" title="Only one way of">
                   <type>response_condition</type>
